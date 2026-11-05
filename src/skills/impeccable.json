@@ -1,0 +1,434 @@
+{
+  "slug": "impeccable",
+  "title": "Impeccable",
+  "source": "Paul Bakaus",
+  "sourceUrl": "https://impeccable.style/",
+  "sourceNote": "Apache 2.0 · github.com/pbakaus/impeccable (skill v4.8.0)",
+  "summary": "The missing design vocabulary for agents: commands to build, review and refine UI, plus a detector for AI slop.",
+  "accent": "#D9482B",
+  "sections": [
+    {
+      "id": "workflow",
+      "title": "Workflow",
+      "type": "steps",
+      "tutorials": [
+        {
+          "title": "Getting started",
+          "tool": "from impeccable.style",
+          "steps": [
+            "npx impeccable install",
+            "/impeccable init writes PRODUCT.md",
+            "/impeccable hooks on",
+            "Run a command, e.g. /impeccable polish",
+            "Detector checks edits, agent fixes findings"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "commands",
+      "title": "Commands",
+      "intro": "Run as /impeccable &lt;command&gt; [target].",
+      "type": "commands",
+      "groups": [
+        {
+          "name": "Build",
+          "items": [
+            {
+              "name": "shape",
+              "text": "Plan UX/UI before writing code"
+            },
+            {
+              "name": "init",
+              "text": "Capture durable product context in PRODUCT.md"
+            },
+            {
+              "name": "document",
+              "text": "Generate DESIGN.md from existing project code"
+            },
+            {
+              "name": "extract",
+              "text": "Pull reusable tokens and components into the design system"
+            }
+          ]
+        },
+        {
+          "name": "Evaluate",
+          "items": [
+            {
+              "name": "critique",
+              "text": "UX design review with heuristic scoring"
+            },
+            {
+              "name": "audit",
+              "text": "Technical quality checks: a11y, performance, responsive"
+            }
+          ]
+        },
+        {
+          "name": "Refine",
+          "items": [
+            {
+              "name": "polish",
+              "text": "Final quality pass before shipping"
+            },
+            {
+              "name": "bolder",
+              "text": "Amplify safe or bland designs"
+            },
+            {
+              "name": "quieter",
+              "text": "Tone down aggressive or overstimulating designs"
+            },
+            {
+              "name": "distill",
+              "text": "Strip to essence, remove complexity"
+            },
+            {
+              "name": "harden",
+              "text": "Production-ready: errors, i18n, edge cases"
+            },
+            {
+              "name": "onboard",
+              "text": "First-run flows, empty states, activation"
+            }
+          ]
+        },
+        {
+          "name": "Enhance",
+          "items": [
+            {
+              "name": "animate",
+              "text": "Add purposeful animations and motion"
+            },
+            {
+              "name": "colorize",
+              "text": "Add strategic color to monochromatic UIs"
+            },
+            {
+              "name": "typeset",
+              "text": "Improve typography hierarchy and fonts"
+            },
+            {
+              "name": "layout",
+              "text": "Fix spacing, rhythm and visual hierarchy"
+            },
+            {
+              "name": "delight",
+              "text": "Add personality and memorable touches"
+            },
+            {
+              "name": "overdrive",
+              "text": "Push past conventional limits"
+            }
+          ]
+        },
+        {
+          "name": "Fix",
+          "items": [
+            {
+              "name": "clarify",
+              "text": "Improve UX copy, labels and error messages"
+            },
+            {
+              "name": "adapt",
+              "text": "Adapt for different devices and screen sizes"
+            },
+            {
+              "name": "optimize",
+              "text": "Diagnose and fix UI performance"
+            }
+          ]
+        },
+        {
+          "name": "Iterate",
+          "items": [
+            {
+              "name": "live",
+              "text": "Pick elements in the browser, iterate on alternatives"
+            },
+            {
+              "name": "generate",
+              "text": "Variants of a named element to choose from in the live browser"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "modes",
+      "title": "Modes",
+      "intro": "Chosen per surface: what does the visitor’s success look like?",
+      "type": "cards",
+      "items": [
+        {
+          "title": "Persuade",
+          "text": "Landing, marketing, pricing.",
+          "more": "Earn attention and action."
+        },
+        {
+          "title": "Operate",
+          "text": "App UI, dashboards, settings.",
+          "more": "Scanability and consistency outrank expression."
+        },
+        {
+          "title": "Read",
+          "text": "Docs, articles, guides.",
+          "more": "Structure for comprehension."
+        },
+        {
+          "title": "Experience",
+          "text": "Portfolios, galleries.",
+          "more": "The artifact leads, the interface recedes."
+        }
+      ]
+    },
+    {
+      "id": "typography",
+      "title": "Typography",
+      "type": "cards",
+      "items": [
+        {
+          "title": "Measure",
+          "text": "Body text at 45–75 characters per line."
+        },
+        {
+          "title": "Display limits",
+          "text": "Display max 6rem; tracking floor -0.04em, -0.02 to -0.03em usually reads better."
+        },
+        {
+          "title": "Obvious steps",
+          "text": "Heading, body, label and data roles distinguishable at a glance."
+        },
+        {
+          "title": "Earn every family",
+          "text": "Faces and weights should fit the product, not be unexamined defaults."
+        },
+        {
+          "title": "Stress test",
+          "text": "Long headings, localization, zoom, narrow containers, font fallback."
+        },
+        {
+          "title": "Real display face",
+          "text": "Not a system face like Impact or Arial Black as the display voice."
+        }
+      ]
+    },
+    {
+      "id": "color",
+      "title": "Color",
+      "type": "cards",
+      "items": [
+        {
+          "title": "Contrast",
+          "text": "Body 4.5:1, large text 3:1, controls and focus 3:1."
+        },
+        {
+          "title": "Tinted secondary text",
+          "text": "On colored surfaces tint from the hue; never gray."
+        },
+        {
+          "title": "Rarity gives force",
+          "text": "In Operate and Read, color encodes action, status and wayfinding."
+        },
+        {
+          "title": "Not color alone",
+          "text": "Pair color with text, shape, icon or position."
+        },
+        {
+          "title": "OKLCH ramps",
+          "text": "Vary lightness, reduce chroma near white and black."
+        },
+        {
+          "title": "Explicit over alpha",
+          "text": "Translucent overlay chains make contrast unpredictable."
+        }
+      ]
+    },
+    {
+      "id": "spacing",
+      "title": "Spacing & layout",
+      "type": "cards",
+      "items": [
+        {
+          "title": "Rhythm",
+          "text": "Tight groups, generous separation."
+        },
+        {
+          "title": "Headings",
+          "text": "More space above a heading than below."
+        },
+        {
+          "title": "Squint test",
+          "text": "Blurred, you can still find primary, secondary and groups."
+        },
+        {
+          "title": "Proximity over containers",
+          "text": "Containers shouldn’t compensate for weak grouping."
+        },
+        {
+          "title": "Fit the content",
+          "text": "Repeated cards only when items are truly equivalent."
+        }
+      ],
+      "short": "Spacing"
+    },
+    {
+      "id": "motion",
+      "title": "Motion",
+      "type": "cards",
+      "items": [
+        {
+          "title": "100–150 ms",
+          "text": "Immediate feedback"
+        },
+        {
+          "title": "150–300 ms",
+          "text": "Routine state change"
+        },
+        {
+          "title": "300–500 ms",
+          "text": "Layout, overlay or view transition"
+        },
+        {
+          "title": "500–800 ms",
+          "text": "A deliberately authored focal entrance"
+        },
+        {
+          "title": "One authored moment",
+          "text": "Not the same entrance on every section."
+        },
+        {
+          "title": "Ease out",
+          "text": "Exit faster than entrance; no reflexive bounce or elastic."
+        }
+      ]
+    },
+    {
+      "id": "interaction",
+      "title": "Interaction",
+      "type": "cards",
+      "items": [
+        {
+          "title": "Every state",
+          "text": "Hover, disabled, loading, error, empty, keyboard focus."
+        },
+        {
+          "title": "Browser surfaces",
+          "text": "Theme selection, caret, scrollbars, focus rings, tabular numerals."
+        },
+        {
+          "title": "No needless modals",
+          "text": "Only when a task needs interruption or protected focus."
+        },
+        {
+          "title": "Undo over confirm",
+          "text": "When recovery is safe, prefer undo."
+        }
+      ]
+    },
+    {
+      "id": "responsive",
+      "title": "Responsive",
+      "type": "cards",
+      "items": [
+        {
+          "title": "Assess context",
+          "text": "Device, input, screen, connection, usage, expectations."
+        },
+        {
+          "title": "Touch targets",
+          "text": "44×44px minimum, more spacing between controls."
+        },
+        {
+          "title": "No hover-only",
+          "text": "Remove hover-dependent interactions on touch."
+        },
+        {
+          "title": "Fluid tools",
+          "text": "Grid and flexbox, container queries, clamp()."
+        },
+        {
+          "title": "Order agrees",
+          "text": "DOM and focus order match the visual order."
+        }
+      ]
+    },
+    {
+      "id": "writing",
+      "title": "UX writing",
+      "type": "cards",
+      "items": [
+        {
+          "title": "Verb + object",
+          "text": "Labels say what will happen, not the gesture."
+        },
+        {
+          "title": "Consistent nouns",
+          "text": "Same verb and noun for the same concept everywhere."
+        },
+        {
+          "title": "Name the action",
+          "text": "Not Yes, No, OK or Submit on confirmations."
+        },
+        {
+          "title": "Persistent labels",
+          "text": "Placeholders are examples, not labels."
+        },
+        {
+          "title": "Actionable errors",
+          "text": "What failed, why, and how to recover."
+        }
+      ]
+    },
+    {
+      "id": "anti-patterns",
+      "title": "Anti-patterns",
+      "intro": "From the craft floor. Defaults to refuse unless the brief earns them; eyebrows are an outright ban.",
+      "type": "checklist",
+      "items": [
+        "Same-size icon + heading + text cards as page structure",
+        "Nested cards",
+        "Hero-metric template",
+        "Eyebrow or kicker above a heading",
+        "Section numbers 01 / 02 / 03",
+        "Modal for a task that doesn’t need one",
+        "Gradient text",
+        "Glass and blur as decoration",
+        "Colored side border thicker than 1px",
+        "Hard offset shadows outside neobrutalism",
+        "Sparklines and rings standing in for content",
+        "Monospace as a technical costume",
+        "System display face as the display voice",
+        "Emoji or Unicode glyphs as icons",
+        "Geometric masks faking organic contours",
+        "Light or dark picked by category",
+        "Border plus wide soft shadow: the ghost card",
+        "Sketch-style SVG illustration",
+        "Decorative stripes or grid backgrounds",
+        "Gray text on colored backgrounds",
+        "Purple-to-blue gradients",
+        "Inter for everything"
+      ]
+    },
+    {
+      "id": "license",
+      "title": "License",
+      "type": "prose",
+      "text": "Apache 2.0. Impeccable started from Anthropic’s frontend-design skill. Content here is summarized from impeccable.style and the public GitHub repository."
+    }
+  ],
+  "overview": {
+    "purpose": "Design vocabulary for coding agents: commands to build, review and refine UI.",
+    "when": "Designing or improving a frontend together with an agent.",
+    "takeaways": [
+      "Choose the mode per surface",
+      "Critique and audit before you refine",
+      "Body text contrast at least 4.5:1",
+      "One authored motion moment",
+      "No eyebrows, no nested cards"
+    ],
+    "start": "commands"
+  },
+  "category": "Design"
+}

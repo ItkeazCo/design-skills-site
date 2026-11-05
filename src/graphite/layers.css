@@ -1,0 +1,497 @@
+
+/* Graphite — Layer A (semantic aliases) and Layer B (component tokens).
+   Load after tokens.css. Source of truth for primitives + themed colour: docs/tokens.source.json.
+   Tier 1  Primitives   tokens.css / tokens.json   graphite-*, space-12, radius-32 …
+   Tier 2  Semantic     tokens.css (colour) + Layer A below   purpose names; themes swap here
+   Tier 3  Component    Layer B below              where it is used (--button-*, --slider-*)
+   Rule: .gt-* styles read Tier 3 or semantic tokens (for example --text-secondary); Tier 3 → Tier 2 → Tier 1.
+   States: -hover / -pressed variants; focus, disabled and error use shared semantic tokens.
+   Docs/tests also use .is-hover .is-pressed .is-focus .is-disabled.
+   ========================================================================== */
+
+/* ---------- Layer A · semantic aliases for dimensions and motion ---------- */
+:root {
+  --gap-tight: var(--space-4);
+  --gap-control: var(--space-8);
+  --gap-inline: var(--space-12);
+  --gap-group: var(--space-24);
+  --gap-section: var(--space-40);
+  --inset-control: var(--space-12);
+  --inset-button: var(--space-16);
+  --inset-container: var(--space-20);
+  --inset-press: var(--space-32);
+
+  --radius-control: var(--radius-full);
+  --radius-field: var(--radius-12);
+  --radius-card: var(--radius-18);
+  --radius-container: var(--radius-32);
+  --radius-tooltip: var(--radius-8);
+  --radius-checkbox: var(--radius-6);
+  --radius-bar: var(--radius-2);
+
+  --control-sm: var(--size-28);
+  --control-md: var(--size-36);
+  --control-lg: var(--size-42);
+  --control-xl: var(--size-64);
+
+  --duration-fast: var(--duration-140);
+  --duration-base: var(--duration-180);
+  --duration-slow: var(--duration-300);
+  --duration-drag: var(--duration-80);
+  --duration-bar: var(--duration-200);
+  --duration-spin: var(--duration-700);
+  --duration-blink: var(--duration-1200);
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --scale-pressed: .97;
+  --font-weight-book: var(--weight-450);
+
+  --focus-width: 2px;
+  --focus-offset: 2px;
+}
+
+/* ---------- Layer B · component tokens ---------- */
+:root {
+  /* Button */
+  --button-height-sm: var(--control-sm);
+  --button-height-md: var(--control-md);
+  --button-height-lg: var(--control-lg);
+  --button-padding-x-sm: var(--inset-control);
+  --button-padding-x-md: var(--inset-button);
+  --button-padding-x-lg: var(--gap-group);
+  --button-radius: var(--radius-control);
+  --button-gap: var(--gap-control);
+  --button-font-size: var(--type-label-size);
+  --button-font-size-sm: var(--type-caption-size);
+  --button-font-size-lg: var(--type-timer-size);
+  --button-line-height: var(--type-label-leading);
+  --button-font-weight: var(--type-label-weight);
+  --button-primary-bg: var(--bg-inverse);
+  --button-primary-bg-hover: var(--bg-inverse-hover);
+  --button-primary-bg-pressed: var(--bg-inverse-pressed);
+  --button-primary-fg: var(--text-inverse);
+  --button-secondary-bg: var(--bg-surface);
+  --button-secondary-bg-hover: var(--bg-well);
+  --button-secondary-bg-pressed: var(--bg-well-hover);
+  --button-secondary-border: var(--border-default);
+  --button-secondary-border-hover: var(--border-hover);
+  --button-secondary-fg: var(--text-primary);
+  --button-soft-bg: var(--bg-well);
+  --button-soft-bg-hover: var(--bg-well-hover);
+  --button-soft-bg-pressed: var(--bg-fill);
+  --button-soft-fg: var(--text-primary);
+  --button-ghost-bg-hover: var(--bg-well);
+  --button-ghost-bg-pressed: var(--bg-well-hover);
+  --button-ghost-fg: var(--text-primary);
+  --button-danger-fg: var(--text-danger);
+  --button-overlay-bg: var(--bg-overlay);
+  --button-overlay-bg-hover: var(--bg-overlay-hover);
+  --button-overlay-bg-pressed: var(--bg-overlay-pressed);
+  --button-overlay-fg: var(--text-overlay);
+
+  /* IconButton */
+  --icon-button-size-sm: var(--control-sm);
+  --icon-button-size-md: var(--control-md);
+  --icon-button-size-lg: var(--control-lg);
+  --icon-button-radius: var(--radius-control);
+  --icon-button-fg: var(--text-primary);
+  --icon-button-bg-hover: var(--bg-well);
+  --icon-button-bg-pressed: var(--bg-well-hover);
+  --icon-button-bg-selected: var(--bg-well);
+  --icon-button-solid-bg: var(--bg-surface);
+  --icon-button-solid-shadow: var(--shadow-raised);
+  --icon-button-solid-shadow-hover: var(--shadow-raised-hover);
+  --icon-button-outline-border: var(--border-default);
+
+  /* PressButton */
+  --press-radius: var(--button-radius);
+  --press-height: var(--control-xl);
+  --press-min-width: 256px;
+  --press-padding-x: var(--inset-press);
+  --press-light-bg: var(--bg-surface);
+  --press-light-fg: var(--text-primary);
+  --press-dark-bg: var(--bg-inverse);
+  --press-dark-bg-hover: var(--bg-inverse-hover);
+  --press-dark-fg: var(--text-inverse);
+  --press-stroke: var(--border-default);
+  --press-shadow: var(--shadow-raised);
+  --press-shadow-hover: var(--shadow-raised-hover);
+  --press-dot: var(--status-recording);
+  --press-bar-width: 3px;
+  --press-bar-gap: 3px;
+  --press-bar-height: 28px;
+  --press-bar-radius: var(--radius-bar);
+  --press-bar-duration: var(--duration-bar);
+
+  /* SegmentedControl */
+  --segmented-track-bg: var(--bg-well);
+  --segmented-track-padding: 3px;
+  --segmented-radius: var(--radius-control);
+  --segmented-fg: var(--text-secondary);
+  --segmented-fg-hover: var(--text-primary);
+  --segmented-bg-hover: var(--bg-well-hover);
+  --segmented-thumb-bg: var(--bg-surface);
+  --segmented-thumb-fg: var(--text-primary);
+  --segmented-thumb-shadow: var(--shadow-raised);
+
+  /* SliderField */
+  --slider-height: var(--control-lg);
+  --slider-radius: var(--radius-field);
+  --slider-padding-x: var(--inset-control);
+  --slider-track-bg: var(--bg-well);
+  --slider-fill-bg: var(--bg-fill);
+  --slider-fill-bg-hover: var(--bg-fill-hover);
+  --slider-fill-bg-pressed: var(--border-hover);
+  --slider-fg: var(--text-primary);
+  --slider-font-size: var(--type-label-size);
+  --slider-line-height: var(--type-label-leading);
+  --slider-label-weight: var(--font-weight-book);
+  --slider-value-weight: var(--type-label-weight);
+  --slider-fill-duration: var(--duration-drag);
+
+  /* Switch */
+  --switch-width: 40px;
+  --switch-height: var(--size-24);
+  --switch-width-sm: 32px;
+  --switch-height-sm: 20px;
+  --switch-thumb-size: 18px;
+  --switch-thumb-size-sm: 14px;
+  --switch-thumb-inset: 3px;
+  --switch-thumb-travel: 16px;
+  --switch-thumb-travel-pressed: 12px;
+  --switch-thumb-travel-sm: 12px;
+  --switch-thumb-grow: 4px;
+  --switch-thumb-duration: var(--duration-220);
+  --switch-label: var(--text-primary);
+  --switch-track-bg: var(--bg-fill);
+  --switch-track-bg-hover: var(--bg-fill-hover);
+  --switch-track-bg-on: var(--bg-inverse);
+  --switch-track-bg-on-hover: var(--bg-inverse-hover);
+  --switch-thumb-bg: var(--knob);
+  --switch-thumb-bg-on: var(--text-inverse);
+  --switch-thumb-shadow: var(--shadow-raised);
+
+  /* Checkbox & Radio */
+  --checkbox-size: var(--size-20);
+  --checkbox-radius: var(--radius-checkbox);
+  --checkbox-border-width: 1.5px;
+  --checkbox-scale-pressed: .92;
+  --checkbox-label-gap: 2px;
+  --checkbox-label: var(--text-primary);
+  --checkbox-desc: var(--text-secondary);
+  --checkbox-bg: var(--bg-surface);
+  --checkbox-border: var(--border-default);
+  --checkbox-border-hover: var(--border-hover);
+  --checkbox-bg-checked: var(--bg-inverse);
+  --checkbox-bg-checked-hover: var(--bg-inverse-hover);
+  --checkbox-fg-checked: var(--text-inverse);
+  --checkbox-icon-stroke: var(--icon-stroke-check);
+  --radio-size: var(--size-20);
+  --radio-dot-size: 8px;
+  --radio-bg: var(--bg-surface);
+  --radio-border: var(--border-default);
+  --radio-border-hover: var(--border-hover);
+  --radio-border-error: var(--status-danger);
+  --radio-bg-checked: var(--bg-inverse);
+  --radio-bg-checked-hover: var(--bg-inverse-hover);
+  --radio-dot: var(--text-inverse);
+  --radio-scale-pressed: .9;
+  --radio-gap: var(--gap-inline);
+  --radio-group-gap: var(--gap-inline);
+  --radio-card-radius: var(--radius-card);
+  --radio-card-padding: var(--inset-control) var(--inset-button);
+  --radio-card-bg: var(--bg-well);
+  --radio-card-bg-hover: var(--bg-well-hover);
+  --radio-card-bg-selected: var(--bg-surface);
+  --radio-card-border-selected: var(--border-strong);
+  --radio-card-border-error: var(--status-danger);
+
+  /* Chip */
+  --chip-height: var(--control-sm);
+  --chip-gap: 6px;
+  --chip-font-weight: var(--type-label-weight);
+  --chip-font-size: var(--type-caption-size);
+  --chip-line-height: var(--type-caption-leading);
+  --chip-icon-stroke: var(--icon-stroke-strong);
+  --chip-padding-x: var(--inset-control);
+  --chip-radius: var(--radius-control);
+  --chip-bg: var(--bg-surface);
+  --chip-bg-hover: var(--bg-well);
+  --chip-bg-pressed: var(--bg-well-hover);
+  --chip-border: var(--border-default);
+  --chip-border-hover: var(--border-hover);
+  --chip-fg: var(--text-primary);
+  --chip-bg-selected: var(--bg-inverse);
+  --chip-bg-selected-hover: var(--bg-inverse-hover);
+  --chip-fg-selected: var(--text-inverse);
+
+  /* Field (Input, Textarea, Select) */
+  --field-gap: 6px;
+  --field-font-weight: var(--type-body-weight);
+  --field-font-size: var(--type-body-size);
+  --field-line-height: var(--type-body-leading);
+  --field-height: var(--control-md);
+  --field-radius: var(--radius-field);
+  --field-padding-x: var(--inset-control);
+  --field-bg: var(--bg-well);
+  --field-bg-hover: var(--bg-well-hover);
+  --field-bg-focus: var(--bg-surface);
+  --field-border-focus: var(--border-strong);
+  --field-halo-focus: var(--focus-halo);
+  --field-border-error: var(--status-danger);
+  --field-fg: var(--text-primary);
+  --field-placeholder: var(--text-placeholder);
+  --field-icon: var(--text-secondary);
+  --field-label: var(--text-primary);
+  --field-hint: var(--text-secondary);
+  --field-error: var(--text-danger);
+
+  /* SettingRow and ListRow */
+  --row-divider: var(--border-subtle);
+  --row-icon-bg: var(--bg-well);
+  --row-bg-hover: var(--bg-well);
+  --row-bg-pressed: var(--bg-fill);
+
+  /* Card */
+  --card-bg: var(--bg-surface);
+  --card-fg: var(--text-primary);
+  --card-border: var(--border-subtle);
+  --card-border-width: 1px;
+  --card-radius: var(--radius-card);
+  --card-padding: var(--inset-container);
+  --card-gap: var(--gap-inline);
+  --card-title-gap: var(--gap-tight);
+  --card-shadow: var(--shadow-raised);
+
+  /* Divider */
+  --divider-color: var(--border-subtle);
+  --divider-size: 1px;
+  --divider-inset: var(--inset-container);
+
+  /* Badge, Avatar, Kbd, Progress */
+  --badge-height: 22px;
+  --badge-neutral-bg: var(--bg-well);
+  --badge-solid-bg: var(--bg-inverse);
+  --badge-solid-fg: var(--text-inverse);
+  --badge-outline-border: var(--border-default);
+  --badge-outline-fg: var(--text-secondary);
+  --badge-live-bg: var(--bg-surface);
+  --badge-live-dot: var(--status-recording);
+  --badge-success-bg: var(--bg-success-subtle);
+  --badge-success-fg: var(--text-success);
+  --badge-warning-bg: var(--bg-warning-subtle);
+  --badge-warning-fg: var(--text-warning);
+  --badge-danger-bg: var(--bg-danger-subtle);
+  --badge-danger-fg: var(--text-danger);
+  --badge-info-bg: var(--bg-info-subtle);
+  --badge-info-fg: var(--text-info);
+  --avatar-bg: var(--bg-fill);
+  --avatar-fg: var(--text-primary);
+  --avatar-font-size-sm: var(--type-fine-size);
+  --avatar-font-size-md: var(--type-micro-size);
+  --avatar-font-size-lg: var(--type-timer-size);
+  --kbd-bg: var(--bg-surface);
+  --kbd-font-size: var(--type-kbd-size);
+  --kbd-line-height: var(--type-kbd-leading);
+  --kbd-font-weight: var(--type-kbd-weight);
+  --kbd-border: var(--border-default);
+  --kbd-fg: var(--text-secondary);
+  --progress-height: 6px;
+  --progress-track: var(--bg-well);
+  --progress-bar: var(--bg-inverse);
+
+  /* Tooltip, Toast */
+  --tooltip-bg: var(--bg-inverse);
+  --tooltip-fg: var(--text-inverse);
+  --tooltip-radius: var(--radius-tooltip);
+  --toast-bg: var(--bg-surface);
+  --toast-border: var(--border-subtle);
+  --toast-shadow: var(--shadow-floating);
+  --toast-icon-bg: var(--bg-well);
+  --toast-success-bg: var(--status-success);
+  --toast-success-fg: var(--text-on-status);
+  --toast-warning-bg: var(--status-warning);
+  --toast-warning-fg: var(--text-on-warning);
+  --toast-info-bg: var(--status-info);
+  --toast-info-fg: var(--text-on-status);
+  --toast-error-bg: var(--status-danger);
+  --toast-error-fg: var(--text-on-status);
+  --toast-icon-stroke: var(--icon-stroke-strong);
+
+  /* Panel, Stage, Dialog */
+  --panel-width: 288px;
+  --panel-bg: var(--bg-surface);
+  --panel-border: var(--border-subtle);
+  --panel-radius: var(--radius-container);
+  --panel-padding: var(--inset-container);
+  --panel-gap: var(--gap-group);
+  --stage-bg: var(--bg-stage);
+  --stage-radius: var(--radius-container);
+  --stage-padding: var(--inset-control);
+  --dialog-width: 400px;
+  --dialog-bg: var(--bg-surface);
+  --dialog-radius: var(--radius-container);
+  --dialog-shadow: var(--shadow-floating);
+  --dialog-scrim: var(--bg-scrim);
+}
+
+/* Brand elements re-declare component colour aliases.
+   A custom property inherits its computed value, so a :root alias such as
+   --button-primary-bg: var(--bg-inverse) would ignore a descendant override of
+   --bg-inverse. Declaring the alias again on [data-brand] resolves it there.
+   With no data-brand attribute, nothing here applies. */
+[data-brand] {
+  --button-primary-bg: var(--bg-inverse);
+  --button-primary-bg-hover: var(--bg-inverse-hover);
+  --button-primary-bg-pressed: var(--bg-inverse-pressed);
+  --button-primary-fg: var(--text-inverse);
+  --button-secondary-bg: var(--bg-surface);
+  --button-secondary-bg-hover: var(--bg-well);
+  --button-secondary-bg-pressed: var(--bg-well-hover);
+  --button-secondary-border: var(--border-default);
+  --button-secondary-border-hover: var(--border-hover);
+  --button-secondary-fg: var(--text-primary);
+  --button-soft-bg: var(--bg-well);
+  --button-soft-bg-hover: var(--bg-well-hover);
+  --button-soft-bg-pressed: var(--bg-fill);
+  --button-soft-fg: var(--text-primary);
+  --button-ghost-bg-hover: var(--bg-well);
+  --button-ghost-bg-pressed: var(--bg-well-hover);
+  --button-ghost-fg: var(--text-primary);
+  --button-danger-fg: var(--text-danger);
+  --button-overlay-bg: var(--bg-overlay);
+  --button-overlay-bg-hover: var(--bg-overlay-hover);
+  --button-overlay-bg-pressed: var(--bg-overlay-pressed);
+  --button-overlay-fg: var(--text-overlay);
+  --icon-button-fg: var(--text-primary);
+  --icon-button-bg-hover: var(--bg-well);
+  --icon-button-bg-pressed: var(--bg-well-hover);
+  --icon-button-bg-selected: var(--bg-well);
+  --icon-button-solid-bg: var(--bg-surface);
+  --icon-button-solid-shadow: var(--shadow-raised);
+  --icon-button-solid-shadow-hover: var(--shadow-raised-hover);
+  --icon-button-outline-border: var(--border-default);
+  --press-light-bg: var(--bg-surface);
+  --press-light-fg: var(--text-primary);
+  --press-dark-bg: var(--bg-inverse);
+  --press-dark-bg-hover: var(--bg-inverse-hover);
+  --press-dark-fg: var(--text-inverse);
+  --press-stroke: var(--border-default);
+  --press-shadow: var(--shadow-raised);
+  --press-shadow-hover: var(--shadow-raised-hover);
+  --press-dot: var(--status-recording);
+  --segmented-track-bg: var(--bg-well);
+  --segmented-fg: var(--text-secondary);
+  --segmented-fg-hover: var(--text-primary);
+  --segmented-bg-hover: var(--bg-well-hover);
+  --segmented-thumb-bg: var(--bg-surface);
+  --segmented-thumb-fg: var(--text-primary);
+  --segmented-thumb-shadow: var(--shadow-raised);
+  --slider-track-bg: var(--bg-well);
+  --slider-fill-bg: var(--bg-fill);
+  --slider-fill-bg-hover: var(--bg-fill-hover);
+  --slider-fill-bg-pressed: var(--border-hover);
+  --slider-fg: var(--text-primary);
+  --switch-label: var(--text-primary);
+  --switch-track-bg: var(--bg-fill);
+  --switch-track-bg-hover: var(--bg-fill-hover);
+  --switch-track-bg-on: var(--bg-inverse);
+  --switch-track-bg-on-hover: var(--bg-inverse-hover);
+  --switch-thumb-bg: var(--knob);
+  --switch-thumb-bg-on: var(--text-inverse);
+  --switch-thumb-shadow: var(--shadow-raised);
+  --checkbox-label: var(--text-primary);
+  --checkbox-desc: var(--text-secondary);
+  --checkbox-bg: var(--bg-surface);
+  --checkbox-border: var(--border-default);
+  --checkbox-border-hover: var(--border-hover);
+  --checkbox-bg-checked: var(--bg-inverse);
+  --checkbox-bg-checked-hover: var(--bg-inverse-hover);
+  --checkbox-fg-checked: var(--text-inverse);
+  --radio-bg: var(--bg-surface);
+  --radio-border: var(--border-default);
+  --radio-border-hover: var(--border-hover);
+  --radio-border-error: var(--status-danger);
+  --radio-bg-checked: var(--bg-inverse);
+  --radio-bg-checked-hover: var(--bg-inverse-hover);
+  --radio-dot: var(--text-inverse);
+  --radio-card-bg: var(--bg-well);
+  --radio-card-bg-hover: var(--bg-well-hover);
+  --radio-card-bg-selected: var(--bg-surface);
+  --radio-card-border-selected: var(--border-strong);
+  --radio-card-border-error: var(--status-danger);
+  --chip-bg: var(--bg-surface);
+  --chip-bg-hover: var(--bg-well);
+  --chip-bg-pressed: var(--bg-well-hover);
+  --chip-border: var(--border-default);
+  --chip-border-hover: var(--border-hover);
+  --chip-fg: var(--text-primary);
+  --chip-bg-selected: var(--bg-inverse);
+  --chip-bg-selected-hover: var(--bg-inverse-hover);
+  --chip-fg-selected: var(--text-inverse);
+  --field-bg: var(--bg-well);
+  --field-bg-hover: var(--bg-well-hover);
+  --field-bg-focus: var(--bg-surface);
+  --field-border-focus: var(--border-strong);
+  --field-halo-focus: var(--focus-halo);
+  --field-border-error: var(--status-danger);
+  --field-fg: var(--text-primary);
+  --field-placeholder: var(--text-placeholder);
+  --field-icon: var(--text-secondary);
+  --field-label: var(--text-primary);
+  --field-hint: var(--text-secondary);
+  --field-error: var(--text-danger);
+  --row-divider: var(--border-subtle);
+  --row-icon-bg: var(--bg-well);
+  --row-bg-hover: var(--bg-well);
+  --row-bg-pressed: var(--bg-fill);
+  --card-bg: var(--bg-surface);
+  --card-fg: var(--text-primary);
+  --card-border: var(--border-subtle);
+  --card-shadow: var(--shadow-raised);
+  --divider-color: var(--border-subtle);
+  --badge-neutral-bg: var(--bg-well);
+  --badge-solid-bg: var(--bg-inverse);
+  --badge-solid-fg: var(--text-inverse);
+  --badge-outline-border: var(--border-default);
+  --badge-outline-fg: var(--text-secondary);
+  --badge-live-bg: var(--bg-surface);
+  --badge-live-dot: var(--status-recording);
+  --badge-success-bg: var(--bg-success-subtle);
+  --badge-success-fg: var(--text-success);
+  --badge-warning-bg: var(--bg-warning-subtle);
+  --badge-warning-fg: var(--text-warning);
+  --badge-danger-bg: var(--bg-danger-subtle);
+  --badge-danger-fg: var(--text-danger);
+  --badge-info-bg: var(--bg-info-subtle);
+  --badge-info-fg: var(--text-info);
+  --avatar-bg: var(--bg-fill);
+  --avatar-fg: var(--text-primary);
+  --kbd-bg: var(--bg-surface);
+  --kbd-border: var(--border-default);
+  --kbd-fg: var(--text-secondary);
+  --progress-track: var(--bg-well);
+  --progress-bar: var(--bg-inverse);
+  --tooltip-bg: var(--bg-inverse);
+  --tooltip-fg: var(--text-inverse);
+  --toast-bg: var(--bg-surface);
+  --toast-border: var(--border-subtle);
+  --toast-shadow: var(--shadow-floating);
+  --toast-icon-bg: var(--bg-well);
+  --toast-success-bg: var(--status-success);
+  --toast-success-fg: var(--text-on-status);
+  --toast-warning-bg: var(--status-warning);
+  --toast-warning-fg: var(--text-on-warning);
+  --toast-info-bg: var(--status-info);
+  --toast-info-fg: var(--text-on-status);
+  --toast-error-bg: var(--status-danger);
+  --toast-error-fg: var(--text-on-status);
+  --panel-bg: var(--bg-surface);
+  --panel-border: var(--border-subtle);
+  --stage-bg: var(--bg-stage);
+  --dialog-bg: var(--bg-surface);
+  --dialog-shadow: var(--shadow-floating);
+  --dialog-scrim: var(--bg-scrim);
+}
+
+

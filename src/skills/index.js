@@ -1,0 +1,13 @@
+// Register skills here: import the file and add it to the list (order = sidebar order).
+import designCritique from './design-critique.json';
+import impeccable from './impeccable.json';
+import unslop from './unslop-ai-ui.json';
+import typography from './better-typography.json';
+import emil from './emil-animations.json';
+import apple from './apple-motion.json';
+import m3 from './m3-motion.json';
+import lottie from './motion-design.json';
+
+export const skills = [designCritique, unslop, impeccable, typography, apple, emil, m3, lottie];
+// Sidebar groups, in order. Each skill names its group in `category`.
+export const categories = ['Design', 'Typography', 'Motion'];

@@ -1,0 +1,73 @@
+{
+  "slug": "unslop-ai-ui",
+  "title": "Unslop AI UI",
+  "source": "Charles Liu",
+  "sourceNote": "From the reel “How to unslop your designs”",
+  "summary": "Start from a reference, strip the tells, choose fonts and colors yourself.",
+  "accent": "#1F51FF",
+  "sections": [
+    {
+      "id": "process",
+      "title": "Process",
+      "type": "steps",
+      "tutorials": [
+        {
+          "title": "Unslop in three moves",
+          "steps": [
+            "Start from one or two reference sites",
+            "Run the checklist on every output",
+            "Pick fonts and colors yourself, lock them as a system"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "checklist",
+      "title": "Slop checklist",
+      "intro": "Remove or justify each one. Tick them off as you review.",
+      "type": "checklist",
+      "items": [
+        "Tags and pills everywhere",
+        "Excessive italics",
+        "Instrument Serif as default display",
+        "Negative tracking on headings",
+        "Over-the-top detailed UI",
+        "Too many dividers",
+        "Many shades and opacities",
+        "Borders around everything",
+        "Overly detailed diagrams",
+        "Verbose or redundant text",
+        "Code-style breadcrumbs",
+        "Section numbering",
+        "Eyebrow labels",
+        "Dithering",
+        "ASCII images",
+        "Squircles",
+        "Too much monospace",
+        "All-caps subtitles",
+        "Gradient backgrounds",
+        "Periods at the end of titles"
+      ],
+      "short": "Checklist"
+    },
+    {
+      "id": "briefing",
+      "title": "Briefing an AI",
+      "type": "prose",
+      "text": "Paste the reference screenshots, your font and color tokens, and this checklist as don’ts. Review the output against the checklist before accepting it. Pair with Design critique for hierarchy and color checks.",
+      "short": "Briefing"
+    }
+  ],
+  "overview": {
+    "purpose": "Strip generic AI-slop styling from UIs, pages and decks made with AI.",
+    "when": "Reviewing an AI-made interface, or briefing an AI to make one.",
+    "takeaways": [
+      "Start from a reference you like",
+      "Run the checklist on every output",
+      "Choose fonts and colors yourself",
+      "Lock them as a small design system"
+    ],
+    "start": "checklist"
+  },
+  "category": "Design"
+}

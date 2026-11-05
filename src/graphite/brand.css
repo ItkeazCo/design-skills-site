@@ -1,0 +1,16 @@
+[data-brand="custom"] {
+  --brand-50: #f7f7f7; --brand-100: #ebebeb; --brand-200: #d9d9d9; --brand-300: #c1c1c1; --brand-400: #a1a1a1; --brand-500: #898989; --brand-600: #737373; --brand-700: #4d4d4d; --brand-800: #2a2a2a; --brand-900: #0f0f0f; --brand-950: #000000;
+  --bg-inverse: #000000; --bg-inverse-hover: #000000; --bg-inverse-pressed: #000000; --text-inverse: #ffffff; --bg-accent: #737373; --text-accent: #4d4d4d; --bg-accent-subtle: #f7f7f7;
+}
+[data-brand="custom"][data-theme="light"], [data-brand="custom"].light, [data-theme="light"] [data-brand="custom"], .light [data-brand="custom"] {
+  --bg-inverse: #000000; --bg-inverse-hover: #000000; --bg-inverse-pressed: #000000; --text-inverse: #ffffff; --bg-accent: #737373; --text-accent: #4d4d4d; --bg-accent-subtle: #f7f7f7;
+}
+[data-brand="custom"][data-theme="dark"], [data-brand="custom"].dark, [data-theme="dark"] [data-brand="custom"], .dark [data-brand="custom"] {
+  --bg-inverse: #a1a1a1; --bg-inverse-hover: #c1c1c1; --bg-inverse-pressed: #d9d9d9; --text-inverse: #000000; --bg-accent: #898989; --text-accent: #c1c1c1; --bg-accent-subtle: #000000;
+}
+@media (prefers-color-scheme: dark) {
+  [data-brand="custom"]:not([data-theme="light"]):not(.light):not([data-theme="light"] *):not(.light *) {
+    --bg-inverse: #a1a1a1; --bg-inverse-hover: #c1c1c1; --bg-inverse-pressed: #d9d9d9; --text-inverse: #000000; --bg-accent: #898989; --text-accent: #c1c1c1; --bg-accent-subtle: #000000;
+  }
+}
+:root { --font-display: "Hedvig Letters Sans", Inter, system-ui, sans-serif; }

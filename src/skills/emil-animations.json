@@ -1,0 +1,237 @@
+{
+  "slug": "emil-animations",
+  "title": "Animations that feel right",
+  "category": "Motion",
+  "source": "Emil Kowalski",
+  "sourceUrl": "https://github.com/emilkowalski/skills",
+  "sourceNote": "animate, review-animations and improve-animations skills, MIT licence",
+  "accent": "#7A5C99",
+  "summary": "Decide whether to animate, then pick the cheapest tool, the right curve and a short duration.",
+  "overview": {
+    "purpose": "Build, review and audit UI motion so it feels quick, purposeful and interruptible.",
+    "when": "Adding motion to a component, reviewing an animation diff, or auditing a whole codebase.",
+    "takeaways": [
+      "Frequent actions get no animation",
+      "Name the purpose before you build",
+      "transform and opacity only",
+      "Strong ease-out, under 300 ms",
+      "Reduced motion ships with the animation"
+    ],
+    "start": "gate"
+  },
+  "sections": [
+    {
+      "id": "gate",
+      "title": "Should it animate?",
+      "type": "cards",
+      "intro": "Two gates run before any curve or duration.",
+      "items": [
+        {
+          "title": "100+ times a day",
+          "text": "No animation at all.",
+          "more": "Keyboard shortcuts and command-palette toggles open instantly. Raycast has no open animation, and that is correct."
+        },
+        {
+          "title": "Tens of times a day",
+          "text": "Near-imperceptible or nothing.",
+          "more": "Hover effects and list navigation: fast and subtle, or instant."
+        },
+        {
+          "title": "Occasional",
+          "text": "Standard animation.",
+          "more": "Modals, drawers, toasts."
+        },
+        {
+          "title": "Rare or first-time",
+          "text": "The delight budget lives here.",
+          "more": "Onboarding, success, celebration."
+        },
+        {
+          "title": "Name the purpose",
+          "text": "Feedback, spatial, state, bridge, explain, delight.",
+          "more": "If you cannot name one, do not build it. Data the user is reading should not move for style."
+        }
+      ],
+      "short": "When to animate"
+    },
+    {
+      "id": "tools",
+      "title": "Tool and properties",
+      "type": "cards",
+      "intro": "Cheapest tool that works; GPU properties only.",
+      "items": [
+        {
+          "title": "CSS transition",
+          "text": "Hover, press, state toggles.",
+          "more": "Transitions retarget from the current value, so they stay interruptible.",
+          "css": "transition: transform 160ms var(--ease-out), opacity 160ms var(--ease-out);"
+        },
+        {
+          "title": "@starting-style",
+          "text": "Entry on mount, no JS.",
+          "more": "Lets a freshly inserted element transition from a start state.",
+          "css": ".toast { transition: opacity 200ms, transform 200ms; }\n@starting-style { .toast { opacity: 0; transform: translateY(8px); } }"
+        },
+        {
+          "title": "Web Animations API",
+          "text": "Programmatic control, CSS speed.",
+          "more": "element.animate() without a library.",
+          "css": "el.animate(\n  [{ opacity: 0, transform: 'scale(0.96)' }, { opacity: 1, transform: 'none' }],\n  { duration: 200, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' }\n);"
+        },
+        {
+          "title": "transform and opacity",
+          "text": "Skip layout and paint.",
+          "more": "Height is tolerated only for accordions. Never transition: all.",
+          "css": "transition-property: transform, opacity;"
+        },
+        {
+          "title": "Never scale(0)",
+          "text": "Start at 0.95 plus opacity 0.",
+          "more": "Nothing in the real world appears from nothing.",
+          "css": ".pop { transform: scale(0.95); opacity: 0; }",
+          "demo": {
+            "ease": "cubic-bezier(0.23, 1, 0.32, 1)",
+            "ms": 200,
+            "label": "scale 0.95 → 1"
+          }
+        },
+        {
+          "title": "Origin at the trigger",
+          "text": "Popovers grow from their button.",
+          "more": "Modals are exempt and stay centred.",
+          "css": ".popover { transform-origin: var(--transform-origin); }"
+        }
+      ],
+      "short": "Tools"
+    },
+    {
+      "id": "curves",
+      "title": "Curves and duration",
+      "type": "cards",
+      "intro": "Built-in easings are too weak. Use strong curves and short durations.",
+      "items": [
+        {
+          "title": "Strong ease-out",
+          "text": "Entering and exiting.",
+          "more": "The default. ease-out at 200 ms feels faster than ease-in at 200 ms.",
+          "css": "--ease-out: cubic-bezier(0.23, 1, 0.32, 1);",
+          "demo": {
+            "ease": "cubic-bezier(0.23, 1, 0.32, 1)",
+            "ms": 220,
+            "label": "strong ease-out",
+            "vs": {
+              "ease": "ease-out",
+              "ms": 220,
+              "label": "built-in ease-out"
+            }
+          }
+        },
+        {
+          "title": "Strong ease-in-out",
+          "text": "Moving on screen.",
+          "more": "For elements that travel or morph while visible.",
+          "css": "--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);",
+          "demo": {
+            "ease": "cubic-bezier(0.77, 0, 0.175, 1)",
+            "ms": 300,
+            "label": "strong ease-in-out"
+          }
+        },
+        {
+          "title": "Drawer curve",
+          "text": "iOS-like sheets.",
+          "more": "From Ionic.",
+          "css": "--ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);",
+          "demo": {
+            "ease": "cubic-bezier(0.32, 0.72, 0, 1)",
+            "ms": 400,
+            "label": "drawer"
+          }
+        },
+        {
+          "title": "Never ease-in on UI",
+          "text": "It delays the moment you watch.",
+          "more": "ease-in starts slow, exactly when the user is looking.",
+          "demo": {
+            "ease": "ease-in",
+            "ms": 220,
+            "label": "ease-in",
+            "vs": {
+              "ease": "cubic-bezier(0.23, 1, 0.32, 1)",
+              "ms": 220,
+              "label": "strong ease-out"
+            }
+          }
+        },
+        {
+          "title": "Durations",
+          "text": "Press 100–160 ms, dropdown 150–250 ms.",
+          "more": "Tooltips 125–200 ms, modals and drawers 200–500 ms. UI stays under 300 ms unless there is a reason.",
+          "demo": {
+            "ease": "cubic-bezier(0.23, 1, 0.32, 1)",
+            "ms": 180,
+            "label": "180 ms",
+            "vs": {
+              "ease": "cubic-bezier(0.23, 1, 0.32, 1)",
+              "ms": 400,
+              "label": "400 ms"
+            }
+          }
+        },
+        {
+          "title": "Springs for gestures",
+          "text": "Drag, momentum, interruptible.",
+          "more": "Keep bounce at 0.1–0.3 and avoid it in most UI.",
+          "css": "{ type: 'spring', duration: 0.5, bounce: 0.2 }",
+          "demo": {
+            "ease": "linear(0, 0.058, 0.196, 0.372, 0.553, 0.717, 0.853, 0.957, 1.028, 1.071, 1.091, 1.094, 1.086, 1.072, 1.055, 1.038, 1.023, 1.011, 1.002, 0.996, 0.992, 0.991, 0.991, 0.992, 0.994, 0.995, 0.997, 0.998, 0.999, 1, 1)",
+            "ms": 600,
+            "label": "spring, bounce ≈ 0.2"
+          }
+        }
+      ],
+      "short": "Curves"
+    },
+    {
+      "id": "review",
+      "title": "Review standards",
+      "type": "checklist",
+      "intro": "Flag on sight when reviewing motion.",
+      "items": [
+        "transition: all",
+        "scale(0) entrances",
+        "ease-in on UI",
+        "Animation on a keyboard shortcut or 100+/day action",
+        "UI duration over 300 ms with no reason",
+        "transform-origin: center on a popover",
+        "Keyframes on toasts or toggles",
+        "Animating width, height, margin, top or left",
+        "Ungated :hover motion",
+        "No prefers-reduced-motion handling",
+        "Symmetric timing on press-and-hold",
+        "Everything entering at once (use a 30–80 ms stagger)"
+      ],
+      "short": "Review"
+    },
+    {
+      "id": "audit",
+      "title": "Audit a codebase",
+      "type": "steps",
+      "intro": "The improve-animations workflow: read-only, then plans.",
+      "tutorials": [
+        {
+          "title": "Audit, then plan",
+          "steps": [
+            "Recon: stack, tokens, frequency map",
+            "Audit eight categories",
+            "Vet each finding against the code",
+            "Rank by impact ÷ effort",
+            "Write self-contained plans"
+          ]
+        }
+      ],
+      "short": "Audit"
+    }
+  ],
+  "short": "Animations"
+}

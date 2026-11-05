@@ -1,0 +1,139 @@
+{
+  "slug": "m3-motion",
+  "title": "Material 3 motion",
+  "category": "Motion",
+  "source": "Shelbeely",
+  "sourceUrl": "https://github.com/shelbeely/Shelbeely-Agent-skills",
+  "sourceNote": "material-design-3-motion skill, Apache-2.0",
+  "accent": "#3E7C59",
+  "summary": "Expressive and standard motion schemes, duration tokens, container transforms.",
+  "overview": {
+    "purpose": "Apply Material Design 3 motion tokens and patterns on the web.",
+    "when": "Building with Material, or needing a ready duration and easing token set.",
+    "takeaways": [
+      "Standard for utility, expressive for hero moments",
+      "Tokenise durations short / medium / long",
+      "Container transform for continuity",
+      "Stagger list items 30–50 ms"
+    ],
+    "start": "schemes"
+  },
+  "sections": [
+    {
+      "id": "schemes",
+      "title": "Motion schemes",
+      "type": "cards",
+      "intro": "Pick a scheme per flow.",
+      "items": [
+        {
+          "title": "Standard",
+          "text": "Restrained, minimal bounce.",
+          "more": "For productivity and system-critical flows.",
+          "css": "--md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);",
+          "demo": {
+            "ease": "cubic-bezier(0.2, 0, 0, 1)",
+            "ms": 300,
+            "label": "standard",
+            "vs": {
+              "ease": "cubic-bezier(0.05, 0.7, 0.1, 1)",
+              "ms": 300,
+              "label": "expressive"
+            }
+          }
+        },
+        {
+          "title": "Expressive",
+          "text": "Overshoots and adds energy.",
+          "more": "Touch interactions and hero moments.",
+          "css": "--md-sys-motion-easing-expressive: cubic-bezier(0.05, 0.7, 0.1, 1);",
+          "demo": {
+            "ease": "cubic-bezier(0.05, 0.7, 0.1, 1)",
+            "ms": 400,
+            "label": "expressive"
+          }
+        },
+        {
+          "title": "Legacy",
+          "text": "Plain easing for compatibility.",
+          "more": "Use only when springs cannot be applied."
+        }
+      ],
+      "short": "Schemes"
+    },
+    {
+      "id": "tokens",
+      "title": "Duration tokens",
+      "type": "cards",
+      "intro": "Four steps each of short, medium and long.",
+      "items": [
+        {
+          "title": "Short",
+          "text": "50–200 ms.",
+          "more": "Small feedback: ripples, toggles, icon changes.",
+          "css": "--md-sys-motion-duration-short1: 50ms;\n--md-sys-motion-duration-short2: 100ms;\n--md-sys-motion-duration-short3: 150ms;\n--md-sys-motion-duration-short4: 200ms;",
+          "demo": {
+            "ease": "cubic-bezier(0.2, 0, 0, 1)",
+            "ms": 150,
+            "label": "short3 150 ms"
+          }
+        },
+        {
+          "title": "Medium",
+          "text": "250–400 ms.",
+          "more": "Cards expanding, sheets, dialogs.",
+          "css": "--md-sys-motion-duration-medium1: 250ms;\n--md-sys-motion-duration-medium2: 300ms;\n--md-sys-motion-duration-medium3: 350ms;\n--md-sys-motion-duration-medium4: 400ms;",
+          "demo": {
+            "ease": "cubic-bezier(0.2, 0, 0, 1)",
+            "ms": 300,
+            "label": "medium2 300 ms"
+          }
+        },
+        {
+          "title": "Long",
+          "text": "450–600 ms.",
+          "more": "Full-screen and large-area transitions.",
+          "css": "--md-sys-motion-duration-long1: 450ms;\n--md-sys-motion-duration-long2: 500ms;\n--md-sys-motion-duration-long3: 550ms;\n--md-sys-motion-duration-long4: 600ms;",
+          "demo": {
+            "ease": "cubic-bezier(0.2, 0, 0, 1)",
+            "ms": 500,
+            "label": "long2 500 ms"
+          }
+        }
+      ],
+      "short": "Durations"
+    },
+    {
+      "id": "patterns",
+      "title": "Transition patterns",
+      "type": "cards",
+      "intro": "Reusable ways to move between states.",
+      "items": [
+        {
+          "title": "Container transform",
+          "text": "A card grows into its page.",
+          "more": "Keeps continuity between a list item and its detail.",
+          "css": ".detail { animation: grow 300ms cubic-bezier(0.2, 0, 0, 1); }"
+        },
+        {
+          "title": "Shared axis",
+          "text": "Pages slide along one axis.",
+          "more": "For steps and tabs with a spatial order.",
+          "css": "@keyframes enter-right { from { opacity: 0; transform: translateX(30px); } }"
+        },
+        {
+          "title": "Stagger",
+          "text": "30–50 ms between items.",
+          "more": "Lists enter one after another, not all at once."
+        },
+        {
+          "title": "Elevation",
+          "text": "Shadow and lift on interaction.",
+          "more": "200 ms with the standard curve.",
+          "css": "transition: box-shadow 200ms cubic-bezier(0.2, 0, 0, 1), transform 200ms cubic-bezier(0.2, 0, 0, 1);"
+        }
+      ],
+      "short": "Transitions"
+    }
+  ],
+  "short": "Material 3 motion"
+}

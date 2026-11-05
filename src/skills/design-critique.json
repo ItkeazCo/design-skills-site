@@ -1,0 +1,1064 @@
+{
+  "slug": "design-critique",
+  "title": "Design critique & brand color",
+  "source": "A.Song Studio",
+  "sourceNote": "Distilled from about 70 reels",
+  "summary": "Name the one job, run the few recurring checks, fix at most three things.",
+  "accent": "#600C49",
+  "sections": [
+    {
+      "id": "critique",
+      "title": "How to critique",
+      "type": "steps",
+      "tutorials": [
+        {
+          "title": "Critique flow",
+          "steps": [
+            "State the one job",
+            "Two-second eye test + squint",
+            "Name at most 3 issues",
+            "Give a concrete fix, before and after",
+            "Keep it short"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "Diagnostics",
+      "intro": "It looks X, so do Y.",
+      "type": "diagnostics",
+      "items": [
+        {
+          "symptom": "Messy",
+          "fix": "Put everything on one grid",
+          "viz": "grid"
+        },
+        {
+          "symptom": "Chaotic",
+          "fix": "Same job, same look",
+          "viz": "group"
+        },
+        {
+          "symptom": "Feels off",
+          "fix": "Check grids, make one thing biggest",
+          "viz": "focus"
+        },
+        {
+          "symptom": "Doesn’t stand out",
+          "fix": "Exaggerate scale contrast",
+          "viz": "scale"
+        },
+        {
+          "symptom": "Busy",
+          "fix": "Take away before adding",
+          "viz": "busy"
+        },
+        {
+          "symptom": "Heavy",
+          "fix": "Brighten, add one pop of color",
+          "viz": "heavy"
+        },
+        {
+          "symptom": "Empty",
+          "fix": "Make one thing big",
+          "viz": "empty"
+        },
+        {
+          "symptom": "Boring",
+          "fix": "Soft glow as a spotlight",
+          "viz": "glow"
+        },
+        {
+          "symptom": "Cold",
+          "fix": "Warm the colors",
+          "viz": "warm"
+        },
+        {
+          "symptom": "Flat",
+          "fix": "Texture, no pure black or white",
+          "viz": "flat"
+        },
+        {
+          "symptom": "Chaotic colors",
+          "fix": "Make color the message",
+          "viz": "message"
+        },
+        {
+          "symptom": "Muddy",
+          "fix": "Make one color much brighter",
+          "viz": "muddy"
+        },
+        {
+          "symptom": "Random",
+          "fix": "Put the words in the picture",
+          "viz": "words"
+        }
+      ]
+    },
+    {
+      "id": "hierarchy",
+      "title": "Hierarchy",
+      "type": "cards",
+      "items": [
+        {
+          "title": "One job",
+          "text": "When you don’t know the point, you start decorating."
+        },
+        {
+          "title": "Judge by the job",
+          "text": "If people can’t tell what matters in a second, it failed."
+        },
+        {
+          "title": "One loud color",
+          "text": "Same-role elements share a color. Not six text colors."
+        },
+        {
+          "title": "One big thing first",
+          "text": "That’s where the eye starts."
+        },
+        {
+          "title": "One simple symbol",
+          "text": "Swap clutter so the text reads first, then a clear CTA."
+        },
+        {
+          "title": "Two-second eye test",
+          "text": "If your eye ping-pongs, the layout feels random."
+        }
+      ]
+    },
+    {
+      "id": "gestalt",
+      "title": "Layout & Gestalt",
+      "type": "cards",
+      "items": [
+        {
+          "title": "Similarity",
+          "text": "Titles match titles, containers match containers."
+        },
+        {
+          "title": "Proximity",
+          "text": "Date with location, all details in one block."
+        },
+        {
+          "title": "Frames",
+          "text": "A frame turns its contents into one unit for the eye."
+        }
+      ],
+      "short": "Gestalt"
+    },
+    {
+      "id": "color",
+      "title": "Color rules",
+      "type": "cards",
+      "items": [
+        {
+          "title": "Color sets the category",
+          "text": "Same logo: blue bank, green salad, black and gold perfume.",
+          "colors": [
+            {
+              "name": "electric blue",
+              "hex": "#1F51FF",
+              "approx": true
+            },
+            {
+              "name": "basil green",
+              "hex": "#4F7F3A",
+              "approx": true
+            },
+            {
+              "name": "black",
+              "hex": "#111111",
+              "approx": true
+            },
+            {
+              "name": "gold",
+              "hex": "#C9A227",
+              "approx": true
+            }
+          ]
+        },
+        {
+          "title": "Seen from far",
+          "text": "Two high-contrast colors, one simple shape. Yellow pops on red.",
+          "colors": [
+            {
+              "name": "red",
+              "hex": "#D62828",
+              "approx": true
+            },
+            {
+              "name": "sunshine yellow",
+              "hex": "#FFD23F",
+              "approx": true
+            }
+          ]
+        },
+        {
+          "title": "Escape fast food",
+          "text": "Keep the warmth: cherry red + cream, tomato + butter, burgundy + mustard.",
+          "colors": [
+            {
+              "name": "cherry red",
+              "hex": "#C2172B",
+              "approx": true
+            },
+            {
+              "name": "cream",
+              "hex": "#F4E8D0",
+              "approx": false
+            },
+            {
+              "name": "burgundy",
+              "hex": "#7A1E2E",
+              "approx": true
+            },
+            {
+              "name": "honey",
+              "hex": "#E0A82E",
+              "approx": true
+            }
+          ]
+        },
+        {
+          "title": "Value beats hue",
+          "text": "Two colors with the same value turn to mud. Squint."
+        },
+        {
+          "title": "Expensive",
+          "text": "Dark purples. Pop them with yellow.",
+          "colors": [
+            {
+              "name": "plum",
+              "hex": "#600C49",
+              "approx": false
+            },
+            {
+              "name": "yellow",
+              "hex": "#FFD23F",
+              "approx": true
+            }
+          ]
+        },
+        {
+          "title": "Nostalgic",
+          "text": "Warm it, fade it, swap black and white for deep colors.",
+          "colors": [
+            {
+              "name": "maroon",
+              "hex": "#522632",
+              "approx": false
+            },
+            {
+              "name": "cream",
+              "hex": "#F4E8D0",
+              "approx": false
+            },
+            {
+              "name": "orange",
+              "hex": "#FD8328",
+              "approx": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "palettes",
+      "title": "Palettes",
+      "intro": "Starting points. Tune the shades and run the value check.",
+      "type": "palettes",
+      "groups": [
+        {
+          "name": "By industry",
+          "palettes": [
+            {
+              "name": "Interior",
+              "colors": [
+                {
+                  "name": "beige",
+                  "hex": "#D9C7A7",
+                  "approx": true
+                },
+                {
+                  "name": "dark brown",
+                  "hex": "#4A2E1F",
+                  "approx": true
+                },
+                {
+                  "name": "orange",
+                  "hex": "#E8742A",
+                  "approx": true
+                },
+                {
+                  "name": "purple",
+                  "hex": "#6B3FA0",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "Fitness",
+              "colors": [
+                {
+                  "name": "black",
+                  "hex": "#111111",
+                  "approx": true
+                },
+                {
+                  "name": "red",
+                  "hex": "#D62828",
+                  "approx": true
+                },
+                {
+                  "name": "sky blue",
+                  "hex": "#7EC8E3",
+                  "approx": true
+                },
+                {
+                  "name": "white",
+                  "hex": "#FAFAF7",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "Wellness",
+              "colors": [
+                {
+                  "name": "vanilla",
+                  "hex": "#F3E5AB",
+                  "approx": true
+                },
+                {
+                  "name": "gray",
+                  "hex": "#9A9A9A",
+                  "approx": true
+                },
+                {
+                  "name": "sage",
+                  "hex": "#9CAF88",
+                  "approx": true
+                },
+                {
+                  "name": "orange",
+                  "hex": "#E8742A",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "Jewelry",
+              "colors": [
+                {
+                  "name": "dark green",
+                  "hex": "#1F4D3A",
+                  "approx": true
+                },
+                {
+                  "name": "gold",
+                  "hex": "#C9A227",
+                  "approx": true
+                },
+                {
+                  "name": "white",
+                  "hex": "#FAFAF7",
+                  "approx": true
+                },
+                {
+                  "name": "pink",
+                  "hex": "#F4A6C0",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "Tech",
+              "colors": [
+                {
+                  "name": "midnight navy",
+                  "hex": "#14213D",
+                  "approx": true
+                },
+                {
+                  "name": "ice blue",
+                  "hex": "#CFE8F3",
+                  "approx": true
+                },
+                {
+                  "name": "electric blue",
+                  "hex": "#1F51FF",
+                  "approx": true
+                },
+                {
+                  "name": "chartreuse",
+                  "hex": "#C6E83A",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "Cafe",
+              "colors": [
+                {
+                  "name": "toffee brown",
+                  "hex": "#8B5A2B",
+                  "approx": true
+                },
+                {
+                  "name": "oat",
+                  "hex": "#E6D8BF",
+                  "approx": true
+                },
+                {
+                  "name": "strawberry pink",
+                  "hex": "#F57FA0",
+                  "approx": true
+                },
+                {
+                  "name": "olive",
+                  "hex": "#7A7A34",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "Law",
+              "colors": [
+                {
+                  "name": "deep teal",
+                  "hex": "#0F4C4C",
+                  "approx": true
+                },
+                {
+                  "name": "slate blue",
+                  "hex": "#5B6C9A",
+                  "approx": true
+                },
+                {
+                  "name": "stone",
+                  "hex": "#B9B1A3",
+                  "approx": true
+                },
+                {
+                  "name": "burnt orange",
+                  "hex": "#CC5500",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "Skincare",
+              "colors": [
+                {
+                  "name": "terracotta",
+                  "hex": "#C8643B",
+                  "approx": true
+                },
+                {
+                  "name": "nude",
+                  "hex": "#E3BFA4",
+                  "approx": true
+                },
+                {
+                  "name": "cream",
+                  "hex": "#F4E8D0",
+                  "approx": false
+                },
+                {
+                  "name": "gold",
+                  "hex": "#C9A227",
+                  "approx": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Combos",
+          "palettes": [
+            {
+              "name": "marine blue / bright red / butter yellow",
+              "colors": [
+                {
+                  "name": "marine blue",
+                  "hex": "#1B3A6B",
+                  "approx": true
+                },
+                {
+                  "name": "bright red",
+                  "hex": "#E0262E",
+                  "approx": true
+                },
+                {
+                  "name": "butter yellow",
+                  "hex": "#F7E08A",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "oat / plum / tangerine",
+              "colors": [
+                {
+                  "name": "oat",
+                  "hex": "#E6D8BF",
+                  "approx": true
+                },
+                {
+                  "name": "plum",
+                  "hex": "#600C49",
+                  "approx": false
+                },
+                {
+                  "name": "tangerine",
+                  "hex": "#FD8328",
+                  "approx": false
+                }
+              ]
+            },
+            {
+              "name": "vanilla cream / apple red / matcha",
+              "colors": [
+                {
+                  "name": "vanilla cream",
+                  "hex": "#F6EBC8",
+                  "approx": true
+                },
+                {
+                  "name": "apple red",
+                  "hex": "#C8102E",
+                  "approx": true
+                },
+                {
+                  "name": "matcha",
+                  "hex": "#8DB255",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "milk white / burgundy / cherry red",
+              "colors": [
+                {
+                  "name": "milk white",
+                  "hex": "#FBF8F1",
+                  "approx": true
+                },
+                {
+                  "name": "burgundy",
+                  "hex": "#7A1E2E",
+                  "approx": true
+                },
+                {
+                  "name": "cherry red",
+                  "hex": "#C2172B",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "baby blue / poppy red / sunshine yellow",
+              "colors": [
+                {
+                  "name": "baby blue",
+                  "hex": "#A8D4F0",
+                  "approx": true
+                },
+                {
+                  "name": "poppy red",
+                  "hex": "#E63B2E",
+                  "approx": true
+                },
+                {
+                  "name": "sunshine yellow",
+                  "hex": "#FFD23F",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "watermelon pink / basil green / onyx",
+              "colors": [
+                {
+                  "name": "watermelon pink",
+                  "hex": "#F2668B",
+                  "approx": true
+                },
+                {
+                  "name": "basil green",
+                  "hex": "#4F7F3A",
+                  "approx": true
+                },
+                {
+                  "name": "onyx",
+                  "hex": "#1A1A1A",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "dark green / lemon / linen",
+              "colors": [
+                {
+                  "name": "dark green",
+                  "hex": "#1F4D3A",
+                  "approx": true
+                },
+                {
+                  "name": "lemon",
+                  "hex": "#F5E050",
+                  "approx": true
+                },
+                {
+                  "name": "linen",
+                  "hex": "#F0E6D6",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "ink / white / bright pink",
+              "colors": [
+                {
+                  "name": "ink",
+                  "hex": "#121826",
+                  "approx": true
+                },
+                {
+                  "name": "white",
+                  "hex": "#FAFAF7",
+                  "approx": true
+                },
+                {
+                  "name": "bright pink",
+                  "hex": "#FF3E9A",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "emerald / banana yellow / white",
+              "colors": [
+                {
+                  "name": "emerald",
+                  "hex": "#0B7A55",
+                  "approx": true
+                },
+                {
+                  "name": "banana yellow",
+                  "hex": "#F9E27D",
+                  "approx": true
+                },
+                {
+                  "name": "white",
+                  "hex": "#FAFAF7",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "chocolate plum / popcorn / cerulean",
+              "colors": [
+                {
+                  "name": "chocolate plum",
+                  "hex": "#4A2338",
+                  "approx": true
+                },
+                {
+                  "name": "popcorn",
+                  "hex": "#F6E7B8",
+                  "approx": true
+                },
+                {
+                  "name": "cerulean",
+                  "hex": "#2A7FBA",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "vanilla custard / flamingo pink / brandy brown",
+              "colors": [
+                {
+                  "name": "vanilla custard",
+                  "hex": "#F3DFA2",
+                  "approx": true
+                },
+                {
+                  "name": "flamingo pink",
+                  "hex": "#F59AB0",
+                  "approx": true
+                },
+                {
+                  "name": "brandy brown",
+                  "hex": "#7B3F26",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "beige / royal blue / burgundy",
+              "colors": [
+                {
+                  "name": "beige",
+                  "hex": "#D9C7A7",
+                  "approx": true
+                },
+                {
+                  "name": "royal blue",
+                  "hex": "#2747B8",
+                  "approx": true
+                },
+                {
+                  "name": "burgundy",
+                  "hex": "#7A1E2E",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "purple blue / vanilla / lime",
+              "colors": [
+                {
+                  "name": "purple blue",
+                  "hex": "#4B4BC8",
+                  "approx": true
+                },
+                {
+                  "name": "vanilla",
+                  "hex": "#F3E5AB",
+                  "approx": true
+                },
+                {
+                  "name": "lime",
+                  "hex": "#A7D63B",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "moss / pastel purple / rose pink",
+              "colors": [
+                {
+                  "name": "moss",
+                  "hex": "#5F6F3A",
+                  "approx": true
+                },
+                {
+                  "name": "pastel purple",
+                  "hex": "#C9B6E4",
+                  "approx": true
+                },
+                {
+                  "name": "rose pink",
+                  "hex": "#F08CA8",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "honey / plum / dusty blue / sage",
+              "colors": [
+                {
+                  "name": "honey",
+                  "hex": "#E0A82E",
+                  "approx": true
+                },
+                {
+                  "name": "plum",
+                  "hex": "#600C49",
+                  "approx": false
+                },
+                {
+                  "name": "dusty blue",
+                  "hex": "#7C97B0",
+                  "approx": true
+                },
+                {
+                  "name": "sage",
+                  "hex": "#9CAF88",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "vanilla / blueberry / lime / pink",
+              "colors": [
+                {
+                  "name": "vanilla",
+                  "hex": "#F3E5AB",
+                  "approx": true
+                },
+                {
+                  "name": "blueberry",
+                  "hex": "#3D4B9C",
+                  "approx": true
+                },
+                {
+                  "name": "lime",
+                  "hex": "#A7D63B",
+                  "approx": true
+                },
+                {
+                  "name": "pink",
+                  "hex": "#F4A6C0",
+                  "approx": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Fall",
+          "palettes": [
+            {
+              "name": "beige / plum wine / olive drab",
+              "colors": [
+                {
+                  "name": "beige",
+                  "hex": "#D9C7A7",
+                  "approx": true
+                },
+                {
+                  "name": "plum wine",
+                  "hex": "#5E1F3A",
+                  "approx": true
+                },
+                {
+                  "name": "olive drab",
+                  "hex": "#6B6B2F",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "cherry tomato / brown / lime green",
+              "colors": [
+                {
+                  "name": "cherry tomato",
+                  "hex": "#E0412D",
+                  "approx": true
+                },
+                {
+                  "name": "brown",
+                  "hex": "#6B4226",
+                  "approx": true
+                },
+                {
+                  "name": "lime green",
+                  "hex": "#9ACD32",
+                  "approx": true
+                }
+              ]
+            },
+            {
+              "name": "chocolate / beige / dress blues",
+              "colors": [
+                {
+                  "name": "chocolate",
+                  "hex": "#4E2A1E",
+                  "approx": true
+                },
+                {
+                  "name": "beige",
+                  "hex": "#D9C7A7",
+                  "approx": true
+                },
+                {
+                  "name": "dress blues",
+                  "hex": "#2A3550",
+                  "approx": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "typography",
+      "title": "Typography",
+      "intro": "Highlight with one method. If everything is highlighted, nothing is.",
+      "type": "typography",
+      "items": [
+        {
+          "method": "Bold",
+          "use": "The single most important word",
+          "html": "Wear your <b>gloves</b> in the lab"
+        },
+        {
+          "method": "Color",
+          "use": "Contrast",
+          "html": "Wear your <span class='hl-color'>gloves</span> in the lab"
+        },
+        {
+          "method": "Caps",
+          "use": "A label, a word or two",
+          "html": "<span class='hl-caps'>New</span> lab rules this week"
+        },
+        {
+          "method": "Italic",
+          "use": "A word you’d say differently",
+          "html": "Wear your gloves, <i>really</i>"
+        }
+      ],
+      "fonts": [
+        {
+          "name": "Ballet",
+          "text": "Swirly; one word only"
+        },
+        {
+          "name": "Kiwi Soda",
+          "text": "Fizzy, summery"
+        },
+        {
+          "name": "Alte Haas Grotesk",
+          "text": "A worn-in Helvetica"
+        },
+        {
+          "name": "Autolova",
+          "text": "Hand-painted signage"
+        },
+        {
+          "name": "Redaction",
+          "text": "Gritty"
+        }
+      ],
+      "note": "The object picks the font: pixel letters on a screen, chalk on a chalkboard, neon on a sign."
+    },
+    {
+      "id": "shape",
+      "title": "Shape & psychology",
+      "type": "cards",
+      "items": [
+        {
+          "title": "Baby-face bias",
+          "text": "Round reads friendly, sharp reads serious.",
+          "shape": "round"
+        },
+        {
+          "title": "Mere exposure",
+          "text": "Repeat one shape and accent. Repetition builds trust.",
+          "shape": "repeat"
+        },
+        {
+          "title": "Kintsugi",
+          "text": "Make the flaw the focal point.",
+          "shape": "crack"
+        }
+      ],
+      "short": "Shape"
+    },
+    {
+      "id": "pairings",
+      "title": "Concept pairings",
+      "type": "pairs",
+      "groups": [
+        {
+          "name": "Shared lines",
+          "items": [
+            "fingerprint + map",
+            "barcode + city skyline",
+            "leaf veins + circuit board",
+            "tree rings + vinyl"
+          ]
+        },
+        {
+          "name": "Other pairings",
+          "items": [
+            "text + portrait",
+            "crossword + photo",
+            "animals + colors",
+            "envelopes + photos",
+            "chrome + flowers",
+            "glass tiles + image",
+            "frosting + type",
+            "stamps + animals"
+          ]
+        },
+        {
+          "name": "Textures",
+          "items": [
+            "wood grain",
+            "lichen",
+            "candle wax",
+            "cable knit",
+            "marbled paper",
+            "pressed flowers",
+            "mother of pearl",
+            "foggy glass"
+          ]
+        }
+      ],
+      "short": "Pairings"
+    },
+    {
+      "id": "tutorials",
+      "title": "Tutorials",
+      "type": "steps",
+      "tutorials": [
+        {
+          "title": "Text + portrait",
+          "tool": "Figma",
+          "steps": [
+            "Square + text",
+            "Outline text, stretch to fill",
+            "Add small text and a rule",
+            "Select all, Subtract",
+            "B&W photo underneath"
+          ]
+        },
+        {
+          "title": "Glass tiles",
+          "tool": "Illustrator",
+          "steps": [
+            "Embed the image",
+            "Effect > Distort > Glass, Blocks",
+            "Scaling = tile size, distortion = warp",
+            "Edit later in Appearance"
+          ]
+        },
+        {
+          "title": "Organic line graphic",
+          "tool": "Illustrator",
+          "steps": [
+            "Image Trace the source",
+            "Delete white and small details",
+            "Add one meaning cue, like a map pin",
+            "Reuse it everywhere"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mindset",
+      "title": "Mindset",
+      "type": "cards",
+      "items": [
+        {
+          "title": "Train the eye",
+          "text": "100+ small projects and many before-and-afters."
+        },
+        {
+          "title": "Don’t brute-force",
+          "text": "A design that looks off is usually the same few checks."
+        }
+      ]
+    }
+  ],
+  "overview": {
+    "purpose": "Critique, fix or direct a design: poster, logo, brand, UI, social post.",
+    "when": "A design looks off and you can’t say why, or you need a palette or font direction.",
+    "takeaways": [
+      "One design, one job",
+      "Make one thing the biggest",
+      "Value beats hue: squint to check",
+      "Highlight with one method only",
+      "Take away before you add"
+    ],
+    "start": "diagnostics"
+  },
+  "category": "Design",
+  "short": "Design critique"
+}

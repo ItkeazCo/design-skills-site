@@ -1,0 +1,145 @@
+{
+  "slug": "apple-motion",
+  "title": "Apple-style motion",
+  "category": "Motion",
+  "source": "s1gmamale1",
+  "sourceUrl": "https://github.com/s1gmamale1/apple-design-skills",
+  "sourceNote": "apple-design-motion skill, MIT licence; summarised",
+  "accent": "#4A6FA5",
+  "summary": "Springs instead of fixed curves, interruptible, immediate feedback.",
+  "overview": {
+    "purpose": "Make web motion feel fluid like Apple’s: spring-driven, interruptible and responsive.",
+    "when": "Adding transitions, gestures, press feedback or scroll-linked motion.",
+    "takeaways": [
+      "Springs over fixed easing",
+      "Respond on the first frame",
+      "Interrupt mid-flight, keep velocity",
+      "No bounce on UI chrome",
+      "Fade instead of move for reduced motion"
+    ],
+    "start": "springs"
+  },
+  "sections": [
+    {
+      "id": "springs",
+      "title": "Springs",
+      "type": "cards",
+      "intro": "A spring is described by how quickly it responds and how much it bounces.",
+      "items": [
+        {
+          "title": "Response and damping",
+          "text": "Period and bounce, not duration."
+        },
+        {
+          "title": "Smooth",
+          "text": "Critically damped, no bounce.",
+          "more": "Apple’s default for UI chrome: sheets, overlays, navigation.",
+          "css": "--spring-smooth: linear(0, 0.032, 0.106, 0.2, 0.301, 0.4, 0.491, 0.573, 0.645, 0.708, 0.76, 0.805, 0.841, 0.872, 0.897, 0.917, 0.934, 0.947, 0.958, 0.967, 0.973, 0.979, 0.983, 0.987, 1);\ntransition: transform 350ms var(--spring-smooth);",
+          "demo": {
+            "ease": "linear(0, 0.032, 0.106, 0.2, 0.301, 0.4, 0.491, 0.573, 0.645, 0.708, 0.76, 0.805, 0.841, 0.872, 0.897, 0.917, 0.934, 0.947, 0.958, 0.967, 0.973, 0.979, 0.983, 0.987, 1)",
+            "ms": 350,
+            "label": "smooth spring",
+            "vs": {
+              "ease": "ease",
+              "ms": 350,
+              "label": "ease"
+            }
+          }
+        },
+        {
+          "title": "Snappy",
+          "text": "Short, almost no bounce.",
+          "more": "Toggles, chips, small state changes around 200–300 ms.",
+          "css": "transition: transform 200ms var(--spring-smooth);",
+          "demo": {
+            "ease": "linear(0, 0.032, 0.106, 0.2, 0.301, 0.4, 0.491, 0.573, 0.645, 0.708, 0.76, 0.805, 0.841, 0.872, 0.897, 0.917, 0.934, 0.947, 0.958, 0.967, 0.973, 0.979, 0.983, 0.987, 1)",
+            "ms": 200,
+            "label": "snappy 200 ms"
+          }
+        },
+        {
+          "title": "Bouncy",
+          "text": "Visible overshoot.",
+          "more": "Playful moments and drag release only. Not for chrome.",
+          "css": "--spring-bouncy: linear(0, 0.058, 0.196, 0.372, 0.553, 0.717, 0.853, 0.957, 1.028, 1.071, 1.091, 1.094, 1.086, 1.072, 1.055, 1.038, 1.023, 1.011, 1.002, 0.996, 0.992, 0.991, 0.991, 0.992, 0.994, 0.995, 0.997, 0.998, 0.999, 1, 1);",
+          "demo": {
+            "ease": "linear(0, 0.058, 0.196, 0.372, 0.553, 0.717, 0.853, 0.957, 1.028, 1.071, 1.091, 1.094, 1.086, 1.072, 1.055, 1.038, 1.023, 1.011, 1.002, 0.996, 0.992, 0.991, 0.991, 0.992, 0.994, 0.995, 0.997, 0.998, 0.999, 1, 1)",
+            "ms": 700,
+            "label": "bouncy",
+            "vs": {
+              "ease": "linear(0, 0.032, 0.106, 0.2, 0.301, 0.4, 0.491, 0.573, 0.645, 0.708, 0.76, 0.805, 0.841, 0.872, 0.897, 0.917, 0.934, 0.947, 0.958, 0.967, 0.973, 0.979, 0.983, 0.987, 1)",
+              "ms": 700,
+              "label": "smooth"
+            }
+          }
+        },
+        {
+          "title": "CSS linear() springs",
+          "text": "Sample the spring into a curve.",
+          "more": "Generate the points from spring parameters (for example with kvin.me/css-springs) and use them as an easing."
+        },
+        {
+          "title": "Durations",
+          "text": "Tap 100–200 ms, sheet 300–400 ms.",
+          "more": "Toggle 200–300 ms, full-screen push 350–450 ms, large reveal 400–500 ms. Micro-interactions under 250 ms feel instant."
+        }
+      ]
+    },
+    {
+      "id": "fluid",
+      "title": "Fluid interfaces",
+      "type": "cards",
+      "intro": "Three traits from Apple’s fluid-interface talks.",
+      "items": [
+        {
+          "title": "Responsive",
+          "text": "Change on the first frame.",
+          "more": "React on pointerdown, not after a timeout. Never block input behind an animation."
+        },
+        {
+          "title": "Interruptible",
+          "text": "Redirect mid-flight.",
+          "more": "A new target starts from where the element is now. CSS transitions do this; keyframes do not."
+        },
+        {
+          "title": "Velocity handoff",
+          "text": "Gestures feed the spring.",
+          "more": "The release speed of a drag becomes the spring’s initial velocity, so motion continues naturally."
+        },
+        {
+          "title": "Feedback on every action",
+          "text": "Press state always.",
+          "more": "Scale or dim on press. Web vibration does not work in iOS Safari, so never rely on it.",
+          "css": ".btn:active { transform: scale(0.97); transition: transform 100ms; }",
+          "demo": {
+            "ease": "linear(0, 0.032, 0.106, 0.2, 0.301, 0.4, 0.491, 0.573, 0.645, 0.708, 0.76, 0.805, 0.841, 0.872, 0.897, 0.917, 0.934, 0.947, 0.958, 0.967, 0.973, 0.979, 0.983, 0.987, 1)",
+            "ms": 150,
+            "label": "press 0.97"
+          }
+        }
+      ],
+      "short": "Fluid"
+    },
+    {
+      "id": "a11y",
+      "title": "Reduced motion",
+      "type": "cards",
+      "intro": "Keep the meaning, drop the movement.",
+      "items": [
+        {
+          "title": "Fade, don’t fly",
+          "text": "Swap the move for an opacity change.",
+          "more": "With reduced motion, a sheet fades in place instead of sliding.",
+          "css": "@media (prefers-reduced-motion: reduce) {\n  .sheet { transition: opacity 200ms ease; transform: none; }\n}"
+        },
+        {
+          "title": "Gate pointer sugar",
+          "text": "Magnetic and tilt only on fine pointers.",
+          "more": "And never with reduced motion.",
+          "css": "@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) { … }"
+        }
+      ]
+    }
+  ],
+  "short": "Apple motion"
+}

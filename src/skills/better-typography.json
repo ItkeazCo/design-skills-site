@@ -1,0 +1,252 @@
+{
+  "slug": "better-typography",
+  "title": "Better typography",
+  "source": "Jakub Krehel",
+  "sourceUrl": "https://github.com/jakubkrehel/skills",
+  "sourceNote": "better-typography skill, MIT licence",
+  "summary": "How text renders: scale, spacing, features, wrapping, punctuation.",
+  "accent": "#2E6F6A",
+  "overview": {
+    "purpose": "Set and review how text renders, from the type scale to wrapping and punctuation.",
+    "when": "Building or reviewing any interface with text in it, before you call the type done.",
+    "takeaways": [
+      "Fewer fonts, sizes and weights",
+      "Line-height by role, unitless",
+      "Cap the measure at 60–75 characters",
+      "Balance headings, pretty paragraphs",
+      "Tabular numbers on changing values"
+    ],
+    "start": "scale"
+  },
+  "sections": [
+    {
+      "id": "measured",
+      "title": "Measured, not preferred",
+      "type": "cards",
+      "intro": "Some values are exact findings; others are heuristics.",
+      "items": [
+        {
+          "title": "Exact values",
+          "text": "Missing these is a finding.",
+          "more": "Unitless line-height, weight 400+ below 18px, a 60–75 character measure, 16px inputs on iOS and tabular-nums on changing values."
+        },
+        {
+          "title": "Heuristics",
+          "text": "Report only where they break the scale.",
+          "more": "Letter-spacing, pairing and scale ratios. Never propose a new typeface unless the task asks for a type change."
+        }
+      ],
+      "short": "Measuring"
+    },
+    {
+      "id": "fonts",
+      "title": "Fonts and weights",
+      "type": "cards",
+      "intro": "Weight and size carry hierarchy; each extra one dilutes it.",
+      "items": [
+        {
+          "title": "Three fonts at most",
+          "text": "Apps fewer, marketing pages can carry more.",
+          "more": "Pair for contrast: a serif headline over a sans body reads deliberate, two near-identical sans-serifs read as a mistake."
+        },
+        {
+          "title": "No thin text under 18px",
+          "text": "Below 18px use weight 400 or heavier.",
+          "more": "Weights 100–300 belong at 28px and up, checked against the background even there.",
+          "css": "small { font-weight: 400; }\n.display { font-size: 2rem; font-weight: 300; }"
+        },
+        {
+          "title": "Load every face you use",
+          "text": "Browsers fake missing weights and italics.",
+          "more": "Synthesized faces distort the design. Disable synthesis only after checking the fallback stack, and only the unwanted mode.",
+          "css": "/* only after the fallback stack is checked */\nbody { font-synthesis-weight: none; }"
+        },
+        {
+          "title": "Properties over raw tags",
+          "text": "font-weight, not font-variation-settings.",
+          "more": "Properties keep working when a non-variable fallback renders. Leave font-optical-sizing at auto. Raw tags only for custom axes and features with no property.",
+          "css": "h1 { font-weight: 650; }\n.n { font-variant-numeric: tabular-nums; }\n.alt { font-feature-settings: \"ss01\" 1; }"
+        }
+      ],
+      "short": "Fonts"
+    },
+    {
+      "id": "scale",
+      "title": "Scale and spacing",
+      "type": "cards",
+      "intro": "A small set of sizes, each paired with its line-height and weight.",
+      "items": [
+        {
+          "title": "A type scale with roles",
+          "text": "One role = one decision, not three.",
+          "more": "Define few sizes and deviate rarely. On a team, name sizes by use (text-body-sm) so the rules survive.",
+          "css": ":root {\n  --t-display: 3.5rem;   /* lh 1.1 */\n  --t-heading: 1.75rem;  /* lh 1.25 */\n  --t-body: 1rem;        /* lh 1.55 */\n  --t-caption: 0.8125rem;\n}"
+        },
+        {
+          "title": "Headings descend with level",
+          "text": "A subheading never overpowers its parent.",
+          "more": "Deep levels may share a size if weight or tracking keeps them distinct. A heading is never smaller than body text unless it is a deliberate overline."
+        },
+        {
+          "title": "Line-height by role",
+          "text": "Display 1.1, headings 1.2–1.3, body 1.5–1.6.",
+          "more": "Use unitless values so line-height scales with size. Anything that wraps to three lines or more needs at least 1.4.",
+          "css": "h1 { line-height: 1.1; }\nh2, h3 { line-height: 1.25; }\np { line-height: 1.55; }"
+        },
+        {
+          "title": "Letter-spacing by size",
+          "text": "Tighten big headings, open small caps.",
+          "more": "Headings 24px+ take −0.01 to −0.02em. Uppercase labels at 14px or smaller take 0.05em. Body stays at 0. Never turn kerning off.",
+          "css": "h1 { letter-spacing: -0.015em; }\n.label { text-transform: uppercase; letter-spacing: 0.05em; }"
+        },
+        {
+          "title": "Size floors",
+          "text": "Body 16px, UI 14px, captions 13px.",
+          "more": "Rarely go below 12px. Set font-size in rem so the reader’s browser setting still applies.",
+          "css": "body { font-size: 1rem; }\n.caption { font-size: 0.8125rem; }"
+        },
+        {
+          "title": "Trim text boxes",
+          "text": "Text sits low in buttons and badges.",
+          "more": "text-box trims the space a font reserves above and below its letters. A progressive enhancement.",
+          "css": ".btn { text-box: trim-both cap alphabetic; }"
+        }
+      ],
+      "short": "Scale"
+    },
+    {
+      "id": "wrapping",
+      "title": "Wrapping and measure",
+      "type": "cards",
+      "intro": "Decide where lines break instead of leaving it to chance.",
+      "items": [
+        {
+          "title": "Cap the measure",
+          "text": "60–75 characters per line.",
+          "more": "Any unit works as long as a cap exists and the line length lands in range.",
+          "css": ".prose { max-width: 65ch; }"
+        },
+        {
+          "title": "Balance headings",
+          "text": "Even lines for headings and short text.",
+          "more": "Never on paragraphs; Chromium ignores it past six lines.",
+          "css": "h1, h2, h3 { text-wrap: balance; }"
+        },
+        {
+          "title": "Pretty paragraphs",
+          "text": "No lone word on the last line.",
+          "more": "Safe on any paragraph, long-form included.",
+          "css": "p { text-wrap: pretty; }"
+        },
+        {
+          "title": "Let long words break",
+          "text": "Links and IDs stay in their box.",
+          "more": "Use overflow-wrap where a long word, link or ID could escape the container.",
+          "css": ".card { overflow-wrap: break-word; }"
+        },
+        {
+          "title": "Keep labels on one line",
+          "text": "nowrap where a break looks broken.",
+          "more": "Labels and badges. Keep interface text at text-align: start; justify is for editorial layouts only.",
+          "css": ".badge { white-space: nowrap; }"
+        },
+        {
+          "title": "Truncate with a way back",
+          "text": "Ellipsis plus a path to the full text.",
+          "more": "One line: overflow, text-overflow and nowrap. Several: -webkit-box with line-clamp.",
+          "css": ".one { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n.three { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }"
+        }
+      ],
+      "short": "Wrapping"
+    },
+    {
+      "id": "details",
+      "title": "Numbers, punctuation, details",
+      "type": "cards",
+      "intro": "The small things readers notice without knowing why.",
+      "items": [
+        {
+          "title": "Tabular numbers",
+          "text": "Timers, counters, prices and columns.",
+          "more": "Every digit keeps one width so nothing shifts. Leave figures in prose proportional.",
+          "css": ".count, .price, td.num { font-variant-numeric: tabular-nums; }"
+        },
+        {
+          "title": "Typographic punctuation",
+          "text": "Curly quotes, en dashes, the ellipsis.",
+          "more": "Never keyboard stand-ins in rendered text: “ ” not \" \", – for ranges, … not ..., non-breaking spaces where needed. Code keeps straight quotes."
+        },
+        {
+          "title": "Natural case",
+          "text": "Set case with text-transform.",
+          "more": "Store text in natural case so a redesign never means rewriting copy.",
+          "css": ".label { text-transform: uppercase; }"
+        },
+        {
+          "title": "Underlines from the font",
+          "text": "Let the font place the underline.",
+          "more": "Or tune offset and thickness by hand. A dotted style hints at extra information, like an abbreviation.",
+          "css": "a { text-underline-position: from-font; text-decoration-thickness: from-font; }\nabbr { text-decoration-style: dotted; }"
+        },
+        {
+          "title": "Inputs at 16px on mobile",
+          "text": "iOS zooms below 16px.",
+          "more": "Either size the input up on small screens, or keep 16px and scale it down visually. Ask which the design wants.",
+          "css": "input { font-size: 1rem; }\n@media (min-width: 640px) { input { font-size: 0.875rem; } }"
+        },
+        {
+          "title": "Smoothing once, on the root",
+          "text": "Never per component.",
+          "more": "Apply both vendor properties once on the root element.",
+          "css": "html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }"
+        },
+        {
+          "title": "Language and direction",
+          "text": "Set lang and dir.",
+          "more": "Browsers pick quotes, hyphenation and pronunciation from lang. Wrap mixed-direction values in a bdi element.",
+          "css": "<html lang=\"en\" dir=\"ltr\">"
+        },
+        {
+          "title": "Decorative text in CSS",
+          "text": "Not in images.",
+          "more": "Drop caps, outlines and shadows in CSS keep text selectable and searchable."
+        },
+        {
+          "title": "Keep text selectable",
+          "text": "user-select: none only on drag surfaces.",
+          "more": "::selection can carry the brand as long as the pair stays legible.",
+          "css": "::selection { background: #12100E; color: #FDFEFA; }"
+        }
+      ],
+      "short": "Details"
+    },
+    {
+      "id": "checklist",
+      "title": "Before you finish",
+      "type": "checklist",
+      "intro": "Run these before calling the type done.",
+      "items": [
+        "Every font-weight has a loaded face",
+        "No font-synthesis: none on body text",
+        "font-weight instead of \"wght\" tags",
+        "tabular-nums instead of \"tnum\"",
+        "Unitless line-height",
+        "1.4+ line-height on anything that wraps",
+        "letter-spacing in em, not px",
+        "Body font-size in rem",
+        "No weights 100–300 under 18px",
+        "balance on headings, pretty on paragraphs",
+        "No justify in app UI",
+        "line-clamp with display: -webkit-box",
+        "Counters and prices use tabular-nums",
+        "… – — instead of ... -- and hyphen ranges",
+        "Inputs are 16px on mobile",
+        "Font smoothing only on the root",
+        "Mixed-direction values wrapped in bdi",
+        "No user-select: none on text"
+      ],
+      "short": "Checklist"
+    }
+  ],
+  "category": "Typography"
+}
