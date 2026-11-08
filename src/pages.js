@@ -8,24 +8,35 @@ export const oneLine = (t) => (t || '').split(/(?<=[.!?])\s/)[0];
 export const short = (o) => o.short || o.title;
 const copyIcon = `<svg class="gt-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>`;
 const aiBtn = (key) => `<button class="gt-btn gt-btn--soft gt-btn--md ai-copy" data-ai="${key}">${copyIcon}<span class="cp-label">Copy for AI</span></button>`;
+const article = (s) => s.sourceUrl ? `<a class="article-link" href="${s.sourceUrl}" target="_blank" rel="noopener">Article</a>` : '';
 const head = (s, title, intro, crumb, key) => `
   <header class="page-head">
     ${crumb ? `<a class="up" href="#/${s.slug}"><span class="arr">←</span> ${s.title}</a>` : ''}
     <h1>${title}</h1>
     ${intro ? `<p class="lede">${oneLine(intro)}</p>` : ''}
-    ${key ? `<div class="head-acts">${aiBtn(key)}</div>` : ''}
+    ${key ? `<div class="head-acts">${s.category === 'Workflow' ? article(s) : ''}${aiBtn(key)}</div>` : ''}
   </header>`;
 
-// Home tile previews: one honest sample of what is inside each skill.
-const firstDemo = (s) => s.sections.flatMap((x) => x.items || []).find((i) => i && i.demo);
-function preview(s) {
-  const pal = s.sections.find((x) => x.type === 'palettes');
-  if (pal) return `<span class="sws">${pal.groups[0].palettes[1].colors.map((c) => `<span class="sw" style="background:${c.hex}"></span>`).join('')}</span>`;
-  const d = firstDemo(s);
-  if (d) return curveSvg(d.demo.ease, 'card-curve');
-  if (s.slug === 'better-typography') return '<span class="pv-type">Aa</span>';
-  if (s.slug === 'impeccable') return '<span class="pv-cmd">/polish</span>';
-  return `<span class="pv-list">${(s.sections.find((x) => x.type === 'checklist')?.items || []).slice(0, 3).map((i) => `<span>${i}</span>`).join('')}</span>`;
+const grip = `<svg class="cmp-arrows" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5 2.5 8 6 12.5M10 3.5 13.5 8 10 12.5"/></svg>`;
+// One component, split by a drag handle: before stays on the left, after is revealed from the right.
+const ex = (kind, bad, good) => `<span class="ex-card ${kind} good">${good}</span><span class="cmp-before"><span class="ex-card ${kind} bad">${bad}</span></span><span class="cmp-bar"></span><span class="cmp-grip">${grip}</span><span class="cmp-tag is-before">Before</span><span class="cmp-tag is-after">After</span>`;
+const SCENES = {
+  'design-critique': () => ex('critique', '<b>Launch</b><b>Planning</b><b>Review</b>', '<b>Launch</b><span>Planning for Friday.</span><em>Review</em>'),
+  'unslop-ai-ui': () => ex('unslop', '<i>New</i><b>Ship the plan</b><em>Get started</em>', '<b>Ship the plan</b><span>Decisions in one view.</span><em>Review plan</em>'),
+  impeccable: () => ex('polish', '<i>New</i><b>Ship the plan</b><span>Click here</span>', '<small>On track</small><b>Ship the plan</b><em>Review plan</em>'),
+  'better-typography': () => ex('type', '<b>Ship Friday.</b><span>"Don\'t wrap this headline across the card."</span>', '<b>Ship Friday.</b><span>“Don’t wrap this.”</span>'),
+  'apple-motion': () => ex('press', '<small>Linear</small><i></i><b>Save</b>', '<small>Spring</small><i></i><b>Save</b>'),
+  'apple-design': () => ex('sheet', '<small>Lags</small><i></i><span class="pop"><b>Filters</b><span>Nearby</span></span>', '<small>Follows</small><i></i><span class="pop"><b>Filters</b><span>Nearby</span></span>'),
+  'emil-animations': () => ex('dialog', '<small>From far</small><span class="pop"><b>Saved</b></span>', '<small>A few pixels</small><span class="pop"><b>Saved</b></span>'),
+  'm3-motion': () => ex('inbox', '<small>Crossfade</small><span class="pop"><b>Inbox</b></span><span class="ghost">Today</span>', '<small>Grows</small><span class="pop"><b>Inbox</b><span>Today</span></span>'),
+  'motion-design': () => ex('beats', '<small>At once</small><b>Arrive</b><b>Hold</b><b>Leave</b>', '<small>Staggered</small><b>Arrive</b><b>Hold</b><b>Leave</b>'),
+  '87-screens': () => ex('app', '<b>Welcome</b><em>Continue</em>', '<b>Boop</b><span>The park is open.</span><em>See dogs</em>'),
+};
+function beforeAfter(s) {
+  const scene = SCENES[s.slug];
+  if (!scene) return '';
+  const start = s.category === 'Motion' ? 50 : 24;
+  return `<span class="cmp" style="--ba:${s.accent};--p:${start}"><span class="cmp-stage">${scene()}</span><input class="cmp-range" type="range" min="0" max="100" value="${start}" aria-label="Reveal the after"></span>`;
 }
 
 export function home() {
@@ -37,8 +48,8 @@ export function home() {
     ${categories.map((c) => `<h2 class="home-cat">${c}</h2>
     <div class="entries">${skills.filter((s) => s.category === c).map((s) => `
       <a class="entry tile" href="#/${s.slug}">
-        <span class="tile-media">${preview(s)}</span>
-        <span class="tile-cap"><h2>${short(s)}</h2></span>
+        <span class="tile-media">${beforeAfter(s)}</span>
+        <span class="tile-cap"><h3>${short(s)}</h3></span>
       </a>`).join('')}</div>`).join('')}`;
 }
 
@@ -55,22 +66,24 @@ function sectionVisual(x) {
     const name = x.groups?.flatMap((g) => g.items || [])[0]?.name || 'polish';
     return `<span class="pv-cmd">/${name}</span>`;
   }
-  return sketch({ title: x.title, text: x.intro || x.text || '' });
+  return sketch({ title: x.title, text: x.intro || x.text || '', mark: x.mark });
 }
 
+const credit = (s) => `<p class="credits">${s.sourceUrl ? `<a href="${s.sourceUrl}" target="_blank" rel="noopener">${s.source}</a>` : s.source}</p>`;
+
 export function overview(s) {
-  return head(s, s.title, s.overview.purpose, false, s.slug) + `
+  return head(s, s.title, s.overview.purpose, false, s.slug) + beforeAfter(s).replace('class="cmp"', 'class="cmp cmp-wide"') + `
     <div class="entries ov-board">${s.sections.map((x) => `
       <a class="entry tile" href="#/${s.slug}/${x.id}">
         <span class="tile-media">${sectionVisual(x)}</span>
         <span class="tile-cap"><h2>${short(x)}</h2></span>
-      </a>`).join('')}</div>`;
+      </a>`).join('')}</div>${credit(s)}`;
 }
 
 export function section(s, x) {
   const i = s.sections.indexOf(x);
   const prev = s.sections[i - 1], next = s.sections[i + 1];
-  return head(s, x.title, x.intro, true, `${s.slug}/${x.id}`) + `<div class="body">${renderSection(x)}</div>
+  return head(s, x.title, x.intro, true, `${s.slug}/${x.id}`) + `<div class="body">${renderSection(x)}</div>${credit(s)}
     <nav class="pager">
       ${prev ? `<a class="prev" href="#/${s.slug}/${prev.id}"><span class="meta"><span class="arr">←</span> Previous</span>${short(prev)}</a>` : `<a class="prev" href="#/${s.slug}"><span class="meta"><span class="arr">←</span> Back to</span>Overview</a>`}
       ${next ? `<a class="next" href="#/${s.slug}/${next.id}"><span class="meta">Next <span class="arr">→</span></span>${short(next)}</a>` : '<span></span>'}
@@ -97,11 +110,24 @@ function sectionMd(x) {
   (x.pairs || []).forEach((c) => out.push(itemMd(c)));
   return out.join('\n\n');
 }
+const yamlQuote = (s) => `"${String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\s+/g, ' ').trim()}"`;
+function skillDescription(s) {
+  const what = val(s.overview?.purpose || s.summary || '').replace(/\s+/g, ' ').trim();
+  let when = val(s.overview?.when || '').replace(/\s+/g, ' ').trim();
+  if (when) when = when.charAt(0).toLowerCase() + when.slice(1);
+  return [what, when && `Use when ${when}`].filter(Boolean).join(' ').slice(0, 1024);
+}
+function skillFile(s, body) {
+  const source = s.sourceUrl ? `[${s.source}](${s.sourceUrl})` : s.source;
+  const takeaways = (s.overview?.takeaways || []).map((t) => `- ${val(t)}`).join('\n');
+  const head = ['---', `name: ${s.slug}`, `description: ${yamlQuote(skillDescription(s))}`, '---', '', `# ${s.title}`, '', `Source: ${source}`];
+  if (takeaways) head.push('', takeaways);
+  return [...head, '', body].join('\n');
+}
 export function toMarkdown(key) {
   const [slug, id] = key.split('/');
   const s = skills.find((k) => k.slug === slug);
   if (!s) return '';
-  if (id) return `# ${s.title}: ${s.sections.find((x) => x.id === id).title}\n\nSource: ${s.source}\n\n` + sectionMd(s.sections.find((x) => x.id === id));
-  const o = s.overview;
-  return [`# ${s.title}`, `Source: ${s.source}${s.sourceUrl ? ' (' + s.sourceUrl + ')' : ''}`, val(o.purpose), `**When to use it:** ${val(o.when)}`, '**Key takeaways:**\n' + o.takeaways.map((t) => `- ${val(t)}`).join('\n'), ...s.sections.map(sectionMd)].join('\n\n');
+  const sections = id ? [s.sections.find((x) => x.id === id)].filter(Boolean) : s.sections;
+  return skillFile(s, sections.map(sectionMd).join('\n\n'));
 }

@@ -25,7 +25,6 @@ app.innerHTML = `
   </header>
   <aside class="sidebar">
     <nav id="tree" aria-label="Skills"></nav>
-    <p class="credits">A.Song Studio · Charles Liu · Paul Bakaus · Jakub Krehel · Emil Kowalski · LottieFiles</p>
   </aside>
   <main id="main"></main>`;
 
@@ -113,7 +112,7 @@ function home() {
     <div class="entries">${skills.filter((s) => s.category === c).map((s) => `
       <a class="entry tile" href="#/${s.slug}">
         <span class="tile-media">${preview(s)}</span>
-        <span class="tile-cap"><h2>${s.title}</h2><p>${s.overview.purpose}</p><span class="meta">${s.source} · ${s.sections.length} sections</span></span>
+        <span class="tile-cap"><h3>${s.title}</h3><p>${s.overview.purpose}</p><span class="meta">${s.source} · ${s.sections.length} sections</span></span>
       </a>`).join('')}</div>`).join('')}
     <p class="start">New here? Start with <a href="#/${skills[0].slug}/${skills[0].overview.start}">${skills[0].title}: ${skills[0].sections.find((x) => x.id === skills[0].overview.start).title}</a></p>`;
 }

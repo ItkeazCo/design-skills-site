@@ -1,0 +1,313 @@
+{
+  "slug": "87-screens",
+  "title": "87 screens",
+  "category": "Workflow",
+  "source": "Nelson Lee",
+  "sourceUrl": "https://nelsonxlee.substack.com/p/i-designed-87-app-screens-without?r=2fcba8&utm_campaign=post&utm_medium=web",
+  "sourceNote": "Substack, designing Boop in Claude without Figma",
+  "accent": "#E10600",
+  "summary": "Lock a brand, compare directions, then design every state before code.",
+  "overview": {
+    "purpose": "Design a full app on an AI canvas before anyone opens Figma or writes a screen.",
+    "when": "Starting an app’s screens with an AI, or handing a finished set to code.",
+    "takeaways": [
+      "Lock logo, colour, type, and illustration before any screen",
+      "Compare three directions on the same four screens",
+      "Say what feels off, in one line",
+      "Ask for the screens a demo skips",
+      "Export a folder the coding agent can test against"
+    ],
+    "start": "process"
+  },
+  "sections": [
+    {
+      "id": "process",
+      "title": "Process",
+      "type": "checklist",
+      "intro": "Five steps, in order. The brand comes before any screen.",
+      "items": [
+        "Lock the brand: logo, colours, typeface, illustration",
+        "Explore three directions on one canvas, then pick",
+        "Give short notes, and redesign a flow that assumes the wrong thing",
+        "Ask what is missing, then build the components once",
+        "Export a design folder and make the PNG a test the code must pass"
+      ],
+      "mark": "steps"
+    },
+    {
+      "id": "brand",
+      "title": "Lock the brand",
+      "short": "Brand",
+      "type": "cards",
+      "intro": "Every screen pulls from the brand, so it comes before any screen.",
+      "items": [
+        {
+          "title": "Board first",
+          "text": "Logo, colours with hex codes, typeface, and illustration style.",
+          "more": "A first pass with no board came back playful and generic, like every other app an AI has made.",
+          "mark": "board"
+        },
+        {
+          "title": "References",
+          "text": "Save screens from Mobbin and Refero, then hand them over with the board.",
+          "mark": "refs"
+        },
+        {
+          "title": "The prompt",
+          "text": "Make the model write the rules back before it designs anything.",
+          "more": "Here is my brand board: the logo, the colour palette with hex codes, the typeface and the illustration style. Treat it as the source of truth for every screen. Before designing anything, write back the rules you'll follow: which colour does which job, the type scale, and where illustrations are allowed to appear.",
+          "mark": "line"
+        },
+        {
+          "title": "Boop, as an example",
+          "text": "A running-dog wordmark, pastels on cream and brown, Quincy CF with DM Mono, and line drawings.",
+          "colors": [
+            {
+              "name": "Bark",
+              "hex": "#321F10"
+            },
+            {
+              "name": "Cream",
+              "hex": "#FDF8DB"
+            },
+            {
+              "name": "White",
+              "hex": "#FFFFFF"
+            },
+            {
+              "name": "Boop",
+              "hex": "#F4EB77"
+            },
+            {
+              "name": "Gold",
+              "hex": "#FBCA46"
+            },
+            {
+              "name": "Park",
+              "hex": "#55B884"
+            },
+            {
+              "name": "Ember",
+              "hex": "#FE784C"
+            },
+            {
+              "name": "Blush",
+              "hex": "#F6CDD1"
+            },
+            {
+              "name": "Lilac",
+              "hex": "#CAC2E7"
+            }
+          ],
+          "mark": "board"
+        }
+      ],
+      "mark": "board"
+    },
+    {
+      "id": "directions",
+      "title": "Directions",
+      "type": "cards",
+      "intro": "Three options on one canvas. You still have to pick.",
+      "items": [
+        {
+          "title": "Same four screens",
+          "text": "Every direction shows the same screens, so taste can decide.",
+          "more": "For Boop that was the typing intro, the name step, the home screen, and one dog's card.",
+          "mark": "trio"
+        },
+        {
+          "title": "Members' Club",
+          "text": "White and cream, light serif headlines, tiny mono labels.",
+          "more": "From Places, Sesame, and Once. Colour shows up rarely, so it feels precious. This was the one he picked.",
+          "mark": "club"
+        },
+        {
+          "title": "Park Club",
+          "text": "Cream ground, thin brown outlines, the full pastel palette, lowercase copy.",
+          "more": "From Lex and Corner.",
+          "mark": "park"
+        },
+        {
+          "title": "Soft Glass",
+          "text": "Light grey, big white cards, soft shadows, a frosted tab bar.",
+          "more": "From Bond and AllTrails.",
+          "mark": "glass"
+        },
+        {
+          "title": "The pick",
+          "text": "Choose one, then take the pieces you like from the others.",
+          "more": "The final Boop look is a white base, cream surfaces, Quincy for headlines and numbers, the system font for body, DM Mono for small labels, and hairline borders.",
+          "mark": "pick"
+        },
+        {
+          "title": "The prompt",
+          "text": "Ask for three directions, each based on a few reference apps.",
+          "more": "Using my brand, give me 3 distinct design directions for this app. Base each one on 2 or 3 of these reference apps. The printed prompt is cut off after that. What he sent: Given these styles, give me 3 avenues of designs for our overall design board to look over so I can see which one feels…",
+          "mark": "line"
+        }
+      ],
+      "mark": "trio"
+    },
+    {
+      "id": "notes",
+      "title": "Notes",
+      "type": "cards",
+      "intro": "Short, blunt, and pointed at one screen.",
+      "items": [
+        {
+          "title": "One line",
+          "text": "Look at a screen, say what is wrong, move on.",
+          "more": "Gender gets its own onboarding screen. Birthday needs the exact day. Flip the base to white and keep cream as the accent.",
+          "mark": "note"
+        },
+        {
+          "title": "Say it plainly",
+          "mark": "quote",
+          "text": "You only need to notice that something feels off.",
+          "more": "its cute, but doesnt feel professionally made. Maybe its the button font? Or the sub font? I dunno, something feels... vibe coded."
+        },
+        {
+          "title": "System font",
+          "text": "The interface uses the platform font. The brand font is for display.",
+          "more": "DM Sans is what AI-built apps reach for, and it fought the brand serif.",
+          "mark": "aa"
+        },
+        {
+          "title": "One system",
+          "text": "Too many sizes, radii, and stroke weights read as amateur.",
+          "more": "About 14 font sizes, 10 corner radii, and 5 icon stroke weights. Each choice looked fine alone.",
+          "mark": "scale"
+        },
+        {
+          "title": "Dry copy",
+          "text": "Match the voice. Drop the bubbly lines.",
+          "more": "Ta-da! and So cute! Next were everywhere. The brand's voice is dry and simple.",
+          "mark": "quote"
+        },
+        {
+          "title": "Real photos",
+          "text": "Placeholder shapes feel cheaper than a real picture.",
+          "more": "Orange blobs stood in for dogs. Real photos did more for the feel than any colour change.",
+          "mark": "photo"
+        },
+        {
+          "title": "The prompt",
+          "text": "Ask what feels AI-made, then fix it as one system.",
+          "more": "Look at these screens like a senior product designer. What makes them feel AI-generated or amateur? Check fonts, type sizes, corner radii, icon weights, spacing and copy. List every inconsistency you find, then fix them all with one system.",
+          "mark": "line"
+        }
+      ],
+      "mark": "note"
+    },
+    {
+      "id": "flows",
+      "title": "Flows",
+      "type": "cards",
+      "intro": "How it works matters as much as how it looks.",
+      "items": [
+        {
+          "title": "Wrong assumption",
+          "text": "If a flow assumes something that is not true, redraw the flow.",
+          "more": "The camera cannot tell one dachshund from every other dachshund. It now only spots that a dog is in frame. Then a Who's this screen offers four ways to tag it: a dog nearby, the owner's code, a name search, or a page for a dog that is not on the app yet.",
+          "mark": "flow"
+        },
+        {
+          "title": "The prompt",
+          "text": "Keep the screens that still work. Replace the ones that do not.",
+          "more": "This flow assumes [the thing that isn't true]. Redesign it around [what actually happens]. Keep the screens that still work, replace the ones that don't, and show the full new flow in order on the canvas.",
+          "mark": "line"
+        }
+      ],
+      "mark": "flow"
+    },
+    {
+      "id": "missing",
+      "title": "What is missing",
+      "short": "Missing",
+      "type": "cards",
+      "intro": "The screens a demo skips are the ones people hit first.",
+      "items": [
+        {
+          "title": "Day one",
+          "text": "The empty home decides whether they come back.",
+          "more": "Every home screen had assumed a long streak and a full friend list. A new user has zero of everything.",
+          "mark": "empty"
+        },
+        {
+          "title": "Safety",
+          "text": "Block, report, hide, and remove have to exist at launch.",
+          "more": "You are meeting strangers in real places.",
+          "mark": "lock"
+        },
+        {
+          "title": "Approval",
+          "text": "If strangers can post, the owner needs a queue.",
+          "more": "Approve or hide photos of your dog.",
+          "mark": "queue"
+        },
+        {
+          "title": "A new phone",
+          "text": "I already have an account needs screens behind it.",
+          "mark": "device"
+        },
+        {
+          "title": "Components",
+          "text": "Build every control once, in the brand, with its states.",
+          "more": "Buttons: default, pressed, disabled, loading. Fields: empty, focused, filled, error. Plus an offline toast and an empty state. Ask again until the missing list gets small.",
+          "mark": "parts"
+        },
+        {
+          "title": "The prompt",
+          "text": "List the holes, rank them for launch, then design the top ones.",
+          "more": "Go through every flow on this canvas and list the screens a real app needs that we haven't designed. Include error states, empty states, permission prompts, offline behaviour, first-run screens and account recovery. Rank them by how much they matter at launch, then design the top ones.",
+          "mark": "line"
+        }
+      ],
+      "mark": "empty"
+    },
+    {
+      "id": "handoff",
+      "title": "Handoff",
+      "type": "cards",
+      "intro": "The coding agent cannot open the canvas. Give it a folder.",
+      "items": [
+        {
+          "title": "Screens",
+          "text": "Each screen is a 2x PNG and an HTML file.",
+          "more": "The HTML files link to each other, so you can click through them like a prototype. They carry the sizes, colours, and copy.",
+          "mark": "sheets"
+        },
+        {
+          "title": "The index",
+          "text": "SCREENS.md names every screen, its notes, and where each button leads.",
+          "mark": "index"
+        },
+        {
+          "title": "Tokens",
+          "text": "DESIGN.md and tokens.json hold colour, type, spacing, and radii.",
+          "mark": "color"
+        },
+        {
+          "title": "Flows",
+          "text": "FLOWS.md is the sequence, plus every decision made after the canvas.",
+          "more": "That stops the coding agent from building an old version.",
+          "mark": "flow"
+        },
+        {
+          "title": "The test",
+          "text": "Build the screen, screenshot it, and compare it with the PNG.",
+          "more": "The design kit is in design/. Start with design/README.md. Before building or changing a screen, open its PNG and HTML. Use the design tokens and components only. If a value is not a token yet, add the token first. After building a screen, screenshot it and compare it with the PNG before calling it done.",
+          "mark": "compare"
+        },
+        {
+          "title": "The prompt",
+          "text": "Export the canvas into a folder the coding agent can build from.",
+          "more": "Export everything on this canvas into a design folder Claude Code can build from. Include every screen as a 2x PNG and an HTML file, a SCREENS.md index with where each button leads, a DESIGN.md and tokens.json with colours, type, spacing and radii, a FLOWS.md with the main flows, and an assets folder. Then give me the lines to add to my CLAUDE.md.",
+          "mark": "line"
+        }
+      ],
+      "mark": "sheets"
+    }
+  ]
+}

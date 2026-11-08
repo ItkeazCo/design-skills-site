@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Popover from '@radix-ui/react-popover';
-import { IconButton, Input, Kbd, SegmentedControl, Toast, Icon } from './graphite/react/index.js';
+import { Button, IconButton, Input, Kbd, SegmentedControl, Toast, Icon } from './graphite/react/index.js';
 import { skills, categories } from './skills/index.js';
 import { motion, clear } from './motion.js';
 import { details, loadFont } from './render.js';
@@ -9,10 +9,11 @@ import * as overlay from './overlay.js';
 import { onToast } from './toastbus.js';
 import { markdown } from './markdown.js';
 import { home, overview, section, toMarkdown, short } from './pages.js';
+import { UiPage } from './ui.jsx';
 import { copy } from './details.js';
 import story from '../docs/STORY.md?raw';
 
-// Routes: #/  ·  #/<skill>  ·  #/<skill>/<section>  ·  #/story  (+ ?p=<detail id>)
+// Routes: #/  ·  #/<skill>  ·  #/<skill>/<section>  ·  #/story  ·  #/ui  (+ ?p=<detail id>)
 const parse = () => location.hash.replace(/^#\/?/, '').split('?')[0].split('/').filter(Boolean);
 const basePath = () => location.hash.split('?')[0] || '#/';
 const param = () => new URLSearchParams(location.hash.split('?')[1] || '').get('p');
@@ -81,6 +82,7 @@ function Topbar({ q, setQ, slug, navOpen, setNavOpen, theme, setTheme }) {
           <Popover.Content className="more-menu" align="end" sideOffset={8} aria-label="More options">
             <button className="mi" aria-current={!slug ? 'page' : undefined} onClick={go('#/')}>Library</button>
             <button className="mi" aria-current={slug === 'story' ? 'page' : undefined} onClick={go('#/story')}>About</button>
+            <button className="mi" aria-current={slug === 'ui' ? 'page' : undefined} onClick={go('#/ui')}>UI</button>
             <button className="mi mi-skills" aria-expanded={navOpen} aria-controls="tree" onClick={() => { setNavOpen(!navOpen); setOpen(false); }}>Skills <span className="meta">{navOpen ? 'Hide' : 'Show'}</span></button>
             <div className="sep" role="separator" />
             <div className="mi-theme"><span className="lab" id="theme-lab">Mode</span>
@@ -90,6 +92,17 @@ function Topbar({ q, setQ, slug, navOpen, setNavOpen, theme, setTheme }) {
         </Popover.Portal>
       </Popover.Root>
     </header>
+  );
+}
+
+// Sections stay mounted so the open and close can move. Closed ones are inert.
+function Leaves({ open, children }) {
+  const ref = useRef(null);
+  useLayoutEffect(() => { if (ref.current) ref.current.inert = !open; }, [open]);
+  return (
+    <div ref={ref} className={'leaves' + (open ? ' is-open' : '')}>
+      <div className="leaves-in">{children}</div>
+    </div>
   );
 }
 
@@ -111,13 +124,11 @@ function Tree({ q, slug, sec, open, toggle }) {
             <IconButton className="toggle" size="sm" icon={expanded ? 'minus' : 'plus'} aria-expanded={expanded}
               label={`${expanded ? 'Hide' : 'Show'} ${s.title} sections`} onClick={() => toggle(s.slug)} />
           </div>
-          {expanded && (
-            <div className="leaves">
-              {secs.map((x) => (
-                <a key={x.id} className={`node leaf ${here && sec === x.id ? 'current' : ''}`} aria-current={here && sec === x.id ? 'page' : undefined} href={`#/${s.slug}/${x.id}`} title={x.short ? x.title : undefined}>{short(x)}</a>
-              ))}
-            </div>
-          )}
+          <Leaves open={expanded}>
+            {secs.map((x) => (
+              <a key={x.id} className={`node leaf ${here && sec === x.id ? 'current' : ''}`} aria-current={here && sec === x.id ? 'page' : undefined} href={`#/${s.slug}/${x.id}`} title={x.short ? x.title : undefined}>{short(x)}</a>
+            ))}
+          </Leaves>
         </div>
       );
     }).filter(Boolean);
@@ -127,14 +138,20 @@ function Tree({ q, slug, sec, open, toggle }) {
   const navRef = useRef(null), mark = useRef(null);
   useLayoutEffect(() => {
     const nav = navRef.current, m = mark.current; if (!nav || !m) return;
-    const cur = nav.querySelector('.leaf.current');
-    if (!cur) { m.style.opacity = 0; return; }
-    const n = nav.getBoundingClientRect(), r = cur.getBoundingClientRect(), g = cur.parentElement.getBoundingClientRect();
-    const first = m.style.opacity !== '1';
-    if (first) m.style.transition = 'none';
-    m.style.transform = `translate(${g.left - n.left}px, ${r.top - n.top + 8}px)`;
-    m.style.height = `${r.height - 16}px`; m.style.opacity = 1;
-    if (first) { m.getBoundingClientRect(); m.style.transition = ''; }
+    const place = () => {
+      const cur = nav.querySelector('.leaves.is-open .leaf.current');
+      if (!cur) { m.style.opacity = 0; return; }
+      const n = nav.getBoundingClientRect(), r = cur.getBoundingClientRect(), g = cur.parentElement.getBoundingClientRect();
+      const first = m.style.opacity !== '1';
+      if (first) m.style.transition = 'none';
+      m.style.transform = `translate(${g.left - n.left}px, ${r.top - n.top + 8}px)`;
+      m.style.height = `${r.height - 16}px`; m.style.opacity = 1;
+      if (first) { m.getBoundingClientRect(); m.style.transition = ''; }
+    };
+    place();
+    const onEnd = (e) => { if (e.target.classList?.contains('leaves')) place(); };
+    nav.addEventListener('transitionend', onEnd);
+    return () => nav.removeEventListener('transitionend', onEnd);
   });
   return <nav id="tree" ref={navRef} aria-label="Skills"><span className="tree-marker" ref={mark} aria-hidden="true" />{cats.length ? cats : <p className="empty">No matches</p>}</nav>;
 }
@@ -143,7 +160,9 @@ function Tree({ q, slug, sec, open, toggle }) {
 function Main({ hash }) {
   const ref = useRef(null);
   const lastBase = useRef(null);
+  const isUi = hash.split('|')[0].replace(/^#\/?/, '').split('/')[0] === 'ui';
   useLayoutEffect(() => {
+    if (isUi) return;
     if (basePath() === lastBase.current) { openFromHash(); return; }
     lastBase.current = basePath();
     overlay.close(true);
@@ -157,10 +176,31 @@ function Main({ hash }) {
     window.scrollTo(0, 0);
     motion.page(main);
     openFromHash();
-  }, [hash]);
+  }, [hash, isUi]);
   useEffect(() => {
+    if (isUi) return;
     const main = ref.current;
+    let scrub = null;
+    const place = (e) => {
+      const box = scrub.getBoundingClientRect();
+      if (!box.width) return;
+      const p = Math.min(100, Math.max(0, Math.round(((e.clientX - box.left) / box.width) * 100)));
+      scrub.style.setProperty('--p', String(p));
+      const range = scrub.querySelector('.cmp-range');
+      if (range) range.value = String(p);
+    };
+    const down = (e) => {
+      const cmp = e.target.closest?.('.cmp');
+      if (!cmp || (e.pointerType === 'mouse' && e.button !== 0)) return;
+      scrub = cmp;
+      cmp.classList.add('is-scrub');
+      e.preventDefault();
+      place(e);
+    };
+    const move = (e) => { if (scrub) place(e); };
+    const up = () => { if (!scrub) return; scrub.classList.remove('is-scrub'); scrub = null; };
     const click = (e) => {
+      if (e.target.closest('.cmp')) { e.preventDefault(); return; }
       const mp = e.target.closest('.mini-play');
       if (mp) {
         const ball = mp.parentElement.querySelector('.mini-ball'), lane = ball.parentElement;
@@ -176,9 +216,12 @@ function Main({ hash }) {
     };
     const peek = (e) => { const f = e.target.closest?.('.font'); if (f && !f.dataset.loaded) { f.dataset.loaded = 1; const n = f.querySelector('[data-font]'); loadFont(n.dataset.font, n); } };
     const change = (e) => { if (e.target.matches('.check input')) e.target.closest('.check').classList.toggle('done', e.target.checked); };
-    main.addEventListener('click', click); main.addEventListener('mouseover', peek); main.addEventListener('focusin', peek); main.addEventListener('change', change);
-    return () => { main.removeEventListener('click', click); main.removeEventListener('mouseover', peek); main.removeEventListener('focusin', peek); main.removeEventListener('change', change); };
-  }, []);
+    const onRange = (e) => { const r = e.target; if (!r.classList?.contains('cmp-range')) return; r.parentElement.style.setProperty('--p', r.value); };
+    main.addEventListener('click', click); main.addEventListener('mouseover', peek); main.addEventListener('focusin', peek); main.addEventListener('change', change); main.addEventListener('input', onRange);
+    main.addEventListener('pointerdown', down); addEventListener('pointermove', move); addEventListener('pointerup', up); addEventListener('pointercancel', up);
+    return () => { main.removeEventListener('click', click); main.removeEventListener('mouseover', peek); main.removeEventListener('focusin', peek); main.removeEventListener('change', change); main.removeEventListener('input', onRange); main.removeEventListener('pointerdown', down); removeEventListener('pointermove', move); removeEventListener('pointerup', up); removeEventListener('pointercancel', up); };
+  }, [isUi]);
+  if (isUi) return <UiPage />;
   return <main id="main" ref={ref} />;
 }
 
@@ -244,7 +287,6 @@ function Overlay() {
             </header>
             {it.actions ? <div className="ov-acts" dangerouslySetInnerHTML={{ __html: it.actions }} /> : null}
             <div className="ov-body" ref={body} dangerouslySetInnerHTML={{ __html: it.html }} />
-            <p className="ov-keys meta" aria-hidden="true"><Kbd>←</Kbd> <Kbd>→</Kbd> move · <Kbd>Esc</Kbd> close</p>
             {rel.length ? (
               <section className="ov-rel" aria-label="Related">
                 <h3 className="ov-h">Related</h3>
@@ -273,7 +315,33 @@ function ToastHost() {
   return <div className={'toast-host' + (show ? ' show' : '')} aria-live="polite">{msg ? <Toast>{msg}</Toast> : null}</div>;
 }
 
+const GATE_KEY = 'ds-gate';
+const entered = () => { try { return localStorage.getItem(GATE_KEY) === '1'; } catch { return false; } };
+
+function Gate({ onEnter }) {
+  const [code, setCode] = useState('');
+  const [error, setError] = useState('');
+  const submit = (e) => {
+    e.preventDefault();
+    if (code.trim() === '9686') {
+      try { localStorage.setItem(GATE_KEY, '1'); } catch { /* private mode still enters this visit */ }
+      onEnter();
+    } else setError('That code is not right.');
+  };
+  return (
+    <main className="gate">
+      <form onSubmit={submit}>
+        <h1>Design skills</h1>
+        <p className="lede">Enter the code to continue.</p>
+        <Input label="Code" value={code} error={error} inputMode="numeric" autoComplete="off" autoFocus onChange={(e) => { setCode(e.target.value); if (error) setError(''); }} />
+        <Button type="submit" variant="primary" size="md">Enter</Button>
+      </form>
+    </main>
+  );
+}
+
 export function App() {
+  const [allowed, setAllowed] = useState(entered);
   const hash = useHash();
   const [slug, sec] = parse();
   const [q, setQ] = useState('');
@@ -288,13 +356,13 @@ export function App() {
   }, [hash]);
   useEffect(() => { document.body.classList.toggle('nav-open', navOpen); }, [navOpen]);
   const toggle = useCallback((s) => setOpen((o) => { const n = new Set(o); n.has(s) ? n.delete(s) : n.add(s); return n; }), []);
+  if (!allowed) return <Gate onEnter={() => setAllowed(true)} />;
   return (
     <>
       <Topbar {...{ q, setQ, slug, navOpen, setNavOpen, theme, setTheme }} />
       <aside className="sidebar">
         <Tree {...{ q, slug, sec, open, toggle }} />
         <SegmentedControl className="side-theme" label="Theme" size="md" options={THEMES} value={theme} onChange={setTheme} />
-        <p className="credits">A.Song Studio · Charles Liu · Paul Bakaus · Jakub Krehel · Emil Kowalski · LottieFiles</p>
       </aside>
       <Main hash={hash.split('?')[0] + '|' + hash} />
       <Overlay />

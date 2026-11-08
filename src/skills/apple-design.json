@@ -1,0 +1,326 @@
+{
+  "slug": "apple-design",
+  "title": "Apple design",
+  "category": "Motion",
+  "source": "Emil Kowalski",
+  "sourceUrl": "https://github.com/emilkowalski/skills",
+  "sourceNote": "apple-design skill, from Apple WWDC talks",
+  "accent": "#0071E3",
+  "summary": "Fluid interfaces: immediate, interruptible, and physical.",
+  "overview": {
+    "purpose": "Make a web interface feel like an extension of the hand, the way Apple's do.",
+    "when": "Building or reviewing gestures, springs, sheets, materials, or type.",
+    "takeaways": [
+      "Respond on pointer-down",
+      "Animate from the live value",
+      "Hand the spring the finger's velocity",
+      "Critically damped unless a flick earned the bounce",
+      "Cross-fade when motion is reduced"
+    ],
+    "start": "response"
+  },
+  "sections": [
+    {
+      "id": "response",
+      "title": "Response",
+      "type": "cards",
+      "intro": "The moment lag appears, directness falls off a cliff.",
+      "items": [
+        {
+          "title": "Pointer down",
+          "text": "Highlight on press, not on release.",
+          "css": ".button:active {\n  transform: scale(0.97);\n  transition: transform 100ms ease-out;\n}"
+        },
+        {
+          "title": "Continuous",
+          "text": "Feedback tracks the pointer the whole way through."
+        },
+        {
+          "title": "No extra wait",
+          "text": "Drop debounces and artificial delays on the input path."
+        }
+      ]
+    },
+    {
+      "id": "manipulation",
+      "title": "Direct manipulation",
+      "short": "Manipulation",
+      "type": "cards",
+      "intro": "Touch and content move together.",
+      "items": [
+        {
+          "title": "One to one",
+          "text": "The element stays glued to the finger."
+        },
+        {
+          "title": "Grab offset",
+          "text": "Respect where they grabbed, not the center."
+        },
+        {
+          "title": "Pointer capture",
+          "text": "Tracking continues after the pointer leaves the element."
+        }
+      ]
+    },
+    {
+      "id": "interrupt",
+      "title": "Interruptibility",
+      "type": "cards",
+      "intro": "The thought and the gesture happen in parallel.",
+      "items": [
+        {
+          "title": "Live value",
+          "text": "Start from the on-screen transform, never the target."
+        },
+        {
+          "title": "No lockout",
+          "text": "A moving element can be grabbed mid-flight."
+        },
+        {
+          "title": "Carry velocity",
+          "text": "Re-target without cutting the speed to zero."
+        },
+        {
+          "title": "Separate axes",
+          "text": "Spring X and Y on their own."
+        }
+      ]
+    },
+    {
+      "id": "springs",
+      "title": "Springs",
+      "type": "cards",
+      "intro": "A spring is a conversation, not a fixed duration.",
+      "items": [
+        {
+          "title": "Damping",
+          "text": "1.0 settles with no bounce. Lower overshoots."
+        },
+        {
+          "title": "Response",
+          "text": "How fast it arrives, in seconds. Not a duration."
+        },
+        {
+          "title": "Default",
+          "text": "Critically damped for chrome.",
+          "more": "bounce: 0, duration: 0.4 in Motion."
+        },
+        {
+          "title": "Momentum only",
+          "text": "Damping around 0.8 only after a flick.",
+          "more": "Overshoot on a menu that faded in feels wrong. Overshoot on a card you flicked feels right."
+        },
+        {
+          "title": "Shipped values",
+          "text": "Move 1.0 / 0.4. Rotation 0.8 / 0.4. Sheet 0.8 / 0.3.",
+          "more": "Damping, then response in seconds."
+        }
+      ]
+    },
+    {
+      "id": "momentum",
+      "title": "Momentum",
+      "type": "cards",
+      "intro": "The animation continues at the finger's speed.",
+      "items": [
+        {
+          "title": "Velocity handoff",
+          "text": "Pass the release velocity into the spring."
+        },
+        {
+          "title": "Relative velocity",
+          "text": "Divide by the distance still left, when the API wants it normalized.",
+          "more": "relativeVelocity = gestureVelocity / (target − current). Motion takes raw px/s."
+        },
+        {
+          "title": "Projection",
+          "text": "Land where the flick is going, not where it let go.",
+          "more": "project(v) = (v / 1000) * d / (1 − d), with d ≈ 0.998. Snap to the point nearest that projection, then hand off the velocity."
+        },
+        {
+          "title": "Direction",
+          "text": "Use the sign of the velocity to commit or reverse."
+        }
+      ]
+    },
+    {
+      "id": "space",
+      "title": "Space",
+      "type": "cards",
+      "intro": "If something leaves one way, it should return the same way.",
+      "items": [
+        {
+          "title": "Same path",
+          "text": "A panel from the right dismisses to the right."
+        },
+        {
+          "title": "Anchor",
+          "text": "Menus grow from the control that opened them."
+        },
+        {
+          "title": "Hint",
+          "text": "The in-between frames point at the outcome."
+        },
+        {
+          "title": "Rubber band",
+          "text": "Edges resist. They do not stop hard.",
+          "more": "rubberband(overshoot, dimension) = (overshoot * dimension * 0.55) / (dimension + 0.55 * abs(overshoot))."
+        }
+      ]
+    },
+    {
+      "id": "gestures",
+      "title": "Gestures",
+      "type": "cards",
+      "intro": "Feel lives in the first frames of a tap or a drag.",
+      "items": [
+        {
+          "title": "Tap",
+          "text": "Highlight down, commit up, and allow a cancel by dragging away.",
+          "more": "About 10px of slop around the target."
+        },
+        {
+          "title": "Drag",
+          "text": "A small threshold, then track one to one."
+        },
+        {
+          "title": "In parallel",
+          "text": "Recognize the candidates together, then drop the losers."
+        },
+        {
+          "title": "Frames",
+          "text": "Animate transform and opacity, on the display clock."
+        }
+      ]
+    },
+    {
+      "id": "materials",
+      "title": "Materials",
+      "type": "cards",
+      "intro": "Translucency is a floating layer, not a solid bar.",
+      "items": [
+        {
+          "title": "Chrome",
+          "text": "Bars blur. Content scrolls underneath.",
+          "css": ".toolbar {\n  background: rgba(255, 255, 255, 0.6);\n  backdrop-filter: blur(20px) saturate(180%);\n  border-top: 1px solid rgba(255, 255, 255, 0.4);\n}"
+        },
+        {
+          "title": "Weight",
+          "text": "Heavier materials for structure, lighter for controls.",
+          "more": "Never stack a light translucent surface on another."
+        },
+        {
+          "title": "Focus",
+          "text": "Dim and push back for a modal. No scrim for a side panel."
+        },
+        {
+          "title": "Vibrancy",
+          "text": "Heavier, higher-contrast type over a blur."
+        },
+        {
+          "title": "Materialize",
+          "text": "Animate blur and scale together, not opacity alone."
+        }
+      ]
+    },
+    {
+      "id": "senses",
+      "title": "Sound and haptics",
+      "short": "Senses",
+      "type": "cards",
+      "intro": "Motion, sound, and haptics fire on the same frame.",
+      "items": [
+        {
+          "title": "Causality",
+          "text": "Trigger feedback on the event that caused it."
+        },
+        {
+          "title": "Harmony",
+          "text": "Visual, sound, and haptic share one frame."
+        },
+        {
+          "title": "Utility",
+          "text": "Reserve it for commit, snap, success, or error."
+        }
+      ]
+    },
+    {
+      "id": "a11y",
+      "title": "Reduced motion",
+      "type": "cards",
+      "intro": "Gentler feedback, not none.",
+      "items": [
+        {
+          "title": "Motion",
+          "text": "Cross-fade instead of a slide or a spring.",
+          "css": "@media (prefers-reduced-motion: reduce) {\n  .sheet { transition: opacity 200ms ease; transform: none; }\n}"
+        },
+        {
+          "title": "Transparency",
+          "text": "Solid surfaces, and drop the blur.",
+          "css": "@media (prefers-reduced-transparency: reduce) {\n  .toolbar { background: white; backdrop-filter: none; }\n}"
+        },
+        {
+          "title": "Contrast",
+          "text": "A near-solid fill and a real border."
+        }
+      ]
+    },
+    {
+      "id": "type",
+      "title": "Type",
+      "type": "cards",
+      "intro": "Tracking and leading change with the size.",
+      "items": [
+        {
+          "title": "Tracking",
+          "text": "Negative on large type. Near zero on body."
+        },
+        {
+          "title": "Leading",
+          "text": "Tight headings, looser body."
+        },
+        {
+          "title": "Hierarchy",
+          "text": "Weight, size, and leading as one set."
+        },
+        {
+          "title": "System font",
+          "text": "Start there, and scale spacing with the text.",
+          "css": ":root { font: 100%/1.5 system-ui, sans-serif; }\n\n.display {\n  font-size: clamp(2rem, 5vw, 4rem);\n  line-height: 1.05;\n  letter-spacing: -0.02em;\n  font-optical-sizing: auto;\n}"
+        }
+      ]
+    },
+    {
+      "id": "foundations",
+      "title": "Foundations",
+      "type": "cards",
+      "intro": "Eight principles the motion is in service of.",
+      "items": [
+        { "title": "Purpose", "text": "Decide what not to build." },
+        { "title": "Agency", "text": "Keep people in control, and make slips easy to undo." },
+        { "title": "Responsibility", "text": "Ask only for what you need, and cut a feature whose risk outweighs it." },
+        { "title": "Familiarity", "text": "Things that look the same behave the same." },
+        { "title": "Flexibility", "text": "Adapt to the device, the situation, and the person." },
+        { "title": "Simplicity", "text": "Strip the unnecessary. Show the common path first." },
+        { "title": "Craft", "text": "Every spacing, timing, and alignment is a choice you can defend." },
+        { "title": "Delight", "text": "The result of the other seven, not something added on top." }
+      ]
+    },
+    {
+      "id": "reference",
+      "title": "Reference",
+      "type": "checklist",
+      "intro": "The values to reach for first.",
+      "items": [
+        "Default spring: damping 1.0, response 0.3–0.4",
+        "Flick spring: damping about 0.8",
+        "Project a flick with d ≈ 0.998",
+        "Start an interrupt from the live transform",
+        "Rubber-band an edge instead of a hard stop",
+        "Tighten large type to about −0.02em",
+        "Reduced motion is a cross-fade"
+      ]
+    }
+  ]
+}
