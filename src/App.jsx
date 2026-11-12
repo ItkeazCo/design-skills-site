@@ -209,6 +209,18 @@ function Main({ hash }) {
         ball.animate(reduce ? [{ opacity: 0.2 }, { opacity: 1 }] : [{ transform: 'translateX(0)' }, { transform: `translateX(${lane.clientWidth - ball.offsetWidth}px)` }], { duration: +mp.dataset.ms, easing: mp.dataset.ease, fill: 'forwards' });
         return;
       }
+      const tab = e.target.closest('[data-tab]');
+      if (tab) {
+        const bar = tab.closest('[role="tablist"]');
+        const root = bar.parentElement;
+        bar.querySelectorAll('[data-tab]').forEach((t) => {
+          const on = t === tab;
+          t.classList.toggle('is-on', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        root.querySelectorAll('[data-panel]').forEach((p) => { p.hidden = p.dataset.panel !== tab.dataset.tab; });
+        return;
+      }
       const ai = e.target.closest('[data-ai]');
       if (ai) { copy(toMarkdown(ai.dataset.ai), ai); return; }
       const b = e.target.closest('.opens');

@@ -1,6 +1,6 @@
 import { skills, categories } from './skills/index.js';
 import { curveSvg } from './demo.js';
-import { renderSection } from './render.js';
+import { renderSection, renderSections } from './render.js';
 import { sketch } from './sketch.js';
 // Page bodies stay data-driven HTML (content); all UI chrome is React + Graphite.
 // One line only: first sentence, the rest is for the overlay / Copy for AI.
@@ -25,6 +25,8 @@ const SCENES = {
   'unslop-ai-ui': () => ex('unslop', '<i>New</i><b>Ship the plan</b><em>Get started</em>', '<b>Ship the plan</b><span>Decisions in one view.</span><em>Review plan</em>'),
   impeccable: () => ex('polish', '<i>New</i><b>Ship the plan</b><span>Click here</span>', '<small>On track</small><b>Ship the plan</b><em>Review plan</em>'),
   'better-typography': () => ex('type', '<b>Ship Friday.</b><span>"Don\'t wrap this headline across the card."</span>', '<b>Ship Friday.</b><span>“Don’t wrap this.”</span>'),
+  'ux-review': () => ex('review', '<small>Frozen</small><b>Save</b><i></i>', '<small>Saving</small><b>Save</b><i></i>'),
+  'ux-patterns': () => ex('patterns', '<small>Account</small><b>Sign in</b>', '<small>Checkout</small><b>Guest</b><em>Sign in</em>'),
   'apple-motion': () => ex('press', '<small>Linear</small><i></i><b>Save</b>', '<small>Spring</small><i></i><b>Save</b>'),
   'apple-design': () => ex('sheet', '<small>Lags</small><i></i><span class="pop"><b>Filters</b><span>Nearby</span></span>', '<small>Follows</small><i></i><span class="pop"><b>Filters</b><span>Nearby</span></span>'),
   'emil-animations': () => ex('dialog', '<small>From far</small><span class="pop"><b>Saved</b></span>', '<small>A few pixels</small><span class="pop"><b>Saved</b></span>'),
@@ -71,8 +73,28 @@ function sectionVisual(x) {
 
 const credit = (s) => `<p class="credits">${s.sourceUrl ? `<a href="${s.sourceUrl}" target="_blank" rel="noopener">${s.source}</a>` : s.source}</p>`;
 
+function tabBar(s, active, links) {
+  const opts = s.sections.map((x) => {
+    const on = x.id === active;
+    const cls = `gt-seg__opt${on ? ' is-on' : ''}`;
+    return links
+      ? `<a class="${cls}" role="tab" aria-selected="${on}" href="#/${s.slug}/${x.id}">${short(x)}</a>`
+      : `<button type="button" class="${cls}" role="tab" id="tab-${s.slug}-${x.id}" aria-selected="${on}" aria-controls="panel-${s.slug}-${x.id}" data-tab="${x.id}">${short(x)}</button>`;
+  }).join('');
+  return `<div class="gt-seg gt-seg--md pattern-tabs" role="tablist" aria-label="Pattern sets">${opts}</div>`;
+}
+function tabPanels(s) {
+  const html = renderSections(s.sections);
+  return tabBar(s, s.sections[0].id, false) + s.sections.map((x, i) => `
+    <div class="pattern-panel" role="tabpanel" id="panel-${s.slug}-${x.id}" aria-labelledby="tab-${s.slug}-${x.id}" data-panel="${x.id}"${i ? ' hidden' : ''}>
+      <div class="head-acts">${aiBtn(`${s.slug}/${x.id}`)}</div>
+      <div class="body">${html[i]}</div>
+    </div>`).join('');
+}
 export function overview(s) {
-  return head(s, s.title, s.overview.purpose, false, s.slug) + beforeAfter(s).replace('class="cmp"', 'class="cmp cmp-wide"') + `
+  const hero = beforeAfter(s).replace('class="cmp"', 'class="cmp cmp-wide"');
+  if (s.tabs) return head(s, s.title, s.overview.purpose, false, null) + hero + tabPanels(s) + credit(s);
+  return head(s, s.title, s.overview.purpose, false, s.slug) + hero + `
     <div class="entries ov-board">${s.sections.map((x) => `
       <a class="entry tile" href="#/${s.slug}/${x.id}">
         <span class="tile-media">${sectionVisual(x)}</span>
@@ -83,7 +105,7 @@ export function overview(s) {
 export function section(s, x) {
   const i = s.sections.indexOf(x);
   const prev = s.sections[i - 1], next = s.sections[i + 1];
-  return head(s, x.title, x.intro, true, `${s.slug}/${x.id}`) + `<div class="body">${renderSection(x)}</div>${credit(s)}
+  return head(s, x.title, x.intro, true, `${s.slug}/${x.id}`) + (s.tabs ? tabBar(s, x.id, true) : '') + `<div class="body">${renderSection(x)}</div>${credit(s)}
     <nav class="pager">
       ${prev ? `<a class="prev" href="#/${s.slug}/${prev.id}"><span class="meta"><span class="arr">←</span> Previous</span>${short(prev)}</a>` : `<a class="prev" href="#/${s.slug}"><span class="meta"><span class="arr">←</span> Back to</span>Overview</a>`}
       ${next ? `<a class="next" href="#/${s.slug}/${next.id}"><span class="meta">Next <span class="arr">→</span></span>${short(next)}</a>` : '<span></span>'}
@@ -97,7 +119,7 @@ function itemMd(i) {
   if (typeof i === 'string') return `- ${val(i)}`;
   const t = i.title || i.name || i.label || '';
   const body = ['text', 'more', 'fix', 'why', 'how', 'desc', 'description'].map((k) => val(i[k])).filter(Boolean).join(' ');
-  return `- **${val(t)}**${body ? ': ' + body : ''}${i.css ? '\n\n```css\n' + i.css + '\n```' : ''}`;
+  return `- **${val(t)}**${body ? ': ' + body : ''}${i.url ? '\n  ' + i.url : ''}${i.css ? '\n\n```css\n' + i.css + '\n```' : ''}`;
 }
 function sectionMd(x) {
   const out = [`## ${x.title}`];

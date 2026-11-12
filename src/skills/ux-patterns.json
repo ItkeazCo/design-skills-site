@@ -1,0 +1,163 @@
+{
+  "slug": "ux-patterns",
+  "title": "UX patterns",
+  "source": "Baymard Institute",
+  "sourceUrl": "https://baymard.com/free-ux-research",
+  "sourceNote": "Free UX research",
+  "summary": "General interface patterns, plus store patterns from Baymard’s free research.",
+  "tabs": true,
+  "accent": "#1E4D8C",
+  "overview": {
+    "purpose": "Before finishing a flow, check it against these patterns.",
+    "when": "A form, checkout, search, or list is built and you need the pattern that fails.",
+    "takeaways": [
+      "Keep labels, and say how to fix an error",
+      "Keep search in view, and suggest queries",
+      "Show price, filters, and more than one photo",
+      "Show shipping, returns, and the cart total",
+      "Put Guest Checkout first"
+    ],
+    "start": "general"
+  },
+  "sections": [
+    {
+      "id": "general",
+      "title": "General",
+      "type": "diagnostics",
+      "intro": "Before finishing a flow, check it against these patterns. For each one that fails, name the screen, the problem, and the fix.",
+      "mark": "layout",
+      "items": [
+        {
+          "title": "Field labels",
+          "symptom": "Label vanishes",
+          "fix": "The label disappears as you type, so keep it above the field.",
+          "why": "Baymard’s checkout research says the label should stay visible while people type, especially on mobile.",
+          "url": "https://baymard.com/blog/checkout-flow-ux-optimization",
+          "viz": "label"
+        },
+        {
+          "title": "Error messages",
+          "symptom": "Just says invalid",
+          "fix": "The error just says invalid, so say what is wrong and how to fix it, next to the field.",
+          "why": "98% of sites don’t say exactly what is wrong and how to fix it. Keep what the person already typed.",
+          "url": "https://baymard.com/blog/checkout-flow-ux-optimization",
+          "viz": "invalid"
+        },
+        {
+          "title": "Search field",
+          "symptom": "Search is easy to miss",
+          "fix": "The search is easy to miss, so keep the field in view.",
+          "why": "78% of shoppers use search often or every time they shop online.",
+          "url": "https://baymard.com/blog/ecommerce-ux-audit",
+          "viz": "find"
+        },
+        {
+          "title": "Search suggestions",
+          "symptom": "Dead-end search",
+          "fix": "The search box is a dead end, so suggest queries as they type.",
+          "why": "Baymard finds autocomplete works best when it suggests queries, not only products, and stays short enough to scan.",
+          "url": "https://baymard.com/blog/search-bar-ui",
+          "viz": "suggest"
+        }
+      ]
+    },
+    {
+      "id": "ecommerce",
+      "title": "E-commerce",
+      "type": "diagnostics",
+      "intro": "Before finishing a store flow, check it against these patterns. For each one that fails, name the screen, the problem, and the fix.",
+      "mark": "sheets",
+      "items": [
+        {
+          "title": "Product lists",
+          "symptom": "Pictures only",
+          "fix": "The list is only pictures, so show the price and the facts people compare on each card.",
+          "why": "Baymard’s product-list research says the list should carry price and the attributes people use to compare, not only a thumbnail.",
+          "url": "https://baymard.com/blog/product-listing-page-plp-ux",
+          "viz": "plist"
+        },
+        {
+          "title": "Applied filters",
+          "symptom": "Filters vanish",
+          "fix": "The filters vanish after you pick them, so show each one as a chip you can remove.",
+          "why": "20% of ecommerce sites fail to keep applied filters visible.",
+          "url": "https://baymard.com/blog/ecommerce-filter-ui",
+          "viz": "chips"
+        },
+        {
+          "title": "Filter choices",
+          "symptom": "Only one choice",
+          "fix": "It lets you pick only one, so let people select several options in the same filter.",
+          "why": "14% of sites don’t let users select more than one option in a filter, and testing showed people then abandon products.",
+          "url": "https://baymard.com/blog/ecommerce-filter-ui",
+          "viz": "multi"
+        },
+        {
+          "title": "Product photos",
+          "symptom": "One photo",
+          "fix": "The product page shows one photo, so show more angles and a way to look closer.",
+          "why": "Baymard’s audit guidance says shoppers judge fit, quality, and scale from images, so the gallery needs several angles and zoom.",
+          "url": "https://baymard.com/blog/ecommerce-ux-audit",
+          "viz": "angles"
+        },
+        {
+          "title": "Shipping and returns",
+          "symptom": "Delivery is a surprise",
+          "fix": "Delivery and returns show up late, so put shipping cost, delivery time, and the returns policy on the product page.",
+          "why": "Baymard’s audit guidance says shipping cost, delivery timing, the returns policy, and stock should be easy to see before checkout.",
+          "url": "https://baymard.com/blog/ecommerce-ux-audit",
+          "viz": "ship"
+        },
+        {
+          "title": "Cart quantity",
+          "symptom": "Hard to change",
+          "fix": "Changing the count is awkward, so offer a field and step buttons together.",
+          "why": "61% of sites make it unnecessarily difficult to update the quantity, using only a text field or only a drop-down.",
+          "url": "https://baymard.com/blog/ecommerce-ux-audit",
+          "viz": "qty"
+        },
+        {
+          "title": "Cart total",
+          "symptom": "Surprise fees",
+          "fix": "The cart hides the real price, so show shipping, tax, and the full total before checkout.",
+          "why": "12% of surveyed US online shoppers have abandoned an order because they could not see the total cost up front.",
+          "url": "https://baymard.com/blog/checkout-flow-ux-optimization",
+          "viz": "cost"
+        },
+        {
+          "title": "Cart abandonment",
+          "symptom": "No way forward",
+          "fix": "The cart has no clear next step, so put the full total next to a checkout button.",
+          "why": "The average documented cart abandonment rate is 70.22%.",
+          "url": "https://baymard.com/lists/cart-abandonment-rate",
+          "viz": "leave"
+        },
+        {
+          "title": "Guest checkout",
+          "symptom": "Forced to join",
+          "fix": "It looks like you must register, so put Guest Checkout first, as a button.",
+          "why": "18% of surveyed US adults had abandoned an order in the previous three months because they were forced to create an account.",
+          "url": "https://baymard.com/blog/checkout-flow-ux-optimization",
+          "viz": "guest"
+        },
+        {
+          "title": "Checkout form",
+          "symptom": "Too many fields",
+          "fix": "The checkout is longer than the job, so cut the default form toward 12 to 14 elements.",
+          "why": "The average US checkout shows 23.48 form elements. Testing found an ideal flow can be as short as 12 to 14.",
+          "url": "https://baymard.com/lists/cart-abandonment-rate",
+          "viz": "longform"
+        },
+        {
+          "title": "Card number",
+          "symptom": "Hard to check",
+          "fix": "The card number is one long string, so space it like the card and check it as they type.",
+          "why": "Baymard’s checkout research says to auto-format spaces and use a Luhn check so a typo is caught while the card is in hand.",
+          "url": "https://baymard.com/blog/checkout-flow-ux-optimization",
+          "viz": "card"
+        }
+      ]
+    }
+  ],
+  "category": "Design"
+}

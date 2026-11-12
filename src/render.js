@@ -79,10 +79,10 @@ const types = {
 
   diagnostics: (s) => capped(s.items, 6, (d) => `
     <button class="card diag opens tile" ${reg(s.id, {
-      id: slug(d.symptom), title: d.symptom,
+      id: slug(d.title || d.symptom), title: d.title || d.symptom,
       thumb: viz(d.viz, 'after'), cat: rule[d.viz]?.[0],
-      actions: rule[d.viz] ? `<a class="pill-btn dark" href="#/design-critique/${rule[d.viz][0]}">See the ${rule[d.viz][1]} rules</a>` : '',
-      html: `<p class="ov-lede">${d.fix}</p>
+      actions: (d.url ? `<a class="pill-btn dark" href="${d.url}" target="_blank" rel="noopener">Read the research</a>` : '') || (rule[d.viz] ? `<a class="pill-btn dark" href="#/design-critique/${rule[d.viz][0]}">See the ${rule[d.viz][1]} rules</a>` : ''),
+      html: `<p class="ov-lede">${d.fix}</p>${d.why ? `<p class="ov-p">${d.why}</p>` : ''}
         <div class="ba big"><figure>${viz(d.viz, 'before')}<figcaption class="meta">Before</figcaption></figure><figure>${viz(d.viz, 'after')}<figcaption class="meta">After</figcaption></figure></div>`,
     })}>
       <span class="tile-media"><span class="flip">${viz(d.viz, 'before')}${viz(d.viz, 'after')}</span></span><span class="tile-cap"><h3>${d.symptom}</h3><span class="peek-slot">${chev}<span class="peek">${d.fix}</span></span></span>
@@ -147,4 +147,7 @@ const types = {
   prose: (s) => `<p class="prose">${s.text}</p>`,
 };
 
-export const renderSection = (s) => { details = {}; return (types[s.type] || types.prose)(s); };
+const renderOne = (s) => (types[s.type] || types.prose)(s);
+export const renderSection = (s) => { details = {}; return renderOne(s); };
+// Render several sections without wiping the earlier detail registry.
+export function renderSections(list) { details = {}; return list.map(renderOne); }

@@ -1,0 +1,94 @@
+{
+  "slug": "ux-review",
+  "title": "UX review",
+  "source": "Jakob Nielsen, NN/g",
+  "sourceUrl": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+  "sourceNote": "10 usability heuristics",
+  "summary": "Review a UI against Nielsen’s 10 usability heuristics.",
+  "accent": "#155E75",
+  "overview": {
+    "purpose": "Before you finish a UI, review it against these 10 usability heuristics.",
+    "when": "A screen is built and you need to name what fails, where, and the fix.",
+    "takeaways": [
+      "Name the screen, the problem, and the fix",
+      "Show a change within 1 second",
+      "Use the user’s words",
+      "Always leave a way out",
+      "Say what failed and how to fix it"
+    ],
+    "start": "heuristics"
+  },
+  "sections": [
+    {
+      "id": "heuristics",
+      "title": "Ten heuristics",
+      "short": "Heuristics",
+      "type": "diagnostics",
+      "intro": "It looks X, so do Y. For each one that fails, name the screen, the problem, and the fix.",
+      "mark": "check",
+      "items": [
+        {
+          "title": "Visibility of system status",
+          "symptom": "Frozen",
+          "fix": "It looks frozen, so show progress or a state change within 1 second.",
+          "viz": "status"
+        },
+        {
+          "title": "Match between system and the real world",
+          "symptom": "Sounds like the system",
+          "fix": "It sounds like the system, so use the user’s words and a familiar order.",
+          "viz": "world"
+        },
+        {
+          "title": "User control and freedom",
+          "symptom": "Feels like a trap",
+          "fix": "It feels like a trap, so add Undo, Back, or Cancel.",
+          "viz": "control"
+        },
+        {
+          "title": "Consistency and standards",
+          "symptom": "Acts differently",
+          "fix": "It acts differently each time, so use the same pattern and label everywhere.",
+          "viz": "consistent"
+        },
+        {
+          "title": "Error prevention",
+          "symptom": "Easy to get wrong",
+          "fix": "It’s easy to get wrong, so add limits, good defaults, and confirmation for risky actions.",
+          "viz": "prevent"
+        },
+        {
+          "title": "Recognition rather than recall",
+          "symptom": "Makes me remember",
+          "fix": "It makes me remember, so keep options and context visible.",
+          "viz": "recall"
+        },
+        {
+          "title": "Flexibility and efficiency of use",
+          "symptom": "Slow for experts",
+          "fix": "It’s slow for experts, so add shortcuts without hiding the basics.",
+          "viz": "fast"
+        },
+        {
+          "title": "Aesthetic and minimalist design",
+          "symptom": "Noisy",
+          "fix": "It’s noisy, so remove anything that doesn’t help the task.",
+          "viz": "quiet"
+        },
+        {
+          "title": "Help users recognize, diagnose, and recover from errors",
+          "symptom": "Vague error",
+          "fix": "The error is vague, so say what happened and how to fix it in plain words.",
+          "viz": "errors"
+        },
+        {
+          "title": "Help and documentation",
+          "symptom": "Stuck",
+          "fix": "I’m stuck, so give short help in context, right where it’s needed.",
+          "viz": "help"
+        }
+      ]
+    }
+  ],
+  "category": "Design"
+}
