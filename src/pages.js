@@ -26,6 +26,7 @@ const SCENES = {
   impeccable: () => ex('polish', '<i>New</i><b>Ship the plan</b><span>Click here</span>', '<small>On track</small><b>Ship the plan</b><em>Review plan</em>'),
   'better-typography': () => ex('type', '<b>Ship Friday.</b><span>"Don\'t wrap this headline across the card."</span>', '<b>Ship Friday.</b><span>“Don’t wrap this.”</span>'),
   'ux-review': () => ex('review', '<small>Frozen</small><b>Save</b><i></i>', '<small>Saving</small><b>Save</b><i></i>'),
+  'ux-patterns': () => ex('patterns', '<small>Account</small><b>Sign in</b>', '<small>Checkout</small><b>Guest</b><em>Sign in</em>'),
   'apple-motion': () => ex('press', '<small>Linear</small><i></i><b>Save</b>', '<small>Spring</small><i></i><b>Save</b>'),
   'apple-design': () => ex('sheet', '<small>Lags</small><i></i><span class="pop"><b>Filters</b><span>Nearby</span></span>', '<small>Follows</small><i></i><span class="pop"><b>Filters</b><span>Nearby</span></span>'),
   'emil-animations': () => ex('dialog', '<small>From far</small><span class="pop"><b>Saved</b></span>', '<small>A few pixels</small><span class="pop"><b>Saved</b></span>'),
@@ -98,7 +99,7 @@ function itemMd(i) {
   if (typeof i === 'string') return `- ${val(i)}`;
   const t = i.title || i.name || i.label || '';
   const body = ['text', 'more', 'fix', 'why', 'how', 'desc', 'description'].map((k) => val(i[k])).filter(Boolean).join(' ');
-  return `- **${val(t)}**${body ? ': ' + body : ''}${i.css ? '\n\n```css\n' + i.css + '\n```' : ''}`;
+  return `- **${val(t)}**${body ? ': ' + body : ''}${i.url ? '\n  ' + i.url : ''}${i.css ? '\n\n```css\n' + i.css + '\n```' : ''}`;
 }
 function sectionMd(x) {
   const out = [`## ${x.title}`];

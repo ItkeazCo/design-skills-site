@@ -1,0 +1,129 @@
+{
+  "slug": "ux-patterns",
+  "title": "UX patterns",
+  "source": "Baymard Institute",
+  "sourceUrl": "https://baymard.com/free-ux-research",
+  "sourceNote": "Free UX research",
+  "summary": "Checkout, forms, search, filters, lists, and mobile patterns from Baymard’s free research.",
+  "accent": "#1E4D8C",
+  "overview": {
+    "purpose": "Before finishing a flow, check it against these patterns.",
+    "when": "A form, checkout, search, or list is built and you need the pattern that fails.",
+    "takeaways": [
+      "Put Guest Checkout first",
+      "Show the full cost before payment",
+      "Keep labels and what people typed",
+      "Say what went wrong and how to fix it",
+      "Show filters, suggestions, and list facts"
+    ],
+    "start": "patterns"
+  },
+  "sections": [
+    {
+      "id": "patterns",
+      "title": "Patterns",
+      "type": "diagnostics",
+      "intro": "Before finishing a flow, check it against these patterns. For each one that fails, name the screen, the problem, and the fix.",
+      "mark": "layout",
+      "items": [
+        {
+          "title": "Field labels",
+          "symptom": "Label vanishes",
+          "fix": "The label disappears as you type, so keep it above the field.",
+          "why": "Baymard’s checkout research says the label should stay visible while people type, especially on mobile.",
+          "url": "https://baymard.com/blog/checkout-flow-ux-optimization",
+          "viz": "label"
+        },
+        {
+          "title": "Form length",
+          "symptom": "Too many fields",
+          "fix": "The form is longer than the job, so cut the default checkout toward 12 to 14 elements.",
+          "why": "The average US checkout shows 23.48 form elements. Testing found an ideal flow can be as short as 12 to 14.",
+          "url": "https://baymard.com/lists/cart-abandonment-rate",
+          "viz": "longform"
+        },
+        {
+          "title": "Guest checkout",
+          "symptom": "Forced to join",
+          "fix": "It looks like you must register, so put Guest Checkout first, as a button.",
+          "why": "18% of surveyed US adults had abandoned an order in the previous three months because they were forced to create an account.",
+          "url": "https://baymard.com/blog/checkout-flow-ux-optimization",
+          "viz": "guest"
+        },
+        {
+          "title": "Total cost",
+          "symptom": "Surprise fees",
+          "fix": "It hides the total, so show shipping, tax, and the full cost before payment.",
+          "why": "12% of surveyed US online shoppers have abandoned an order because they could not see the total cost up front.",
+          "url": "https://baymard.com/blog/checkout-flow-ux-optimization",
+          "viz": "cost"
+        },
+        {
+          "title": "Card number",
+          "symptom": "Hard to check",
+          "fix": "The card number is one long string, so space it like the card and check it as they type.",
+          "why": "Baymard’s checkout research says to auto-format spaces and use a Luhn check so a typo is caught while the card is in hand.",
+          "url": "https://baymard.com/blog/checkout-flow-ux-optimization",
+          "viz": "card"
+        },
+        {
+          "title": "Error messages",
+          "symptom": "Just says invalid",
+          "fix": "The error just says invalid, so say what is wrong and how to fix it, next to the field.",
+          "why": "98% of sites don’t say exactly what is wrong and how to fix it. Keep what the person already typed.",
+          "url": "https://baymard.com/blog/checkout-flow-ux-optimization",
+          "viz": "invalid"
+        },
+        {
+          "title": "Search suggestions",
+          "symptom": "Dead-end search",
+          "fix": "The search box is a dead end, so suggest queries as they type.",
+          "why": "Baymard finds autocomplete works best when it suggests queries, not only products, and stays short enough to scan.",
+          "url": "https://baymard.com/blog/search-bar-ui",
+          "viz": "suggest"
+        },
+        {
+          "title": "Applied filters",
+          "symptom": "Filters vanish",
+          "fix": "The filters vanish after you pick them, so show each one as a chip you can remove.",
+          "why": "20% of ecommerce sites fail to keep applied filters visible.",
+          "url": "https://baymard.com/blog/ecommerce-filter-ui",
+          "viz": "chips"
+        },
+        {
+          "title": "Filter choices",
+          "symptom": "Only one choice",
+          "fix": "It lets you pick only one, so let people select several options in the same filter.",
+          "why": "14% of sites don’t let users select more than one option in a filter, and testing showed people then abandon products.",
+          "url": "https://baymard.com/blog/ecommerce-filter-ui",
+          "viz": "multi"
+        },
+        {
+          "title": "Main navigation",
+          "symptom": "Catalog is buried",
+          "fix": "The menu hides the catalog, so put product categories on the first level.",
+          "why": "Baymard’s navigation testing found that hiding categories behind one item such as “Products” makes the site hard to browse.",
+          "url": "https://baymard.com/blog/findability-vs-discoverability-ux",
+          "viz": "nav"
+        },
+        {
+          "title": "Product lists",
+          "symptom": "Pictures only",
+          "fix": "The list is only pictures, so show the price and the facts people compare on each card.",
+          "why": "Baymard’s product-list research says the list should carry price and the attributes people use to compare, not only a thumbnail.",
+          "url": "https://baymard.com/blog/product-listing-page-plp-ux",
+          "viz": "plist"
+        },
+        {
+          "title": "Mobile filters",
+          "symptom": "Filters cover the list",
+          "fix": "Filters eat the screen, so open them from a sticky Filter button and confirm with Show results.",
+          "why": "On mobile, Baymard recommends a drawer, a Filter button that stays put, and a Show results action.",
+          "url": "https://baymard.com/blog/ecommerce-filter-ui",
+          "viz": "drawer"
+        }
+      ]
+    }
+  ],
+  "category": "Design"
+}

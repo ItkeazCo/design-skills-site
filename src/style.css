@@ -399,6 +399,69 @@ body.ov-open { overflow: hidden; }
 .viz-help.before i:nth-child(2), .viz-help.after i:nth-child(2) { display: block; left: 8px; top: 30px; width: 28px; height: 10px; background: var(--accent); }
 .viz-help.after i:nth-child(3) { display: block; left: 8px; top: 44px; width: 40px; height: 4px; background: var(--accent); }
 
+/* UX patterns: same rule, one break from the correct base. */
+.viz-label.before i, .viz-label.after i,
+.viz-longform.before i, .viz-longform.after i,
+.viz-guest.before i, .viz-guest.after i,
+.viz-cost.before i, .viz-cost.after i,
+.viz-card.before i, .viz-card.after i,
+.viz-invalid.before i, .viz-invalid.after i,
+.viz-suggest.before i, .viz-suggest.after i,
+.viz-chips.before i, .viz-chips.after i,
+.viz-multi.before i, .viz-multi.after i,
+.viz-nav.before i, .viz-nav.after i,
+.viz-plist.before i, .viz-plist.after i,
+.viz-drawer.before i, .viz-drawer.after i { display: none; }
+.viz-label.before i:nth-child(1), .viz-label.after i:nth-child(1) { display: block; left: 8px; top: 28px; width: 60px; height: 14px; background: var(--bg-fill); }
+.viz-label.after i:nth-child(2) { display: block; left: 8px; top: 12px; width: 28px; height: 6px; background: var(--accent); }
+.viz-longform.before i:nth-child(-n+3), .viz-longform.after i:nth-child(-n+3) { display: block; left: 10px; width: 56px; height: 8px; background: var(--accent); }
+.viz-longform.before i:nth-child(1), .viz-longform.after i:nth-child(1) { top: 8px; }
+.viz-longform.before i:nth-child(2), .viz-longform.after i:nth-child(2) { top: 20px; }
+.viz-longform.before i:nth-child(3), .viz-longform.after i:nth-child(3) { top: 32px; }
+.viz-longform.before i:nth-child(4) { display: block; left: 10px; top: 44px; width: 56px; height: 8px; background: #a9a69e; }
+.viz-guest.before i:nth-child(2), .viz-guest.after i:nth-child(2) { display: block; left: 16px; top: 32px; width: 44px; height: 12px; background: #a9a69e; }
+.viz-guest.after i:nth-child(1) { display: block; left: 16px; top: 12px; width: 44px; height: 14px; background: var(--accent); }
+.viz-cost.before i:nth-child(-n+2), .viz-cost.after i:nth-child(-n+2) { display: block; left: 10px; width: 40px; height: 6px; background: #a9a69e; }
+.viz-cost.before i:nth-child(1), .viz-cost.after i:nth-child(1) { top: 12px; }
+.viz-cost.before i:nth-child(2), .viz-cost.after i:nth-child(2) { top: 24px; width: 28px; }
+.viz-cost.after i:nth-child(3) { display: block; left: 10px; top: 38px; width: 52px; height: 8px; background: var(--accent); }
+.viz-card.after i { display: block; top: 22px; width: 12px; height: 12px; background: var(--accent); }
+.viz-card.after i:nth-child(1) { left: 8px; }
+.viz-card.after i:nth-child(2) { left: 24px; }
+.viz-card.after i:nth-child(3) { left: 40px; }
+.viz-card.after i:nth-child(4) { left: 56px; }
+.viz-card.before i:nth-child(1) { display: block; left: 8px; top: 22px; width: 60px; height: 12px; background: var(--accent); }
+.viz-invalid.before i:nth-child(1), .viz-invalid.after i:nth-child(1) { display: block; left: 8px; top: 18px; width: 60px; height: 18px; background: color-mix(in srgb, #D62828 22%, var(--white)); }
+.viz-invalid.before span, .viz-invalid.after span { display: block; left: 8px; top: 21px; width: 60px; font-size: 0; line-height: 1; text-align: center; color: #8a1f1f; }
+.viz-invalid.before span::after, .viz-invalid.after span::after { font-size: 9px; font-weight: 650; }
+.viz-invalid.before span::after { content: "Invalid"; }
+.viz-invalid.after span::after { content: "Too short"; }
+.viz-suggest.before i:nth-child(1), .viz-suggest.after i:nth-child(1) { display: block; left: 8px; top: 8px; width: 60px; height: 12px; background: var(--bg-fill); }
+.viz-suggest.after i:nth-child(2), .viz-suggest.after i:nth-child(3) { display: block; left: 8px; width: 44px; height: 6px; background: var(--accent); }
+.viz-suggest.after i:nth-child(2) { top: 26px; }
+.viz-suggest.after i:nth-child(3) { top: 38px; width: 32px; }
+.viz-chips.before i:nth-child(1), .viz-chips.after i:nth-child(1) { display: block; left: 8px; top: 28px; width: 60px; height: 18px; background: var(--bg-fill); }
+.viz-chips.after i:nth-child(2), .viz-chips.after i:nth-child(3) { display: block; top: 8px; width: 18px; height: 10px; background: var(--accent); }
+.viz-chips.after i:nth-child(2) { left: 8px; }
+.viz-chips.after i:nth-child(3) { left: 32px; }
+.viz-multi.before i:nth-child(1), .viz-multi.after i:nth-child(1),
+.viz-multi.before i:nth-child(2), .viz-multi.after i:nth-child(2) { display: block; top: 18px; width: 22px; height: 18px; background: var(--accent); }
+.viz-multi.before i:nth-child(1), .viz-multi.after i:nth-child(1) { left: 10px; }
+.viz-multi.before i:nth-child(2), .viz-multi.after i:nth-child(2) { left: 42px; }
+.viz-multi.before i:nth-child(2) { background: var(--bg-fill); }
+.viz-nav.before i:nth-child(1), .viz-nav.after i:nth-child(1),
+.viz-nav.after i:nth-child(2), .viz-nav.after i:nth-child(3) { display: block; left: 8px; width: 36px; height: 8px; background: var(--accent); }
+.viz-nav.before i:nth-child(1), .viz-nav.after i:nth-child(1) { top: 12px; }
+.viz-nav.after i:nth-child(2) { top: 26px; }
+.viz-nav.after i:nth-child(3) { top: 40px; }
+.viz-plist.before i:nth-child(1), .viz-plist.after i:nth-child(1) { display: block; left: 18px; top: 8px; width: 40px; height: 28px; background: var(--bg-fill); }
+.viz-plist.after i:nth-child(2) { display: block; left: 18px; top: 40px; width: 24px; height: 8px; background: var(--accent); }
+.viz-drawer.before i:nth-child(-n+2), .viz-drawer.after i:nth-child(-n+2) { display: block; left: 8px; width: 36px; height: 10px; background: var(--bg-fill); }
+.viz-drawer.before i:nth-child(1), .viz-drawer.after i:nth-child(1) { top: 8px; }
+.viz-drawer.before i:nth-child(2), .viz-drawer.after i:nth-child(2) { top: 22px; }
+.viz-drawer.before i:nth-child(3), .viz-drawer.after i:nth-child(3) { display: block; left: 46px; top: 40px; width: 22px; height: 10px; background: var(--accent); }
+.viz-drawer.before i:nth-child(4) { display: block; left: 6px; top: 6px; width: 64px; height: 32px; background: color-mix(in srgb, var(--accent) 28%, var(--white)); }
+
 
 .viz { background: var(--white); }
 .viz-group.after i:nth-child(-n+2), .viz-focus.after i:nth-child(1), .viz-scale.after i:nth-child(1), .viz-empty.after i:nth-child(1), .shape i { background: var(--accent); }
@@ -1119,6 +1182,11 @@ details.group-block > summary { padding: var(--gap-control) var(--inset-control)
 .cmp-wide .ex-card.review b { font-size: 32px; padding: 14px 28px; }
 .cmp-wide .ex-card.review small { font-size: 16px; }
 .cmp-wide .ex-card.review i { width: 148px; height: 8px; margin-top: 16px; }
+.ex-card.patterns small { font-weight: 600; color: var(--text-primary); }
+.ex-card.patterns b { margin-top: 6px; padding: 8px 14px; border-radius: var(--r-pill); background: var(--text-primary); color: var(--bg-surface); }
+.ex-card.patterns em { margin-top: 6px; padding: 6px 10px; border-radius: var(--r-pill); background: var(--bg-fill); color: var(--text-primary); font-style: normal; font-weight: 600; }
+.cmp-wide .ex-card.patterns b { font-size: 28px; padding: 14px 24px; }
+.cmp-wide .ex-card.patterns em { font-size: 16px; }
 .ex-card.press, .ex-card.sheet, .ex-card.dialog { background: var(--bg-fill); }
 .ex-card.press i, .ex-card.sheet i { width: 14px; height: 14px; border-radius: 50%; background: var(--text-primary); position: absolute; left: calc(50% - 7px); top: 14px; }
 .ex-card.press b { position: absolute; left: 50%; width: 88px; margin-left: -44px; bottom: 22px; text-align: center; padding: 8px 0; border-radius: 99px; background: var(--bg-surface); box-shadow: var(--shadow-raised); }
