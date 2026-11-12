@@ -461,6 +461,32 @@ body.ov-open { overflow: hidden; }
 .viz-drawer.before i:nth-child(2), .viz-drawer.after i:nth-child(2) { top: 22px; }
 .viz-drawer.before i:nth-child(3), .viz-drawer.after i:nth-child(3) { display: block; left: 46px; top: 40px; width: 22px; height: 10px; background: var(--accent); }
 .viz-drawer.before i:nth-child(4) { display: block; left: 6px; top: 6px; width: 64px; height: 32px; background: color-mix(in srgb, var(--accent) 28%, var(--white)); }
+.viz-find.before i, .viz-find.after i,
+.viz-angles.before i, .viz-angles.after i,
+.viz-ship.before i, .viz-ship.after i,
+.viz-qty.before i, .viz-qty.after i,
+.viz-leave.before i, .viz-leave.after i { display: none; }
+.viz-find.before i:nth-child(n+2), .viz-find.after i:nth-child(n+2) { display: block; left: 8px; width: 48px; height: 6px; background: #a9a69e; }
+.viz-find.before i:nth-child(2), .viz-find.after i:nth-child(2) { top: 28px; }
+.viz-find.before i:nth-child(3), .viz-find.after i:nth-child(3) { top: 40px; width: 32px; }
+.viz-find.after i:nth-child(1) { display: block; left: 8px; top: 8px; width: 60px; height: 12px; background: var(--accent); }
+.viz-angles.before i:nth-child(1), .viz-angles.after i:nth-child(1) { display: block; left: 8px; top: 8px; width: 60px; height: 28px; background: var(--bg-fill); }
+.viz-angles.after i:nth-child(2), .viz-angles.after i:nth-child(3) { display: block; top: 40px; width: 16px; height: 10px; background: var(--accent); }
+.viz-angles.after i:nth-child(2) { left: 8px; }
+.viz-angles.after i:nth-child(3) { left: 28px; }
+.viz-ship.before i:nth-child(1), .viz-ship.after i:nth-child(1) { display: block; left: 18px; top: 6px; width: 40px; height: 24px; background: var(--bg-fill); }
+.viz-ship.after i:nth-child(2), .viz-ship.after i:nth-child(3) { display: block; left: 8px; width: 60px; height: 6px; background: var(--accent); }
+.viz-ship.after i:nth-child(2) { top: 34px; }
+.viz-ship.after i:nth-child(3) { top: 44px; width: 40px; }
+.viz-qty.before i:nth-child(1), .viz-qty.after i:nth-child(1) { display: block; left: 22px; top: 20px; width: 32px; height: 16px; background: var(--bg-fill); }
+.viz-qty.after i:nth-child(2), .viz-qty.after i:nth-child(3) { display: block; top: 22px; width: 12px; height: 12px; background: var(--accent); }
+.viz-qty.after i:nth-child(2) { left: 8px; }
+.viz-qty.after i:nth-child(3) { left: 56px; }
+.viz-leave.before i:nth-child(1), .viz-leave.after i:nth-child(1) { display: block; left: 8px; top: 10px; width: 44px; height: 10px; background: #a9a69e; }
+.viz-leave.before i:nth-child(2), .viz-leave.after i:nth-child(2) { display: block; left: 8px; top: 26px; width: 28px; height: 6px; background: var(--accent); }
+.viz-leave.after i:nth-child(3) { display: block; left: 40px; top: 34px; width: 28px; height: 14px; background: var(--accent); }
+.pattern-tabs { margin: 0 0 var(--s4); }
+.pattern-tabs .gt-seg__opt { text-decoration: none; }
 
 
 .viz { background: var(--white); }

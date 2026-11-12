@@ -147,4 +147,7 @@ const types = {
   prose: (s) => `<p class="prose">${s.text}</p>`,
 };
 
-export const renderSection = (s) => { details = {}; return (types[s.type] || types.prose)(s); };
+const renderOne = (s) => (types[s.type] || types.prose)(s);
+export const renderSection = (s) => { details = {}; return renderOne(s); };
+// Render several sections without wiping the earlier detail registry.
+export function renderSections(list) { details = {}; return list.map(renderOne); }

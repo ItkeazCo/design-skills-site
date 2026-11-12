@@ -1,6 +1,6 @@
 import { skills, categories } from './skills/index.js';
 import { curveSvg } from './demo.js';
-import { renderSection } from './render.js';
+import { renderSection, renderSections } from './render.js';
 import { sketch } from './sketch.js';
 // Page bodies stay data-driven HTML (content); all UI chrome is React + Graphite.
 // One line only: first sentence, the rest is for the overlay / Copy for AI.
@@ -73,8 +73,28 @@ function sectionVisual(x) {
 
 const credit = (s) => `<p class="credits">${s.sourceUrl ? `<a href="${s.sourceUrl}" target="_blank" rel="noopener">${s.source}</a>` : s.source}</p>`;
 
+function tabBar(s, active, links) {
+  const opts = s.sections.map((x) => {
+    const on = x.id === active;
+    const cls = `gt-seg__opt${on ? ' is-on' : ''}`;
+    return links
+      ? `<a class="${cls}" role="tab" aria-selected="${on}" href="#/${s.slug}/${x.id}">${short(x)}</a>`
+      : `<button type="button" class="${cls}" role="tab" id="tab-${s.slug}-${x.id}" aria-selected="${on}" aria-controls="panel-${s.slug}-${x.id}" data-tab="${x.id}">${short(x)}</button>`;
+  }).join('');
+  return `<div class="gt-seg gt-seg--md pattern-tabs" role="tablist" aria-label="Pattern sets">${opts}</div>`;
+}
+function tabPanels(s) {
+  const html = renderSections(s.sections);
+  return tabBar(s, s.sections[0].id, false) + s.sections.map((x, i) => `
+    <div class="pattern-panel" role="tabpanel" id="panel-${s.slug}-${x.id}" aria-labelledby="tab-${s.slug}-${x.id}" data-panel="${x.id}"${i ? ' hidden' : ''}>
+      <div class="head-acts">${aiBtn(`${s.slug}/${x.id}`)}</div>
+      <div class="body">${html[i]}</div>
+    </div>`).join('');
+}
 export function overview(s) {
-  return head(s, s.title, s.overview.purpose, false, s.slug) + beforeAfter(s).replace('class="cmp"', 'class="cmp cmp-wide"') + `
+  const hero = beforeAfter(s).replace('class="cmp"', 'class="cmp cmp-wide"');
+  if (s.tabs) return head(s, s.title, s.overview.purpose, false, null) + hero + tabPanels(s) + credit(s);
+  return head(s, s.title, s.overview.purpose, false, s.slug) + hero + `
     <div class="entries ov-board">${s.sections.map((x) => `
       <a class="entry tile" href="#/${s.slug}/${x.id}">
         <span class="tile-media">${sectionVisual(x)}</span>
@@ -85,7 +105,7 @@ export function overview(s) {
 export function section(s, x) {
   const i = s.sections.indexOf(x);
   const prev = s.sections[i - 1], next = s.sections[i + 1];
-  return head(s, x.title, x.intro, true, `${s.slug}/${x.id}`) + `<div class="body">${renderSection(x)}</div>${credit(s)}
+  return head(s, x.title, x.intro, true, `${s.slug}/${x.id}`) + (s.tabs ? tabBar(s, x.id, true) : '') + `<div class="body">${renderSection(x)}</div>${credit(s)}
     <nav class="pager">
       ${prev ? `<a class="prev" href="#/${s.slug}/${prev.id}"><span class="meta"><span class="arr">←</span> Previous</span>${short(prev)}</a>` : `<a class="prev" href="#/${s.slug}"><span class="meta"><span class="arr">←</span> Back to</span>Overview</a>`}
       ${next ? `<a class="next" href="#/${s.slug}/${next.id}"><span class="meta">Next <span class="arr">→</span></span>${short(next)}</a>` : '<span></span>'}
