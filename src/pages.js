@@ -27,6 +27,9 @@ const SCENES = {
   'better-typography': () => ex('type', '<b>Ship Friday.</b><span>"Don\'t wrap this headline across the card."</span>', '<b>Ship Friday.</b><span>“Don’t wrap this.”</span>'),
   'ux-review': () => ex('review', '<small>Frozen</small><b>Save</b><i></i>', '<small>Saving</small><b>Save</b><i></i>'),
   'ux-patterns': () => ex('patterns', '<small>Account</small><b>Sign in</b>', '<small>Checkout</small><b>Guest</b><em>Sign in</em>'),
+  'icon-construction': () => ex('icon',
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" fill="none" stroke="currentColor" stroke-width="0.4" stroke-dasharray="1 0.6" opacity="0.45"/><rect x="8" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" fill="none" stroke="currentColor" stroke-width="0.4" stroke-dasharray="1 0.6" opacity="0.45"/><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/></svg>'),
   'apple-motion': () => ex('press', '<small>Linear</small><i></i><b>Save</b>', '<small>Spring</small><i></i><b>Save</b>'),
   'apple-design': () => ex('sheet', '<small>Lags</small><i></i><span class="pop"><b>Filters</b><span>Nearby</span></span>', '<small>Follows</small><i></i><span class="pop"><b>Filters</b><span>Nearby</span></span>'),
   'emil-animations': () => ex('dialog', '<small>From far</small><span class="pop"><b>Saved</b></span>', '<small>A few pixels</small><span class="pop"><b>Saved</b></span>'),
@@ -71,7 +74,9 @@ function sectionVisual(x) {
   return sketch({ title: x.title, text: x.intro || x.text || '', mark: x.mark });
 }
 
-const credit = (s) => `<p class="credits">${s.sourceUrl ? `<a href="${s.sourceUrl}" target="_blank" rel="noopener">${s.source}</a>` : s.source}</p>`;
+const credit = (s) => s.sources?.length
+  ? `<div class="sources"><p>Sources</p><ul>${s.sources.map((x) => `<li><a href="${x.url}" target="_blank" rel="noopener">${x.name}</a></li>`).join('')}</ul></div>`
+  : `<p class="credits">${s.sourceUrl ? `<a href="${s.sourceUrl}" target="_blank" rel="noopener">${s.source}</a>` : s.source}</p>`;
 
 function tabBar(s, active, links) {
   const opts = s.sections.map((x) => {

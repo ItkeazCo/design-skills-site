@@ -663,6 +663,10 @@ body { background: var(--bg); color: var(--ink); }
 .credits { color: var(--text-secondary); font-size: 13px; line-height: 1.5; margin-top: var(--gap-section); }
 .credits a { color: inherit; text-decoration: none; }
 .credits a:hover { text-decoration: underline; }
+.sources { margin-top: var(--gap-section); color: var(--text-secondary); font-size: 13px; line-height: 1.6; }
+.sources p { margin: 0 0 4px; }
+.sources ul { list-style: none; margin: 0; padding: 0; }
+.sources a { color: inherit; }
 
 /* main + big bold title */
 main { padding: var(--s5) 0 var(--s6); min-width: 0; }
@@ -1208,6 +1212,10 @@ details.group-block > summary { padding: var(--gap-control) var(--inset-control)
 .cmp-wide .ex-card.review b { font-size: 32px; padding: 14px 28px; }
 .cmp-wide .ex-card.review small { font-size: 16px; }
 .cmp-wide .ex-card.review i { width: 148px; height: 8px; margin-top: 16px; }
+.viz-ico { width: 72px; height: 72px; background: var(--white); color: var(--ink); overflow: hidden; }
+.viz-ico svg { width: 100%; height: 100%; display: block; }
+.ex-card.icon { color: var(--text-primary); }
+.ex-card.icon svg { width: 46%; height: auto; }
 .ex-card.patterns small { font-weight: 600; color: var(--text-primary); }
 .ex-card.patterns b { margin-top: 6px; padding: 8px 14px; border-radius: var(--r-pill); background: var(--text-primary); color: var(--bg-surface); }
 .ex-card.patterns em { margin-top: 6px; padding: 6px 10px; border-radius: var(--r-pill); background: var(--bg-fill); color: var(--text-primary); font-style: normal; font-weight: 600; }

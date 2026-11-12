@@ -7,8 +7,68 @@ import { slug, paletteDetail, copyWire, palDist, stripThumb } from './details.js
 export let details = {}; // setId -> [{id, title, html, onMount}]
 const reg = (set, d) => { (details[set] ||= []).push(d); return `data-set="${set}" data-i="${details[set].length - 1}"`; };
 
-const viz = (key, state) =>
-  `<div class="viz viz-${key} ${state}"><i></i><i></i><i></i><i></i><span>Aa</span></div>`;
+// 24×24 icon grid. Each pair starts from the correct drawing and changes one thing.
+const ico = (key, state, body, extra = '') => {
+  const id = `ig-${key}-${state}`;
+  return `<svg viewBox="0 0 24 24" aria-hidden="true"><defs><pattern id="${id}" width="1" height="1" patternUnits="userSpaceOnUse"><path d="M1 0V1H0" fill="none" stroke="currentColor" stroke-width="0.14"/></pattern></defs><rect width="24" height="24" fill="url(#${id})" opacity="0.4"/><rect x="2" y="2" width="20" height="20" fill="none" stroke="currentColor" stroke-width="0.35" stroke-dasharray="0.8 0.55" opacity="0.55"/>${extra}<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">${body}</g></svg>`;
+};
+const ICO = {
+  live: {
+    before: ico('live', 'b', '<rect x="8" y="4" width="20" height="16" rx="2"/>'),
+    after: ico('live', 'a', '<rect x="4" y="4" width="16" height="16" rx="2"/>'),
+  },
+  key: {
+    before: ico('key', 'b', '<circle cx="12" cy="12" r="6"/>', '<circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="0.4" stroke-dasharray="0.7 0.5" opacity="0.7"/>'),
+    after: ico('key', 'a', '<circle cx="12" cy="12" r="10"/>', '<circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="0.4" stroke-dasharray="0.7 0.5" opacity="0.7"/>'),
+  },
+  pixel: {
+    before: ico('pixel', 'b', '<rect x="4" y="6" width="16" height="10"/>'),
+    after: ico('pixel', 'a', '<rect x="5" y="5" width="14" height="14"/>'),
+  },
+  stroke: {
+    before: ico('stroke', 'b', '<path d="M5 12H19"/><path d="M12 5V19" stroke-width="0.7"/>'),
+    after: ico('stroke', 'a', '<path d="M5 12H19"/><path d="M12 5V19"/>'),
+  },
+  corner: {
+    before: ico('corner', 'b', '<rect x="4" y="4" width="16" height="16" rx="7"/>'),
+    after: ico('corner', 'a', '<rect x="4" y="4" width="16" height="16" rx="2"/>'),
+  },
+  front: {
+    before: ico('front', 'b', '<polygon points="6,4 20,7 18,20 4,17"/>'),
+    after: ico('front', 'a', '<rect x="5" y="5" width="14" height="14"/>'),
+  },
+  weight: {
+    before: ico('weight', 'b', '<rect x="6" y="7" width="12" height="4"/><rect x="6" y="12" width="12" height="4"/>'),
+    after: ico('weight', 'a', '<rect x="6" y="5" width="12" height="4"/><rect x="6" y="15" width="12" height="4"/>'),
+  },
+  curve: {
+    before: ico('curve', 'b', '<path d="M5 16Q8 4 12 14T19 16"/>'),
+    after: ico('curve', 'a', '<path d="M5 16Q12 6 19 16"/>'),
+  },
+  detail: {
+    before: ico('detail', 'b', '<circle cx="10" cy="10" r="4"/><path d="M13 13L18 18"/><path d="M8 7H12M7 10H9M10 6V8" stroke-width="1"/>'),
+    after: ico('detail', 'a', '<circle cx="10" cy="10" r="4"/><path d="M13 13L18 18"/>'),
+  },
+  clear: {
+    before: ico('clear', 'b', '<rect x="8" y="6" width="8" height="11"/>'),
+    after: ico('clear', 'a', '<path d="M8 16h8M9 16V11a3 3 0 0 1 6 0V16"/><circle cx="12" cy="18" r="0.6" fill="currentColor" stroke="none"/>'),
+  },
+  solid: {
+    before: ico('solid', 'b', '<circle cx="12" cy="12" r="7" fill="currentColor" stroke="none"/>'),
+    after: ico('solid', 'a', '<path fill="currentColor" fill-rule="evenodd" stroke="none" d="M12 5a7 7 0 1 0 .01 0zM12 9a3 3 0 1 1-.01 0z"/>'),
+  },
+  optical: {
+    before: ico('optical', 'b', '<rect x="4" y="4" width="16" height="16" stroke-width="4.5"/>'),
+    after: ico('optical', 'a', '<rect x="4" y="4" width="16" height="16"/>'),
+  },
+  shift: {
+    before: ico('shift', 'b', '<polygon points="7,5 7,19 16,12"/>'),
+    after: ico('shift', 'a', '<polygon points="9,5 9,19 18,12"/>'),
+  },
+};
+const viz = (key, state) => ICO[key]
+  ? `<div class="viz viz-ico ${state}">${ICO[key][state]}</div>`
+  : `<div class="viz viz-${key} ${state}"><i></i><i></i><i></i><i></i><span>Aa</span></div>`;
 
 function capped(items, n, one, wrap = (h) => h, label = 'Show all') {
   const head = wrap(items.slice(0, n).map(one).join(''));
