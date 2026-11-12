@@ -25,6 +25,7 @@ const SCENES = {
   'unslop-ai-ui': () => ex('unslop', '<i>New</i><b>Ship the plan</b><em>Get started</em>', '<b>Ship the plan</b><span>Decisions in one view.</span><em>Review plan</em>'),
   impeccable: () => ex('polish', '<i>New</i><b>Ship the plan</b><span>Click here</span>', '<small>On track</small><b>Ship the plan</b><em>Review plan</em>'),
   'better-typography': () => ex('type', '<b>Ship Friday.</b><span>"Don\'t wrap this headline across the card."</span>', '<b>Ship Friday.</b><span>“Don’t wrap this.”</span>'),
+  'ux-review': () => ex('review', '<small>Frozen</small><b>Save</b><i></i>', '<small>Saving</small><b>Save</b><i></i>'),
   'apple-motion': () => ex('press', '<small>Linear</small><i></i><b>Save</b>', '<small>Spring</small><i></i><b>Save</b>'),
   'apple-design': () => ex('sheet', '<small>Lags</small><i></i><span class="pop"><b>Filters</b><span>Nearby</span></span>', '<small>Follows</small><i></i><span class="pop"><b>Filters</b><span>Nearby</span></span>'),
   'emil-animations': () => ex('dialog', '<small>From far</small><span class="pop"><b>Saved</b></span>', '<small>A few pixels</small><span class="pop"><b>Saved</b></span>'),

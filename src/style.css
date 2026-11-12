@@ -351,6 +351,54 @@ body.ov-open { overflow: hidden; }
 .viz-words.after i:nth-child(1) { display: block; left: 10px; top: 10px; width: 56px; height: 36px; background: #2b2a2f; }
 .viz-words.after span { left: 26px; top: 20px; color: #7cf06a; font-family: monospace; font-size: 13px; }
 
+/* UX review: the after state is the base. .before changes one thing. */
+.viz-status.before i, .viz-status.after i,
+.viz-world.before i, .viz-world.after i,
+.viz-control.before i, .viz-control.after i,
+.viz-consistent.before i, .viz-consistent.after i,
+.viz-prevent.before i, .viz-prevent.after i,
+.viz-recall.before i, .viz-recall.after i,
+.viz-fast.before i, .viz-fast.after i,
+.viz-quiet.before i, .viz-quiet.after i,
+.viz-errors.before i, .viz-errors.after i,
+.viz-help.before i, .viz-help.after i { display: none; }
+.viz-status.before i:nth-child(1), .viz-status.after i:nth-child(1) { display: block; left: 18px; top: 14px; width: 40px; height: 14px; background: var(--accent); }
+.viz-status.before i:nth-child(2), .viz-status.after i:nth-child(2) { display: block; left: 14px; top: 36px; width: 48px; height: 6px; background: var(--bg-fill); }
+.viz-status.after i:nth-child(3) { display: block; left: 14px; top: 36px; width: 28px; height: 6px; background: var(--accent); }
+.viz-world.before span, .viz-world.after span { display: block; left: 8px; top: 20px; width: 60px; font-size: 0; line-height: 1; text-align: center; }
+.viz-world.before span::after, .viz-world.after span::after { font-size: 12px; font-weight: 650; letter-spacing: -0.03em; color: var(--accent); }
+.viz-world.after span::after { content: "Saved"; }
+.viz-world.before span::after { content: "ERR_9"; }
+.viz-control.before i:nth-child(2), .viz-control.after i:nth-child(2) { display: block; left: 30px; top: 18px; width: 34px; height: 16px; background: var(--accent); }
+.viz-control.after i:nth-child(1) { display: block; left: 8px; top: 21px; width: 14px; height: 10px; background: #a9a69e; }
+.viz-consistent.before i:nth-child(1), .viz-consistent.after i:nth-child(1),
+.viz-consistent.before i:nth-child(2), .viz-consistent.after i:nth-child(2) { display: block; top: 20px; width: 22px; height: 14px; background: var(--accent); }
+.viz-consistent.before i:nth-child(1), .viz-consistent.after i:nth-child(1) { left: 10px; }
+.viz-consistent.before i:nth-child(2), .viz-consistent.after i:nth-child(2) { left: 42px; }
+.viz-consistent.before i:nth-child(2) { background: #c58b5a; }
+.viz-prevent.before i:nth-child(1), .viz-prevent.after i:nth-child(1) { display: block; left: 8px; top: 22px; width: 44px; height: 12px; background: var(--accent); }
+.viz-prevent.before i:nth-child(1) { width: 76px; }
+.viz-recall.before i:nth-child(4), .viz-recall.after i:nth-child(4) { display: block; left: 8px; top: 8px; width: 60px; height: 10px; background: var(--bg-fill); }
+.viz-recall.after i:nth-child(-n+3) { display: block; top: 28px; width: 14px; height: 12px; background: var(--accent); }
+.viz-recall.after i:nth-child(1) { left: 8px; }
+.viz-recall.after i:nth-child(2) { left: 28px; }
+.viz-recall.after i:nth-child(3) { left: 48px; }
+.viz-fast.before i:nth-child(-n+3), .viz-fast.after i:nth-child(-n+3) { display: block; top: 34px; width: 12px; height: 8px; background: #a9a69e; }
+.viz-fast.before i:nth-child(1), .viz-fast.after i:nth-child(1) { left: 8px; }
+.viz-fast.before i:nth-child(2), .viz-fast.after i:nth-child(2) { left: 26px; }
+.viz-fast.before i:nth-child(3), .viz-fast.after i:nth-child(3) { left: 44px; }
+.viz-fast.after i:nth-child(4) { display: block; left: 8px; top: 12px; width: 36px; height: 10px; background: var(--accent); }
+.viz-quiet.before i:nth-child(1), .viz-quiet.after i:nth-child(1) { display: block; left: 22px; top: 16px; width: 32px; height: 22px; background: var(--accent); }
+.viz-quiet.before { background: repeating-linear-gradient(45deg, #ddd8cc 0 3px, var(--white) 3px 6px); }
+.viz-errors.before i:nth-child(1), .viz-errors.after i:nth-child(1) { display: block; left: 8px; top: 18px; width: 60px; height: 18px; background: color-mix(in srgb, #D62828 22%, var(--white)); }
+.viz-errors.before span, .viz-errors.after span { display: block; left: 8px; top: 21px; width: 60px; font-size: 0; line-height: 1; text-align: center; color: #8a1f1f; }
+.viz-errors.before span::after, .viz-errors.after span::after { font-size: 9px; font-weight: 650; }
+.viz-errors.before span::after { content: "!"; }
+.viz-errors.after span::after { content: "Try again"; }
+.viz-help.before i:nth-child(1), .viz-help.after i:nth-child(1) { display: block; left: 8px; top: 10px; width: 60px; height: 14px; background: var(--bg-fill); }
+.viz-help.before i:nth-child(2), .viz-help.after i:nth-child(2) { display: block; left: 8px; top: 30px; width: 28px; height: 10px; background: var(--accent); }
+.viz-help.after i:nth-child(3) { display: block; left: 8px; top: 44px; width: 40px; height: 4px; background: var(--accent); }
+
 
 .viz { background: var(--white); }
 .viz-group.after i:nth-child(-n+2), .viz-focus.after i:nth-child(1), .viz-scale.after i:nth-child(1), .viz-empty.after i:nth-child(1), .shape i { background: var(--accent); }
@@ -1064,6 +1112,13 @@ details.group-block > summary { padding: var(--gap-control) var(--inset-control)
 .ex-card.type.bad b { font-weight: 300; font-style: italic; letter-spacing: 0.08em; font-size: 13px; }
 .ex-card.type.good b { font-weight: 640; letter-spacing: -0.045em; font-size: 22px; }
 .ex-card.type.good span { max-width: 14ch; }
+.ex-card.review small { font-weight: 600; color: var(--text-primary); }
+.ex-card.review b { margin-top: 6px; padding: 8px 16px; border-radius: var(--r-pill); background: var(--text-primary); color: var(--bg-surface); }
+.ex-card.review i { display: block; width: 72px; height: 6px; margin-top: 8px; border-radius: var(--r-pill); background: var(--bg-fill); font-style: normal; }
+.ex-card.review.good i { background: linear-gradient(90deg, var(--ba) 62%, var(--bg-fill) 62%); }
+.cmp-wide .ex-card.review b { font-size: 32px; padding: 14px 28px; }
+.cmp-wide .ex-card.review small { font-size: 16px; }
+.cmp-wide .ex-card.review i { width: 148px; height: 8px; margin-top: 16px; }
 .ex-card.press, .ex-card.sheet, .ex-card.dialog { background: var(--bg-fill); }
 .ex-card.press i, .ex-card.sheet i { width: 14px; height: 14px; border-radius: 50%; background: var(--text-primary); position: absolute; left: calc(50% - 7px); top: 14px; }
 .ex-card.press b { position: absolute; left: 50%; width: 88px; margin-left: -44px; bottom: 22px; text-align: center; padding: 8px 0; border-radius: 99px; background: var(--bg-surface); box-shadow: var(--shadow-raised); }

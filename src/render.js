@@ -79,7 +79,7 @@ const types = {
 
   diagnostics: (s) => capped(s.items, 6, (d) => `
     <button class="card diag opens tile" ${reg(s.id, {
-      id: slug(d.symptom), title: d.symptom,
+      id: slug(d.title || d.symptom), title: d.title || d.symptom,
       thumb: viz(d.viz, 'after'), cat: rule[d.viz]?.[0],
       actions: rule[d.viz] ? `<a class="pill-btn dark" href="#/design-critique/${rule[d.viz][0]}">See the ${rule[d.viz][1]} rules</a>` : '',
       html: `<p class="ov-lede">${d.fix}</p>
