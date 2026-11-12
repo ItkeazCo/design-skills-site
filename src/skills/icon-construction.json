@@ -1,0 +1,200 @@
+{
+  "slug": "icon-construction",
+  "title": "Icon construction",
+  "source": "Material Design",
+  "sourceUrl": "https://m1.material.io/style/icons.html",
+  "sourceNote": "UI system icons, 24dp grid",
+  "summary": "How to draw a consistent icon: grid, stroke, shape, detail, solid, and size.",
+  "accent": "#B4532A",
+  "overview": {
+    "purpose": "Before you finish an icon, or a set of icons, review it against these construction rules.",
+    "when": "You are drawing or reviewing an icon, or a set of icons.",
+    "takeaways": [
+      "Draw on a 24×24 canvas. Keep the graphic in the 20×20 live area. Use the 2dp padding only when the icon needs more weight. Never go past the trim.",
+      "Start from the keylines: 18×18 square, 20 circle, 20×16 portrait, 16×20 landscape. Use them as guides, not a forced fit.",
+      "Snap to whole pixels. Keep width and height equal.",
+      "Use one stroke weight (2dp at 24dp in Material) and the same terminals and corner treatment on every icon. Exterior corners: 2dp radius. Interior corners: square. Do not round strokes that are 2dp or thinner. Do not over-round.",
+      "Keep shapes bold, geometric, and front-facing. No perspective, no loose organic forms.",
+      "Draw curves with as few Bézier points as possible. Keep them smooth and symmetric, with no bumps.",
+      "Keep visual weight, gaps, and detail level even across the set. Use familiar metaphors. Reduce each icon to its essential form.",
+      "If a rule makes the icon harder to recognize, prioritize legibility.",
+      "Do not turn a line icon into a solid by only filling it. Thicken single strokes outward, closed shapes inward, and turn inner lines into slightly wider gaps. Rebalance weight and spacing.",
+      "Design at the real size. Use optical sizes 20, 24, 40, and 48 instead of scaling a 24dp drawing up or down. Correct by eye when the grid looks wrong, but do not skew the geometry."
+    ],
+    "start": "grid"
+  },
+  "sources": [
+    { "name": "Material Design", "url": "https://m1.material.io/style/icons.html" },
+    { "name": "Streamline", "url": "https://blog.streamlinehq.com/why-icon-consistency-is-harder-than-it-looks/" },
+    { "name": "Helena Zhang", "url": "https://minoraxis.medium.com/icon-grids-keylines-demystified-5a228fe08cfd" },
+    { "name": "Lucide", "url": "https://lucide.dev/contribute/icons/design-principles" },
+    { "name": "IBM", "url": "https://www.ibm.com/design/language/iconography/ui-icons/design/" }
+  ],
+  "sections": [
+    {
+      "id": "grid",
+      "title": "Grid and keylines",
+      "short": "Grid",
+      "type": "diagnostics",
+      "intro": "For each one that fails, name the icon, the problem, and the fix.",
+      "mark": "grid",
+      "items": [
+        {
+          "title": "24×24 live area",
+          "symptom": "Cropped",
+          "fix": "It looks cropped, tight, or uneven next to other icons, so pull the drawing back into the 20×20 live area and use the padding only when the icon needs more weight.",
+          "why": "Material keeps icon content in the 20×20 live area of a 24×24 canvas, with 2dp of padding on each side. Do not cross the trim.",
+          "url": "https://m1.material.io/style/icons.html",
+          "viz": "live"
+        },
+        {
+          "title": "Keylines",
+          "symptom": "Off keyline",
+          "fix": "It looks bigger, smaller, or a different shape than sibling icons, so redraw it on the matching keyline, then adjust if the metaphor needs it.",
+          "why": "Material keylines are an 18×18 square, a 20 circle, a 20×16 portrait rectangle, and a 16×20 landscape rectangle. They are guides, not a forced fit.",
+          "url": "https://m1.material.io/style/icons.html",
+          "viz": "key"
+        },
+        {
+          "title": "On the pixel",
+          "symptom": "Stretched",
+          "fix": "It looks soft or stretched, so place every point on a whole pixel and keep the box square.",
+          "why": "Material says X and Y should be integers, and width should equal height, for example 24×24.",
+          "url": "https://m1.material.io/style/icons.html",
+          "viz": "pixel"
+        }
+      ]
+    },
+    {
+      "id": "stroke",
+      "title": "Stroke and corners",
+      "short": "Stroke",
+      "type": "diagnostics",
+      "intro": "One weight, one corner treatment, on every icon.",
+      "mark": "weight",
+      "items": [
+        {
+          "title": "One stroke weight",
+          "symptom": "Mixed strokes",
+          "fix": "It looks thinner, thicker, or softer than the rest, so set every stroke to the same weight and use the same terminal.",
+          "why": "Material uses a 2dp stroke at 24dp, including curves and angles, with squared terminals.",
+          "url": "https://m1.material.io/style/icons.html",
+          "viz": "stroke"
+        },
+        {
+          "title": "Corner radius",
+          "symptom": "Puffy",
+          "fix": "It looks puffy, melted, or mixed, so use the set’s radius on the silhouette only, leave inner corners square, and do not round thin strokes.",
+          "why": "Material uses a 2dp radius on the silhouette. Interior corners stay square. Do not round strokes that are 2dp wide or less.",
+          "url": "https://m1.material.io/style/icons.html",
+          "viz": "corner"
+        }
+      ]
+    },
+    {
+      "id": "shapes",
+      "title": "Shapes and proportions",
+      "short": "Shapes",
+      "type": "diagnostics",
+      "intro": "Bold, flat, and even with the rest of the set.",
+      "mark": "scale",
+      "items": [
+        {
+          "title": "Front-facing",
+          "symptom": "Tilted",
+          "fix": "It looks 3D, sketchy, or off-angle, so flatten it to a straight-on geometric shape.",
+          "why": "Material icons are bold, geometric, and front-facing. Do not tilt them or make them dimensional.",
+          "url": "https://m1.material.io/style/icons.html",
+          "viz": "front"
+        },
+        {
+          "title": "Even weight",
+          "symptom": "Cramped",
+          "fix": "It looks heavier, lighter, or more cramped than its neighbors, so even out the gaps and the amount of ink.",
+          "why": "Streamline says the space between parts, and the visual weight, should stay even across the set.",
+          "url": "https://blog.streamlinehq.com/why-icon-consistency-is-harder-than-it-looks/",
+          "viz": "weight"
+        },
+        {
+          "title": "Simple curves",
+          "symptom": "Lumpy",
+          "fix": "It looks lumpy, or the handles look messy, so delete extra points, use simple arcs, and align handles so the curve stays smooth.",
+          "why": "Lucide says curves should be smooth and as simple as the shape allows, with no extra points or bumps.",
+          "url": "https://lucide.dev/contribute/icons/design-principles",
+          "viz": "curve"
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "title": "Detail and metaphor",
+      "short": "Detail",
+      "type": "diagnostics",
+      "intro": "Only the marks that make the icon recognizable.",
+      "mark": "line",
+      "items": [
+        {
+          "title": "Essential form",
+          "symptom": "Busy",
+          "fix": "It looks busy, or two icons mean the same thing in different ways, so remove extra detail and use the familiar symbol.",
+          "why": "Material reduces each icon to its minimal form. Use a widely recognized metaphor.",
+          "url": "https://m1.material.io/style/icons.html",
+          "viz": "detail"
+        },
+        {
+          "title": "Legibility first",
+          "symptom": "Hard to read",
+          "fix": "It follows the style but is hard to recognize, so relax the rule and restore the familiar shape.",
+          "why": "Streamline says if a style rule makes the icon harder to understand, legibility wins.",
+          "url": "https://blog.streamlinehq.com/why-icon-consistency-is-harder-than-it-looks/",
+          "viz": "clear"
+        }
+      ]
+    },
+    {
+      "id": "solid",
+      "title": "Solid variant",
+      "short": "Solid",
+      "type": "diagnostics",
+      "intro": "A filled icon is a new drawing, not a filled stroke.",
+      "mark": "contrast",
+      "items": [
+        {
+          "title": "Line to solid",
+          "symptom": "Clogged",
+          "fix": "It looks denser, bigger, or more clogged than the line version, so convert it by hand: fill, shift thickness, open the inner gaps, and rebalance.",
+          "why": "Streamline says not to only fill the line icon. Thicken outward or inward, turn inner lines into slightly wider gaps, then rebalance.",
+          "url": "https://blog.streamlinehq.com/from-line-to-solid/",
+          "viz": "solid"
+        }
+      ]
+    },
+    {
+      "id": "sizes",
+      "title": "Sizes and optical correction",
+      "short": "Sizes",
+      "type": "diagnostics",
+      "intro": "Match the size, then correct by eye. Work in the style of the current set. If two rules conflict, choose the option that stays clear at the intended size.",
+      "mark": "measure",
+      "items": [
+        {
+          "title": "Optical size",
+          "symptom": "Too heavy",
+          "fix": "It looks too heavy at a large size, or too faint or tight at a small size, so switch to the matching optical size instead of scaling the 24dp artwork.",
+          "why": "Material optical sizes are 20, 24, 40, and 48dp. A 24dp symbol pairs with a 48dp target. Do not only scale the 24dp drawing.",
+          "url": "https://m3.material.io/styles/icons/applying-icons",
+          "viz": "optical"
+        },
+        {
+          "title": "Optical correction",
+          "symptom": "Looks off",
+          "fix": "It is centered on the grid but still looks off, or a tight detail is clogged, so shift it until it looks balanced, without warping the geometry.",
+          "why": "Material allows a small optical tweak on the same geometric forms. Do not skew them. A 1.5dp stroke is allowed only when detail will not fit.",
+          "url": "https://m1.material.io/style/icons.html",
+          "viz": "shift"
+        }
+      ]
+    }
+  ],
+  "category": "Design"
+}
