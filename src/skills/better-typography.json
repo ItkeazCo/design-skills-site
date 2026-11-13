@@ -1,251 +1,362 @@
 {
   "slug": "better-typography",
   "title": "Better typography",
-  "source": "Jakub Krehel",
-  "sourceUrl": "https://github.com/jakubkrehel/skills",
-  "sourceNote": "better-typography skill, MIT licence",
-  "summary": "How text renders: scale, spacing, features, wrapping, punctuation.",
+  "source": "Practical Typography",
+  "sourceUrl": "https://github.com/danium/practicaltypography",
+  "sourceNote": "Butterick, mblode, bencium, and Figma",
+  "summary": "Screen type: modes, key numbers, and rules from critical to polish.",
   "accent": "#2E6F6A",
   "overview": {
-    "purpose": "Set and review how text renders, from the type scale to wrapping and punctuation.",
-    "when": "Building or reviewing any interface with text in it, before you call the type done.",
+    "purpose": "Good typography reinforces the meaning of the text and conserves the reader’s attention.",
+    "when": "An agent is designing or building screen UI, or you are reviewing type before handoff.",
     "takeaways": [
-      "Fewer fonts, sizes and weights",
-      "Line-height by role, unitless",
-      "Cap the measure at 60–75 characters",
-      "Balance headings, pretty paragraphs",
-      "Tabular numbers on changing values"
+      "Numbers are benchmarks: deviate for a reason",
+      "Enforce while building, audit while reviewing",
+      "Set body type before headings",
+      "Body 16px, line-height 1.2–1.45, measure 45–75",
+      "Contrast 4.5:1, and the layout holds at 200%"
     ],
-    "start": "scale"
+    "start": "modes"
   },
+  "sources": [
+    { "name": "Practical Typography", "url": "https://github.com/danium/practicaltypography" },
+    { "name": "Typography audit", "url": "https://github.com/mblode/agent-skills/tree/main/skills/typography-audit" },
+    { "name": "UI typography", "url": "https://github.com/bencium/bencium-marketplace/blob/main/typography/skills/typography/SKILL.md" },
+    { "name": "Figma", "url": "https://www.figma.com/resource-library/typography-in-design/" }
+  ],
   "sections": [
     {
-      "id": "measured",
-      "title": "Measured, not preferred",
+      "id": "modes",
+      "title": "Enforce and audit",
+      "short": "Modes",
       "type": "cards",
-      "intro": "Some values are exact findings; others are heuristics.",
+      "mark": "check",
+      "intro": "Enforce while building, and audit while reviewing. If rules conflict, content and semantics win, then accessibility, language, and licensing, then intent and medium, then these benchmarks, then taste.",
       "items": [
         {
-          "title": "Exact values",
-          "text": "Missing these is a finding.",
-          "more": "Unitless line-height, weight 400+ below 18px, a 60–75 character measure, 16px inputs on iOS and tabular-nums on changing values."
+          "title": "Enforce",
+          "text": "When building, apply every Critical and High rule without asking.",
+          "more": "Do it in HTML, CSS, and visible UI copy. Do not explain the typography unless asked. Paste real UTF-8. In JSX, paste the character or use {'’'}. A \\u2019 escape inside tag text may render literally."
         },
         {
-          "title": "Heuristics",
-          "text": "Report only where they break the scale.",
-          "more": "Letter-spacing, pairing and scale ratios. Never propose a new typeface unless the task asks for a type change."
+          "title": "Audit",
+          "text": "When reviewing, classify medium, language, and text role first.",
+          "more": "Never change quotes, dashes, or spaces inside code, commands, URLs, emails, IDs, or data. Declared CSS is not proof of the rendered font or measure. Report impact, element, problem, correction, and evidence. Run Critical, then High, then Medium, then Polish. End with the three fixes that would help most."
+        },
+        {
+          "title": "Precedence",
+          "text": "Content and semantics outrank the benchmarks.",
+          "more": "Order: (1) content correctness and semantics; (2) accessibility, language, and licensing; (3) user intent and medium; (4) typographic benchmarks; (5) project taste."
+        },
+        {
+          "title": "Body first",
+          "text": "Set body typeface, size, line height, and measure before headings.",
+          "more": "Every other role is calibrated against body. Do not apply body ranges to display type. Encode roles as a reusable type scale or tokens, not one-off styles."
         }
-      ],
-      "short": "Measuring"
+      ]
     },
     {
-      "id": "fonts",
-      "title": "Fonts and weights",
+      "id": "numbers",
+      "title": "Key numbers",
+      "short": "Numbers",
       "type": "cards",
-      "intro": "Weight and size carry hierarchy; each extra one dilutes it.",
+      "mark": "number",
+      "intro": "Use these as starting points for screen UI, and deviate for a reason. When sources disagree, the default is listed first.",
       "items": [
         {
-          "title": "Three fonts at most",
-          "text": "Apps fewer, marketing pages can carry more.",
-          "more": "Pair for contrast: a serif headline over a sans body reads deliberate, two near-identical sans-serifs read as a mistake."
+          "title": "16px body",
+          "text": "Start UI body at 16px (1em).",
+          "more": "Web body can sit in 15–25px, and print in 10–12pt. On screen, keep desktop at 16–24px and mobile at 16–19px. Never go below 16px on mobile, and never make mobile body smaller than desktop."
         },
         {
-          "title": "No thin text under 18px",
-          "text": "Below 18px use weight 400 or heavier.",
-          "more": "Weights 100–300 belong at 28px and up, checked against the background even there.",
-          "css": "small { font-weight: 400; }\n.display { font-size: 2rem; font-weight: 300; }"
+          "title": "Line height 1.2–1.45",
+          "text": "Use a unitless body line-height of 1.2–1.45.",
+          "more": "Layouts must still hold at 1.5×. A looser web range is 1.45–1.6. Avoid a fixed pixel line-height, and avoid leading above about 1.8.",
+          "css": "p { line-height: 1.4; }"
         },
         {
-          "title": "Load every face you use",
-          "text": "Browsers fake missing weights and italics.",
-          "more": "Synthesized faces distort the design. Disable synthesis only after checking the fallback stack, and only the unwanted mode.",
-          "css": "/* only after the fallback stack is checked */\nbody { font-synthesis-weight: none; }"
+          "title": "Measure 45–75",
+          "text": "Aim for 45–75 characters per line, about 66.",
+          "more": "A wider allowance is 45–90. Do not exceed 80. If a line goes past 75, increase line-height. 65ch is only a start, because ch measures the zero glyph."
         },
         {
-          "title": "Properties over raw tags",
-          "text": "font-weight, not font-variation-settings.",
-          "more": "Properties keep working when a non-variable fallback renders. Leave font-optical-sizing at auto. Raw tags only for custom axes and features with no property.",
-          "css": "h1 { font-weight: 650; }\n.n { font-variant-numeric: tabular-nums; }\n.alt { font-feature-settings: \"ss01\" 1; }"
+          "title": "Contrast 4.5:1",
+          "text": "Regular text needs 4.5:1. Large text needs 3:1.",
+          "more": "Large means 18pt (about 24px), or 14pt bold (about 18.7px). AAA for regular text is 7:1. Count secondary, placeholder, and disabled text too."
+        },
+        {
+          "title": "Holds at 200%",
+          "text": "The layout must hold at 200% text size.",
+          "more": "These are override tests, not default styles: line-height 1.5, paragraph spacing 2× the size, letter-spacing 0.12em, word-spacing 0.16em."
+        },
+        {
+          "title": "Caps +0.05–0.12em",
+          "text": "Letter-space all-caps and small caps by 0.05–0.12em.",
+          "more": "0.06em is a common value. Smaller caps may go up to 0.2em, with extra word-spacing so words do not merge."
+        },
+        {
+          "title": "Two or three weights",
+          "text": "Body sits at 400 or 500. Bold is 700.",
+          "more": "Do not use thin or ultra-light for body text."
+        },
+        {
+          "title": "Two families",
+          "text": "One capable family is often enough. Two is the maximum.",
+          "more": "Add a third only for a distinct role, such as a monospace face for code."
         }
-      ],
-      "short": "Fonts"
+      ]
     },
     {
-      "id": "scale",
-      "title": "Scale and spacing",
+      "id": "critical",
+      "title": "Critical",
+      "short": "Critical",
       "type": "cards",
-      "intro": "A small set of sizes, each paired with its line-height and weight.",
+      "mark": "measure",
+      "intro": "Run these before High, Medium, and Polish.",
       "items": [
         {
-          "title": "A type scale with roles",
-          "text": "One role = one decision, not three.",
-          "more": "Define few sizes and deviate rarely. On a team, name sizes by use (text-body-sm) so the rules survive.",
-          "css": ":root {\n  --t-display: 3.5rem;   /* lh 1.1 */\n  --t-heading: 1.75rem;  /* lh 1.25 */\n  --t-body: 1rem;        /* lh 1.55 */\n  --t-caption: 0.8125rem;\n}"
+          "title": "Body size",
+          "text": "Start UI body at 16px, and do not go below 16px on mobile.",
+          "more": "Keep web body in 15–25px and print in 10–12pt. Do not make mobile body smaller than desktop. Adjust for x-height, and avoid ordinary UI body above about 24px."
         },
         {
-          "title": "Headings descend with level",
-          "text": "A subheading never overpowers its parent.",
-          "more": "Deep levels may share a size if weight or tracking keeps them distinct. A heading is never smaller than body text unless it is a deliberate overline."
+          "title": "Line height",
+          "text": "Body line-height is unitless, from 1.2 to 1.45.",
+          "more": "The layout must still hold when the user sets line-height to 1.5×. Longer measures need more leading, and display type is tighter. A slightly looser web default is 1.45–1.6. Avoid a fixed pixel line-height, which headings inherit badly, and avoid leading above about 1.8.",
+          "css": "p { line-height: 1.4; }"
         },
         {
-          "title": "Line-height by role",
-          "text": "Display 1.1, headings 1.2–1.3, body 1.5–1.6.",
-          "more": "Use unitless values so line-height scales with size. Anything that wraps to three lines or more needs at least 1.4.",
-          "css": "h1 { line-height: 1.1; }\nh2, h3 { line-height: 1.25; }\np { line-height: 1.55; }"
-        },
-        {
-          "title": "Letter-spacing by size",
-          "text": "Tighten big headings, open small caps.",
-          "more": "Headings 24px+ take −0.01 to −0.02em. Uppercase labels at 14px or smaller take 0.05em. Body stays at 0. Never turn kerning off.",
-          "css": "h1 { letter-spacing: -0.015em; }\n.label { text-transform: uppercase; letter-spacing: 0.05em; }"
-        },
-        {
-          "title": "Size floors",
-          "text": "Body 16px, UI 14px, captions 13px.",
-          "more": "Rarely go below 12px. Set font-size in rem so the reader’s browser setting still applies.",
-          "css": "body { font-size: 1rem; }\n.caption { font-size: 0.8125rem; }"
-        },
-        {
-          "title": "Trim text boxes",
-          "text": "Text sits low in buttons and badges.",
-          "more": "text-box trims the space a font reserves above and below its letters. A progressive enhancement.",
-          "css": ".btn { text-box: trim-both cap alphabetic; }"
-        }
-      ],
-      "short": "Scale"
-    },
-    {
-      "id": "wrapping",
-      "title": "Wrapping and measure",
-      "type": "cards",
-      "intro": "Decide where lines break instead of leaving it to chance.",
-      "items": [
-        {
-          "title": "Cap the measure",
-          "text": "60–75 characters per line.",
-          "more": "Any unit works as long as a cap exists and the line length lands in range.",
+          "title": "Measure",
+          "text": "Target 45–75 characters on a rendered English line.",
+          "more": "About 66 is a common ideal. Stay inside 45–90, and do not exceed 80. Past 75, increase line-height. Put max-width on the text. 65ch is only an estimate. Count real lines at narrow, typical, and wide viewports, and never let prose run edge to edge.",
           "css": ".prose { max-width: 65ch; }"
         },
         {
-          "title": "Balance headings",
-          "text": "Even lines for headings and short text.",
-          "more": "Never on paragraphs; Chromium ignores it past six lines.",
-          "css": "h1, h2, h3 { text-wrap: balance; }"
+          "title": "Contrast",
+          "text": "Regular text is at least 4.5:1. Large text is at least 3:1.",
+          "more": "Large is 18pt (about 24px) or 14pt bold (about 18.7px). AAA is 7:1 for regular text. Apply this to secondary, placeholder, and disabled text too."
         },
         {
-          "title": "Pretty paragraphs",
-          "text": "No lone word on the last line.",
-          "more": "Safe on any paragraph, long-form included.",
-          "css": "p { text-wrap: pretty; }"
+          "title": "Resize and spacing",
+          "text": "Layouts must hold at 200% text enlargement.",
+          "more": "No clipping, overlap, or lost content, and do not disable zoom to hide overflow. Line-height 1.5, paragraph spacing of 2× the size, letter-spacing 0.12em, and word-spacing 0.16em are override tests, not the default styles."
         },
         {
-          "title": "Let long words break",
-          "text": "Links and IDs stay in their box.",
-          "more": "Use overflow-wrap where a long word, link or ID could escape the container.",
-          "css": ".card { overflow-wrap: break-word; }"
+          "title": "Real styles",
+          "text": "Load real regular, italic, and bold files.",
+          "more": "Use WOFF2. Never rely on faux bold, faux italic, or scaled caps. Map every cut to one font-family, with its own font-weight and font-style."
         },
         {
-          "title": "Keep labels on one line",
-          "text": "nowrap where a break looks broken.",
-          "more": "Labels and badges. Keep interface text at text-align: start; justify is for editorial layouts only.",
-          "css": ".badge { white-space: nowrap; }"
+          "title": "Fallbacks",
+          "text": "Every stack needs metric-aware system fallbacks.",
+          "more": "Check the font that actually loaded, the required scripts and accents, and the layout shift when the fallback shows. size-adjust and ascent or descent overrides help."
         },
         {
-          "title": "Truncate with a way back",
-          "text": "Ellipsis plus a path to the full text.",
-          "more": "One line: overflow, text-overflow and nowrap. Several: -webkit-box with line-clamp.",
-          "css": ".one { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n.three { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }"
+          "title": "Quotes",
+          "text": "Use curly quotes and apostrophes in prose.",
+          "more": "Apostrophes point down, as in don’t and ’70s. Leave straight marks in code and data, and for feet and inches unless you use true primes. Never typographically transform code, commands, URLs, or identifiers."
+        },
+        {
+          "title": "Dashes",
+          "text": "Hyphen for compounds, en dash for ranges, em dash for a break.",
+          "more": "Write 1–10 with an en dash. An em dash in prose is typically closed, or use a consistently spaced en dash. Never type --. If the sentence says “from,” write “to,” not an en dash."
         }
-      ],
-      "short": "Wrapping"
+      ]
     },
     {
-      "id": "details",
-      "title": "Numbers, punctuation, details",
+      "id": "high",
+      "title": "High",
+      "short": "High",
       "type": "cards",
-      "intro": "The small things readers notice without knowing why.",
+      "mark": "scale",
+      "intro": "Apply these after the critical rules.",
       "items": [
         {
-          "title": "Tabular numbers",
-          "text": "Timers, counters, prices and columns.",
-          "more": "Every digit keeps one width so nothing shifts. Leave figures in prose proportional.",
-          "css": ".count, .price, td.num { font-variant-numeric: tabular-nums; }"
+          "title": "Weights",
+          "text": "Use two or three weights, from the real font files.",
+          "more": "Body at 400 or 500, not thin or ultra-light. Bold is 700, from the bold file."
         },
         {
-          "title": "Typographic punctuation",
-          "text": "Curly quotes, en dashes, the ellipsis.",
-          "more": "Never keyboard stand-ins in rendered text: “ ” not \" \", – for ranges, … not ..., non-breaking spaces where needed. Code keeps straight quotes."
+          "title": "Type scale",
+          "text": "Build a fixed set of sizes from the body size, and reuse it.",
+          "more": "A modular ratio such as 1.25, 1.333, or 1.5 is a guide, not a rule. Adjacent roles need a jump of at least 20–25%, or they should share one size. One worked example is body 16px and an H1 at 3em (48px). Prefer the smallest distinction that still reads."
         },
         {
-          "title": "Natural case",
-          "text": "Set case with text-transform.",
-          "more": "Store text in natural case so a redesign never means rewriting copy.",
-          "css": ".label { text-transform: uppercase; }"
+          "title": "Hierarchy",
+          "text": "Use as few heading levels as the structure needs.",
+          "more": "Prefer no deeper than h1–h3 in most UI. Space above a heading should exceed space below, and keep the heading with the following text. Do not underline or hyphenate headings. Prefer bold over italic. Change one or two axes at a time, size then weight."
         },
         {
-          "title": "Underlines from the font",
-          "text": "Let the font place the underline.",
-          "more": "Or tune offset and thickness by hand. A dotted style hints at extra information, like an abbreviation.",
-          "css": "a { text-underline-position: from-font; text-decoration-thickness: from-font; }\nabbr { text-decoration-style: dotted; }"
+          "title": "Caps tracking",
+          "text": "Track all-caps and real small caps at 0.05–0.12em.",
+          "more": "0.06em is a common value. Smaller caps may take up to 0.2em, with extra word-spacing. Keep a cap run under one line. Do not letter-space lowercase body as a general effect.",
+          "css": ".caps { letter-spacing: 0.06em; }"
         },
         {
-          "title": "Inputs at 16px on mobile",
-          "text": "iOS zooms below 16px.",
-          "more": "Either size the input up on small screens, or keep 16px and scale it down visually. Ask which the design wants.",
-          "css": "input { font-size: 1rem; }\n@media (min-width: 640px) { input { font-size: 0.875rem; } }"
+          "title": "Paragraphs",
+          "text": "Use a first-line indent or paragraph space, never both.",
+          "more": "Do not indent the first paragraph after a heading. Indent about 1–1.5em, or up to 1–4× the size. Paragraph space is about 50–100% of the font size. 0.75em is a common web space.",
+          "css": "p { margin-block: 0; }\np + p { margin-top: 0.75em; }"
         },
         {
-          "title": "Smoothing once, on the root",
-          "text": "Never per component.",
-          "more": "Apply both vendor properties once on the root element.",
-          "css": "html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }"
+          "title": "Alignment",
+          "text": "Left-align running web prose.",
+          "more": "Center only a short title or quote, under one line. Justify only with language-aware hyphenation and a wide enough measure. Never letter-space a line to justify it."
         },
         {
-          "title": "Language and direction",
-          "text": "Set lang and dir.",
-          "more": "Browsers pick quotes, hyphenation and pronunciation from lang. Wrap mixed-direction values in a bdi element.",
+          "title": "Emphasis",
+          "text": "Use one signal at a time: bold or italic, not both.",
+          "more": "Keep the emphasis shorter than a sentence when you can. Do not underline text that is not a link. Do not use quotes or all caps for emphasis, and do not emphasize a whole paragraph."
+        },
+        {
+          "title": "Ellipsis and spaces",
+          "text": "Use the ellipsis character, and one space between sentences.",
+          "more": "Write …, not three periods. Never use two spaces after a sentence. Use a non-breaking space in © 2026, § 12, Fig. 3, honorifics, and short numeric labels."
+        },
+        {
+          "title": "Numerals",
+          "text": "Use tabular lining figures, right-aligned, for tables and aligned quantities.",
+          "more": "Proportional or oldstyle figures may be used in running prose when the font has them.",
+          "css": "td.num { font-variant-numeric: tabular-nums lining-nums; text-align: right; }"
+        },
+        {
+          "title": "Responsive type",
+          "text": "Measure and leading do not change with the screen size.",
+          "more": "Scale font-size and the container width together. clamp(16px, 2.5vw, 20px) is a starting pattern. Give text at least 1rem of side padding on small screens. Scale display headings down. Do not shrink body, subheads, or controls.",
+          "css": "p { font-size: clamp(16px, 2.5vw, 20px); }\n.prose { padding-inline: 1rem; }"
+        },
+        {
+          "title": "Caption floor",
+          "text": "12px is a floor for non-essential captions only.",
+          "more": "Do not add tracking to save small type. Never use 12px for text the user must act on."
+        }
+      ]
+    },
+    {
+      "id": "medium",
+      "title": "Medium",
+      "short": "Medium",
+      "type": "cards",
+      "mark": "font",
+      "intro": "Apply these after Critical and High.",
+      "items": [
+        {
+          "title": "Families",
+          "text": "One capable family is often enough. Two is the practical maximum.",
+          "more": "A third face is only for a distinct role, such as code. Give each family one job. Do not set body text in a novelty, script, or monospaced face."
+        },
+        {
+          "title": "OpenType",
+          "text": "Keep kerning on, and use standard ligatures in prose.",
+          "more": "Leave discretionary ligatures off in body text. Turn ligatures and character substitutions off in code. Use real small caps, with about 0.05em of tracking. Never fake small caps. Confirm the loaded font actually includes the feature.",
+          "css": "body { font-kerning: normal; }\ncode { font-variant-ligatures: none; }\n.sc { font-variant-caps: small-caps; letter-spacing: 0.05em; }"
+        },
+        {
+          "title": "Symbols",
+          "text": "Use ©, ™, and ® only when you mean them.",
+          "more": "© takes a non-breaking space and the year. Do not write “Copyright ©”. Use × for multiplication and a true minus when the math is clear. Prefer primes for measurements when the system has them. Otherwise keep straight foot and inch marks, never curly quotes. A missing accent is a font failure."
+        },
+        {
+          "title": "Lists, quotes, tables",
+          "text": "Use semantic lists, and let hanging lines wrap with the text.",
+          "more": "Set a block quote apart with an indent of about 2–5em or with space, not stacked decoration, and drop the extra quotation marks. Prefer cell padding and a thin header rule over heavy table borders. Pad cells about 0.5em 1em."
+        },
+        {
+          "title": "Loading",
+          "text": "Prefer WOFF2, and a variable font where it helps.",
+          "more": "Choose a loading policy that avoids invisible text and a jump in layout. font-display: swap is a solid default. If the font has an optical-size axis, check it at the rendered size. Use text cuts for body and display cuts for large type.",
+          "css": "@font-face { font-display: swap; }"
+        },
+        {
+          "title": "Links and color",
+          "text": "A link must be identifiable without color alone.",
+          "more": "Do not style ordinary text so it looks like a link. Avoid pure black on pure white. In dark mode, use off-white on dark, not pure white on black, and retune the weight: slightly heavier, or slightly lighter. Both are sourced."
+        },
+        {
+          "title": "Language",
+          "text": "Set lang and direction on the document and on mixed-language runs.",
+          "more": "This drives hyphenation, quotation marks, and fallback fonts.",
           "css": "<html lang=\"en\" dir=\"ltr\">"
         },
         {
-          "title": "Decorative text in CSS",
-          "text": "Not in images.",
-          "more": "Drop caps, outlines and shadows in CSS keep text selectable and searchable."
+          "title": "UI casing",
+          "text": "Prefer sentence case for headings, buttons, labels, and navigation.",
+          "more": "Apply it consistently across the product."
+        }
+      ]
+    },
+    {
+      "id": "polish",
+      "title": "Polish",
+      "short": "Polish",
+      "type": "cards",
+      "mark": "quote",
+      "intro": "Apply these after Critical, High, and Medium.",
+      "items": [
+        {
+          "title": "Display type",
+          "text": "At 48px and up, tighten line-height and tracking.",
+          "more": "Lines should not gape, and descenders must not collide with the next line."
         },
         {
-          "title": "Keep text selectable",
-          "text": "user-select: none only on drag surfaces.",
-          "more": "::selection can carry the brand as long as the pair stays legible.",
-          "css": "::selection { background: #12100E; color: #FDFEFA; }"
+          "title": "Widows",
+          "text": "Keep the last two words of a headline together.",
+          "more": "Use a non-breaking space on headlines and short UI strings. text-wrap: balance is for headings. pretty is for body, not for short strings. For print, set orphans and widows to 2. Full widow control of web body is not always practical.",
+          "css": "h1 { text-wrap: balance; }\np { text-wrap: pretty; }"
+        },
+        {
+          "title": "Hanging punctuation",
+          "text": "Hang opening quotes on block quotes and display lines where you can.",
+          "more": "A hair space or a thin space around an em dash helps when a full space is too wide."
+        },
+        {
+          "title": "Link underline",
+          "text": "If you underline links, keep the stroke thin.",
+          "more": "Use a 1px thickness and a 2px offset.",
+          "css": "a { text-decoration-thickness: 1px; text-underline-offset: 2px; }"
         }
-      ],
-      "short": "Details"
+      ]
+    },
+    {
+      "id": "rtl",
+      "title": "RTL and Hebrew",
+      "short": "RTL",
+      "type": "cards",
+      "mark": "word",
+      "intro": "Set the language and the direction, and do not copy English spacing onto Hebrew.",
+      "items": [
+        {
+          "title": "From the sources",
+          "text": "Set lang and dir for each run of text.",
+          "more": "Do not apply English rules for letter-spacing, hyphenation, justification, quotation marks, or emphasis to an unfamiliar script. Mixed Hebrew or Arabic with Latin or numbers needs a bidirectional check, not a guess from source order. Extra tracking can break a joining script. Arabic is called out for that."
+        },
+        {
+          "title": "Practice, not a sourced rule",
+          "text": "Do not letter-space Hebrew, and do not italicize it.",
+          "more": "Give Hebrew body a slightly taller line-height than the Latin range. These three points are practice. They are not stated as rules in the sources. Confirm them with a Hebrew reference and with rendered samples before you treat them as hard rules."
+        }
+      ]
     },
     {
       "id": "checklist",
       "title": "Before you finish",
+      "short": "Checklist",
       "type": "checklist",
-      "intro": "Run these before calling the type done.",
+      "mark": "check",
+      "intro": "Check these before handing off a UI or a typography review.",
       "items": [
-        "Every font-weight has a loaded face",
-        "No font-synthesis: none on body text",
-        "font-weight instead of \"wght\" tags",
-        "tabular-nums instead of \"tnum\"",
-        "Unitless line-height",
-        "1.4+ line-height on anything that wraps",
-        "letter-spacing in em, not px",
-        "Body font-size in rem",
-        "No weights 100–300 under 18px",
-        "balance on headings, pretty on paragraphs",
-        "No justify in app UI",
-        "line-clamp with display: -webkit-box",
-        "Counters and prices use tabular-nums",
-        "… – — instead of ... -- and hyphen ranges",
-        "Inputs are 16px on mobile",
-        "Font smoothing only on the root",
-        "Mixed-direction values wrapped in bdi",
-        "No user-select: none on text"
-      ],
-      "short": "Checklist"
+        "Body size, unitless line-height, and rendered measure checked at narrow, typical, and wide viewports",
+        "Contrast meets 4.5:1 and 3:1, and the layout holds at 200% zoom and at 1.5 line-height",
+        "Real weights and italics load, fallbacks are metric-aware, and there are no faux styles",
+        "The type scale and two or three weights are consistent, with at most two families plus mono for code",
+        "Prose uses curly quotes, correct dashes, ellipses, and non-breaking spaces, and code and data are untouched",
+        "Caps are tracked, lowercase body is not, and tables use tabular lining figures",
+        "Paragraphs use indent or space, not both, and headings have more space above than below",
+        "Prose is not edge to edge, text does not hit the screen edge, and links are not color-only",
+        "Kerning is on, standard ligatures are on in prose and off in code, and small caps are real",
+        "The layout still works under the spacing overrides, not only at the default styles",
+        "lang and dir are set, and required scripts have the glyphs"
+      ]
     }
   ],
   "category": "Typography"

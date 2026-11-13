@@ -71,7 +71,9 @@ function sectionVisual(x) {
   return sketch({ title: x.title, text: x.intro || x.text || '', mark: x.mark });
 }
 
-const credit = (s) => `<p class="credits">${s.sourceUrl ? `<a href="${s.sourceUrl}" target="_blank" rel="noopener">${s.source}</a>` : s.source}</p>`;
+const credit = (s) => s.sources?.length
+  ? `<div class="sources"><p>Sources</p><ul>${s.sources.map((x) => `<li><a href="${x.url}" target="_blank" rel="noopener">${x.name}</a></li>`).join('')}</ul></div>`
+  : `<p class="credits">${s.sourceUrl ? `<a href="${s.sourceUrl}" target="_blank" rel="noopener">${s.source}</a>` : s.source}</p>`;
 
 function tabBar(s, active, links) {
   const opts = s.sections.map((x) => {
@@ -150,6 +152,7 @@ export function toMarkdown(key) {
   const [slug, id] = key.split('/');
   const s = skills.find((k) => k.slug === slug);
   if (!s) return '';
+  if (s.ai) return s.ai;
   const sections = id ? [s.sections.find((x) => x.id === id)].filter(Boolean) : s.sections;
   return skillFile(s, sections.map(sectionMd).join('\n\n'));
 }

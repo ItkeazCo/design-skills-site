@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import fs from 'fs';
 const U='http://localhost:5199/';
-const pages=['#/','#/story','#/design-critique','#/design-critique/palettes','#/design-critique/diagnostics','#/design-critique/hierarchy','#/design-critique/color-rules','#/design-critique/typography','#/design-critique/tutorials','#/unslop-ai-ui','#/impeccable','#/better-typography/wrapping','#/apple-motion/springs','#/emil-animations/curves','#/m3-motion','#/motion-design'];
+const pages=['#/','#/story','#/design-critique','#/design-critique/palettes','#/design-critique/diagnostics','#/design-critique/hierarchy','#/design-critique/color-rules','#/design-critique/typography','#/design-critique/tutorials','#/unslop-ai-ui','#/impeccable','#/better-typography/critical','#/apple-motion/springs','#/emil-animations/curves','#/m3-motion','#/motion-design'];
 const b=await chromium.launch();const byType={};const nest=[];
 const collect=async(p,where)=>{const r=await p.evaluate(()=>{const out=[],bad=[];
  const vis=(e)=>{const c=getComputedStyle(e);return (c.backgroundColor!=='rgba(0, 0, 0, 0)'&&c.backgroundColor!=='transparent')||c.backgroundImage!=='none'||parseFloat(c.borderTopWidth)>0||c.boxShadow!=='none'||e.tagName==='IMG'};
