@@ -1,6 +1,6 @@
 import { chromium } from 'playwright';
 const OK=new Set([0,2,4,8,12,16,20,24,32,40,64,104]);
-const pages=['#/','#/design-critique/palettes','#/design-critique','#/better-typography/wrapping','#/apple-motion/springs','#/unslop-ai-ui','#/story'];
+const pages=['#/','#/design-critique/palettes','#/design-critique','#/better-typography/critical','#/apple-motion/springs','#/unslop-ai-ui','#/story'];
 const b=await chromium.launch();
 for (const vp of [{width:1440,height:900},{width:390,height:844}]) {
 const p=await b.newPage({viewport:vp}); const bad={};

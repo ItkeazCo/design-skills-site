@@ -661,6 +661,10 @@ body { background: var(--bg); color: var(--ink); }
 .toggle { color: var(--ink); }
 .toggle:hover { background: var(--card); color: var(--ink); }
 .credits { color: var(--text-secondary); font-size: 13px; line-height: 1.5; margin-top: var(--gap-section); }
+.sources { margin-top: var(--gap-section); color: var(--text-secondary); font-size: 13px; line-height: 1.6; }
+.sources p { margin: 0 0 4px; }
+.sources ul { list-style: none; margin: 0; padding: 0; }
+.sources a { color: inherit; }
 .credits a { color: inherit; text-decoration: none; }
 .credits a:hover { text-decoration: underline; }
 
@@ -869,6 +873,7 @@ h2, .cat-h, .toc-title { font-weight: 600; letter-spacing: -0.01em; text-transfo
 .opens:active { transform: scale(var(--scale-pressed)); }
 .strip, .sws, .pal-cols { border-radius: var(--r-md); overflow: hidden; }
 .code, pre, .cmd-line, .cmd { border-radius: var(--r-md); background: var(--bg-well); border: 0; }
+.code, pre { color: var(--text-primary); }
 .chip { border-radius: var(--r-pill); background: var(--bg-well); border: 0; }
 .tip { border-radius: var(--r-sm); background: var(--bg-inverse); color: var(--text-inverse); }
 .count { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: var(--r-pill);
