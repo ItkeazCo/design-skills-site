@@ -1230,6 +1230,9 @@ details.group-block > summary { padding: var(--gap-control) var(--inset-control)
 .ex-card.inbox .ghost { opacity: 0.4; background: var(--bg-surface); border-radius: 10px; padding: 8px; font-size: 12px; color: var(--text-secondary); }
 .ex-card.inbox.good .pop { flex: 1; background: color-mix(in srgb, var(--ba) 16%, var(--bg-surface)); justify-content: center; }
 .ex-card.beats b { width: fit-content; padding: 4px 8px; border-radius: 99px; background: var(--bg-fill); font-size: 12px; font-weight: 600; }
+.ex-card.cut { background: var(--bg-fill); }
+.ex-card.cut svg { width: 58%; height: auto; }
+.ex-card.cut small { position: absolute; top: 10px; z-index: 2; font-size: 11px; font-weight: 600; color: var(--text-primary); }
 .ex-card.press small, .ex-card.sheet small, .ex-card.dialog small, .ex-card.inbox small, .ex-card.beats small { position: absolute; top: 10px; z-index: 2; font-size: 11px; font-weight: 600; color: var(--text-primary); }
 .ex-card.bad small { left: 12px; }
 .ex-card.good small { right: 12px; }

@@ -1,0 +1,164 @@
+{
+  "slug": "match-cuts",
+  "title": "Match cuts",
+  "category": "Motion",
+  "source": "School of Motion",
+  "sourceUrl": "https://schoolofmotion.com/blog/match-cuts",
+  "sourceNote": "Seamless Storytelling: The Power of Match Cuts in Animation, Jacob Richardson and Ryan Plummer",
+  "summary": "Join two shots through shared movement, shape, color, or sound.",
+  "accent": "#9A3D5C",
+  "overview": {
+    "purpose": "A match cut joins two scenes through something they share, so the jump reads as one continuous move.",
+    "when": "Planning or animating a transition between two scenes, shots, or objects in motion design, video, or UI animation.",
+    "takeaways": [
+      "Match movement, shape, color, or sound",
+      "Lock position, scale, and angle at the cut",
+      "Continue the move on the next frame",
+      "The match has to mean something"
+    ],
+    "start": "types"
+  },
+  "sections": [
+    {
+      "id": "prompt",
+      "title": "Prompt",
+      "short": "Prompt",
+      "type": "prose",
+      "mark": "note",
+      "intro": "Paste this when you brief a transition.",
+      "text": "Use when planning or animating a transition between two scenes, shots, or objects in motion design, video, or UI animation, and the change should feel continuous through matched movement, framing or shape, color, or sound. A match cut joins two scenes through something they share. The viewer’s mind completes the jump, so the cut feels natural, and you skip a hard morph. Source: School of Motion, “Seamless Storytelling: The Power of Match Cuts in Animation,” Jacob Richardson and Ryan Plummer. https://schoolofmotion.com/blog/match-cuts"
+    },
+    {
+      "id": "when",
+      "title": "When to use",
+      "short": "When",
+      "type": "cards",
+      "mark": "motion",
+      "intro": "Use a match cut when the change should feel continuous.",
+      "items": [
+        {
+          "title": "Skip the morph",
+          "text": "One object becomes another.",
+          "more": "A coin becomes a planet, a wheel becomes a clock. The cut does the transforming."
+        },
+        {
+          "title": "Time passing",
+          "text": "One subject stays constant.",
+          "more": "The match holds the subject while time moves."
+        },
+        {
+          "title": "Symbolism",
+          "text": "A equals B in meaning.",
+          "more": "The shared trait is the point, not only the trick."
+        },
+        {
+          "title": "Between scenes",
+          "text": "Move smoothly, and steer the eye.",
+          "more": "The cut places the viewer’s look for the next shot."
+        }
+      ]
+    },
+    {
+      "id": "types",
+      "title": "Match types",
+      "short": "Types",
+      "type": "cards",
+      "mark": "compare",
+      "intro": "Pick the strongest thing the two shots share.",
+      "items": [
+        {
+          "title": "Movement",
+          "text": "Trajectory, speed, and direction carry across.",
+          "more": "Spins, position changes, and scale-ups or scale-downs all work."
+        },
+        {
+          "title": "Framing or shape",
+          "text": "Similar shapes sit in the same spot, at about the same size.",
+          "more": "Composition comes first. Keep one constant focal element as the anchor."
+        },
+        {
+          "title": "Color",
+          "text": "A dominant color carries from A to B.",
+          "more": "A color block is enough when it is what the eye is on."
+        },
+        {
+          "title": "Sound",
+          "text": "A continuing sound bridges the cut.",
+          "more": "An audio cue can sell a visual match too."
+        }
+      ]
+    },
+    {
+      "id": "steps",
+      "title": "Steps",
+      "short": "Steps",
+      "type": "steps",
+      "mark": "steps",
+      "intro": "Find the overlap, then lock the frame where the cut happens.",
+      "tutorials": [
+        {
+          "title": "Build the cut",
+          "steps": [
+            "Find the shared trait. List each subject’s shape, motion, color, and sound, and pick the strongest overlap. If nothing overlaps, add one, for example by reshaping or recoloring B to echo A.",
+            "Lock the position. Put B at the same screen position, scale, and angle as A at the cut frame. Line up their centers of mass, or the focal point.",
+            "Keep the momentum. Plan one continuous move across both shots. Cut mid-move and start B on the next frame. In a 12-frame move, cut on frame 6 and pick up B on frame 7. Never restart the easing, and keep the direction and speed.",
+            "Guide the eye. Where the viewer looks at the end of A is where the key action starts in B. Use geometry, motion paths, and contrast.",
+            "Add sound. Put a whoosh, a hit, or a continuous tone on the cut.",
+            "Check it. Watch at full speed, then frame by frame around the cut."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "check",
+      "title": "Before you ship",
+      "short": "Check",
+      "type": "checklist",
+      "mark": "check",
+      "intro": "Watch it at full speed, then frame by frame around the cut.",
+      "items": [
+        "Position, scale, and angle line up, so the eye doesn’t jump",
+        "Direction and speed carry through, with no stall, reset, or double frame",
+        "One clear focal element on each side of the cut",
+        "The match means something: symbolism, time passing, or the story moving forward",
+        "Sound supports the cut, or at least doesn’t fight it",
+        "A first-time viewer reads it as a continuation"
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "Common mistakes",
+      "short": "Mistakes",
+      "type": "cards",
+      "mark": "note",
+      "intro": "If the eye jumps, the match failed.",
+      "items": [
+        {
+          "title": "Subject is offset",
+          "text": "Re-align B to A’s position and scale at the cut frame.",
+          "more": "The eye jumps when B does not sit where A left off."
+        },
+        {
+          "title": "Motion stutters",
+          "text": "Continue on the next frame of the same move.",
+          "more": "Don’t restart the easing at the cut."
+        },
+        {
+          "title": "Too subtle to read",
+          "text": "Make the shared shape or color dominant.",
+          "more": "Clear the clutter around it."
+        },
+        {
+          "title": "Too many in a row",
+          "text": "Save them for moments that carry meaning.",
+          "more": "Use plain cuts everywhere else."
+        },
+        {
+          "title": "Shapes too different",
+          "text": "Pick a closer pair.",
+          "more": "Or add a quick blur or scale to hide the gap."
+        }
+      ]
+    }
+  ]
+}
