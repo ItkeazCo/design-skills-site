@@ -32,6 +32,9 @@ const SCENES = {
   'emil-animations': () => ex('dialog', '<small>From far</small><span class="pop"><b>Saved</b></span>', '<small>A few pixels</small><span class="pop"><b>Saved</b></span>'),
   'm3-motion': () => ex('inbox', '<small>Crossfade</small><span class="pop"><b>Inbox</b></span><span class="ghost">Today</span>', '<small>Grows</small><span class="pop"><b>Inbox</b><span>Today</span></span>'),
   'motion-design': () => ex('beats', '<small>At once</small><b>Arrive</b><b>Hold</b><b>Leave</b>', '<small>Staggered</small><b>Arrive</b><b>Hold</b><b>Leave</b>'),
+  'match-cuts': () => ex('cut',
+    '<small>Jumps</small><svg viewBox="0 0 80 48" aria-hidden="true"><circle cx="18" cy="24" r="10" fill="none" stroke="currentColor" stroke-width="2"/><rect x="50" y="14" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
+    '<small>Matched</small><svg viewBox="0 0 80 48" aria-hidden="true"><circle cx="40" cy="24" r="10" fill="none" stroke="currentColor" stroke-width="2"/><rect x="30" y="14" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"/></svg>'),
   '87-screens': () => ex('app', '<b>Welcome</b><em>Continue</em>', '<b>Boop</b><span>The park is open.</span><em>See dogs</em>'),
 };
 function beforeAfter(s) {
