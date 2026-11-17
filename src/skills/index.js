@@ -9,9 +9,10 @@ import apple from './apple-motion.json';
 import appleDesign from './apple-design.json';
 import m3 from './m3-motion.json';
 import lottie from './motion-design.json';
+import animateUi from './animate-ui.json';
 import uxReview from './ux-review.json';
 import uxPatterns from './ux-patterns.json';
 
-export const skills = [designCritique, unslop, impeccable, uxReview, uxPatterns, typography, apple, appleDesign, emil, m3, lottie, screens];
+export const skills = [designCritique, unslop, impeccable, uxReview, uxPatterns, typography, apple, appleDesign, emil, m3, lottie, animateUi, screens];
 // Sidebar groups, in order. Each skill names its group in `category`.
 export const categories = ['Design', 'Typography', 'Motion', 'Workflow'];

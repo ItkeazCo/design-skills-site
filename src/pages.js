@@ -32,6 +32,7 @@ const SCENES = {
   'emil-animations': () => ex('dialog', '<small>From far</small><span class="pop"><b>Saved</b></span>', '<small>A few pixels</small><span class="pop"><b>Saved</b></span>'),
   'm3-motion': () => ex('inbox', '<small>Crossfade</small><span class="pop"><b>Inbox</b></span><span class="ghost">Today</span>', '<small>Grows</small><span class="pop"><b>Inbox</b><span>Today</span></span>'),
   'motion-design': () => ex('beats', '<small>At once</small><b>Arrive</b><b>Hold</b><b>Leave</b>', '<small>Staggered</small><b>Arrive</b><b>Hold</b><b>Leave</b>'),
+  'animate-ui': () => ex('aui', '<small>Still</small><b>Open</b>', '<small>Spring</small><b>Open</b>'),
   '87-screens': () => ex('app', '<b>Welcome</b><em>Continue</em>', '<b>Boop</b><span>The park is open.</span><em>See dogs</em>'),
 };
 function beforeAfter(s) {
@@ -124,6 +125,7 @@ function itemMd(i) {
 function sectionMd(x) {
   const out = [`## ${x.title}`];
   if (x.intro) out.push(val(x.intro));
+  if (x.command) out.push('```\n' + x.command + '\n```');
   if (x.text) out.push(val(x.text));
   (x.items || []).forEach((i) => out.push(itemMd(i)));
   (x.tutorials || []).forEach((t) => { out.push(`### ${t.title}`); t.steps.forEach((st, k) => out.push(`${k + 1}. ${val(st)}`)); });

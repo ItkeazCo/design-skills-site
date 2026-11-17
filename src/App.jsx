@@ -221,6 +221,11 @@ function Main({ hash }) {
         root.querySelectorAll('[data-panel]').forEach((p) => { p.hidden = p.dataset.panel !== tab.dataset.tab; });
         return;
       }
+      const pageCopy = e.target.closest('[data-page-copy]');
+      if (pageCopy) {
+        copy(pageCopy.hasAttribute('data-enc') ? decodeURIComponent(pageCopy.dataset.copy) : pageCopy.dataset.copy, pageCopy);
+        return;
+      }
       const ai = e.target.closest('[data-ai]');
       if (ai) { copy(toMarkdown(ai.dataset.ai), ai); return; }
       const b = e.target.closest('.opens');
