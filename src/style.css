@@ -869,6 +869,12 @@ h2, .cat-h, .toc-title { font-weight: 600; letter-spacing: -0.01em; text-transfo
 .opens:active { transform: scale(var(--scale-pressed)); }
 .strip, .sws, .pal-cols { border-radius: var(--r-md); overflow: hidden; }
 .code, pre, .cmd-line, .cmd { border-radius: var(--r-md); background: var(--bg-well); border: 0; }
+.code, pre { color: var(--text-primary); }
+.snippet { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s3); max-width: 640px; }
+.ex-card.aui b { position: absolute; top: 42%; padding: 8px 16px; border-radius: var(--r-pill); background: var(--text-primary); color: var(--bg-surface); }
+.ex-card.aui.bad b { left: 16%; }
+.ex-card.aui.good b { right: 16%; animation: mv-spring 1.5s var(--spring-ui) infinite; }
+.ex-card.aui small { position: absolute; top: 10px; z-index: 2; font-size: 11px; font-weight: 600; color: var(--text-primary); }
 .chip { border-radius: var(--r-pill); background: var(--bg-well); border: 0; }
 .tip { border-radius: var(--r-sm); background: var(--bg-inverse); color: var(--text-inverse); }
 .count { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: var(--r-pill);

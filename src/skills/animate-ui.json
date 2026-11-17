@@ -1,0 +1,229 @@
+{
+  "slug": "animate-ui",
+  "title": "Animate UI",
+  "category": "Motion",
+  "source": "Elliot Sutton",
+  "sourceUrl": "https://github.com/imskyleen/animate-ui",
+  "sourceNote": "MIT License with the Commons Clause",
+  "summary": "Animate React and Vue components by swapping in Animate UI primitives, or by applying its motion rules.",
+  "accent": "#6D28D9",
+  "overview": {
+    "purpose": "Animate UI animates the primitives a component is built on, so a swap or a token does the motion.",
+    "when": "You are animating a React or Vue component, reviewing motion, migrating Animate UI v1, or changing the pace.",
+    "takeaways": [
+      "Swap the primitive, or apply the tokens",
+      "Springs first, one value per role",
+      "Press at 0.97, popups from 0.7–0.9",
+      "Reduced motion keeps fades and drops movement",
+      "Tempo paces every token at once"
+    ],
+    "start": "paths"
+  },
+  "sections": [
+    {
+      "id": "install",
+      "title": "Install",
+      "short": "Install",
+      "type": "snippet",
+      "mark": "note",
+      "command": "npx skills add imskyleen/animate-ui",
+      "intro": "Add the skill with this command.",
+      "text": "The library is @animate-ui/react or @animate-ui/vue, plus motion. MIT License with the Commons Clause. © Elliot Sutton."
+    },
+    {
+      "id": "summary",
+      "title": "What it does",
+      "short": "Summary",
+      "type": "prose",
+      "mark": "motion",
+      "intro": "It animates the primitive, not a one-off wrapper.",
+      "text": "In React, @animate-ui/react ships each Radix UI, Base UI, and React Aria primitive with that library’s API and Motion inside. In Vue, @animate-ui/vue does the same for reka-ui, with Motion for Vue. A shadcn or shadcn-vue component gets a codemod that swaps those primitives. A component already built on them only changes its import. Custom markup, or a primitive Animate UI does not cover, uses the motion rules, tokens, and recipes. The same skill audits existing motion, migrates an Animate UI v1 project, turns an icon into an animated icon, and sets one tempo so every animation gets faster or slower together."
+    },
+    {
+      "id": "paths",
+      "title": "Pick the path",
+      "short": "Paths",
+      "type": "cards",
+      "mark": "compare",
+      "intro": "Match the request to one path, then stay on it.",
+      "items": [
+        {
+          "title": "Vue or Nuxt",
+          "text": "Open the Vue notes, then pick the path.",
+          "more": "shadcn-vue, reka-ui, and .vue files. After that, the same choices as React."
+        },
+        {
+          "title": "shadcn/ui",
+          "text": "Run the CLI codemod.",
+          "more": "The project has components.json. The CLI swaps primitive imports and removes the CSS animation classes Motion replaces. Don’t hand-edit what it does."
+        },
+        {
+          "title": "Radix, Base UI, React Aria",
+          "text": "Swap the import.",
+          "more": "Point it at @animate-ui/react. The API stays the same, and parts Animate UI does not animate are re-exported unchanged. Vue uses @animate-ui/vue."
+        },
+        {
+          "title": "Custom markup",
+          "text": "Apply the rules, tokens, and recipes.",
+          "more": "Check the catalog first. An entrance, a counter, or a button effect that already ships beats writing it again."
+        },
+        {
+          "title": "Animate UI v1",
+          "text": "Migrate.",
+          "more": "Projects that still have components/animate-ui files."
+        },
+        {
+          "title": "Change the pace",
+          "text": "Set tempo on AnimateUIProvider.",
+          "more": "A little is 0.85 faster or 1.15 slower. A lot is 0.7 or 1.3. Stay within 0.5–2. Springs keep their shape."
+        },
+        {
+          "title": "Review motion",
+          "text": "Audit, then fix.",
+          "more": "Name the file and line, why it fails, and the fix. Keep what already moves, in its right form."
+        },
+        {
+          "title": "One rule",
+          "text": "Fix that rule only.",
+          "more": "Reduced motion, or a loop. Don’t rebuild the rest."
+        },
+        {
+          "title": "Reproduce a reference",
+          "text": "Measure it, then map it to tokens.",
+          "more": "A link, a video, a GIF, or a CSS or JS snippet."
+        },
+        {
+          "title": "A feel in words",
+          "text": "Map the word, and keep the role.",
+          "more": "Snappier, calmer, or bouncy. A feel word sets the feel. “More” or “expressive” sets how much."
+        },
+        {
+          "title": "A named interaction",
+          "text": "Start from that interaction.",
+          "more": "A loading button, a list, a swipe, a banner, a reorder, a skeleton."
+        },
+        {
+          "title": "An icon",
+          "text": "Turn it into an animated icon.",
+          "more": "Lucide, Hugeicons, Tabler, or a custom SVG, compatible with AnimateIcon. Icon values live in the icon file."
+        }
+      ]
+    },
+    {
+      "id": "rules",
+      "title": "Motion rules",
+      "short": "Rules",
+      "type": "cards",
+      "mark": "check",
+      "intro": "Quality rules are bugs when they break, and style rules are the defaults.",
+      "items": [
+        {
+          "title": "Reduced motion",
+          "text": "Fades and blurs stay. Movement goes.",
+          "more": "Wrap the tree in ReducedMotionConfig. A transform string is not skipped, so neutralize it with useShouldReduceMotion(). Numbers show their value at once. Loops stop off screen, in a hidden tab, and under reduced motion. A spinner may pulse. It does not freeze."
+        },
+        {
+          "title": "Keyboard, hover, focus",
+          "text": "The keyboard animates like the pointer.",
+          "more": "Hover only on a fine pointer that can hover. The focus ring shows at once and is not clipped. Nothing invisible or leaving can take focus. A swap keeps the focused element. The control answers on the frame of the press."
+        },
+        {
+          "title": "Origin and size",
+          "text": "Anchored popups grow from their trigger.",
+          "more": "Modals stay centered. An overlay starts from a visible size, 0.7 at the smallest. Only a small mark inside a control may pop from 0."
+        },
+        {
+          "title": "What may move",
+          "text": "Transform, opacity, and filter.",
+          "more": "Height only where content must push what is below. No transition-all. Pointer and scroll values stay in motion values, not React state. Press and long motion use a transform string. Re-triggering retargets. It does not restart."
+        },
+        {
+          "title": "Press",
+          "text": "Scale to 0.97. A card or row uses 0.985.",
+          "more": "The pressed element never scales on hover. Hover changes color, background, border, or shadow. Inside a clipped card the image may zoom, and the card may lift a few pixels."
+        },
+        {
+          "title": "Curves",
+          "text": "Ease-out to enter and leave. Ease-soft when the eye watches the change.",
+          "more": "Ease-in-out for what moves on screen. Ease for color. Never ease-in on UI, except a closed drawer speeding off its edge, and a menubar’s next content fading in. A dismissed dialog or sheet speeds away."
+        },
+        {
+          "title": "Exit, swap, stretch",
+          "text": "The exit replays the entrance.",
+          "more": "A dismissed dialog, drawer, or sheet leaves at once, quicker. A light blur bridges a swap. Changing text fades, blurs, or slides. It never scales. A box that resizes does not stretch its text, icons, or images."
+        },
+        {
+          "title": "Tooltips and menus",
+          "text": "A warm tooltip shows at once.",
+          "more": "The one it replaces goes at once. Open from the first render, a popup still plays its entrance. A menubar’s popover moves to the next menu and resizes. It does not close and reopen. The triggers share one highlight."
+        }
+      ]
+    },
+    {
+      "id": "tokens",
+      "title": "Tokens",
+      "short": "Tokens",
+      "type": "cards",
+      "mark": "time",
+      "intro": "One token per role. Don’t hand-type a spring a token already covers.",
+      "items": [
+        {
+          "title": "Springs",
+          "text": "Press is about 120ms. A pop is there in about 175ms.",
+          "more": "spring.pop settles by about 440ms. spring.dialog is calm, about 450ms, with no overshoot. spring.highlight follows in about 150ms and does not trail the pointer. Effects and numbers use their own springs."
+        },
+        {
+          "title": "Tweens",
+          "text": "Menus are 220ms. Disclosures are 350ms.",
+          "more": "Sheets and drawers come in over 400ms. A sheet leaves in 200ms. A drawer leaves in 160ms. Overlays are 400ms both ways. A dismissed dialog or sheet uses a 200ms exit. A swap is 150ms."
+        },
+        {
+          "title": "Curves",
+          "text": "ease.out is cubic-bezier(0.23, 1, 0.32, 1).",
+          "more": "ease.soft, for a disclosure, an overlay, a menu, or a sheet coming in, is cubic-bezier(0.215, 0.61, 0.355, 1). A drawer coming in uses ease.drawer. Color uses ease. Constant motion is linear."
+        },
+        {
+          "title": "Scale and blur",
+          "text": "Tooltips grow from 0.7, popovers from 0.8, menus from 0.9.",
+          "more": "Press is 0.97. A card or row is 0.985. Dialog content is 0.8, tipped forward. blur.icon is 2px, blur.surface is 4px, blur.panel is 5px. A menubar’s content slides 6px. Keep blur light."
+        },
+        {
+          "title": "Tempo",
+          "text": "One number paces every token.",
+          "more": "Durations and delays multiply by tempo. A spring keeps its shape. 0.85 is a little faster, 1.15 a little slower. 0.7 or 1.3 is a lot. Stay within 0.5–2. Hand-typed durations do not follow it."
+        }
+      ]
+    },
+    {
+      "id": "check",
+      "title": "Before you ship",
+      "short": "Check",
+      "type": "checklist",
+      "mark": "check",
+      "intro": "A miss on a quality item is a bug, and a style change gets named.",
+      "items": [
+        "ReducedMotionConfig wraps the motion, and transform strings are neutralized",
+        "Fades and blurs stay under reduced motion, movement does not, and numbers show at once",
+        "Loops stop off screen, in a hidden tab, and under reduced motion",
+        "The keyboard animates like the pointer",
+        "The focus ring shows at once and is not clipped, and nothing invisible can be focused",
+        "A swap keeps the focused element",
+        "Anchored popups grow from the trigger, and modals stay centered",
+        "Overlays start from at least 0.7",
+        "Only transform, opacity, and filter animate, except a height that must push what is below",
+        "Hover is gated to fine pointers, and the control answers on the frame of the press",
+        "No transition-all, and pointer values are not in React state",
+        "Re-triggering retargets instead of restarting",
+        "A warm tooltip shows at once, and the previous one goes at once",
+        "Open from the start, it still plays its entrance",
+        "A menubar popover moves to the next menu instead of closing and reopening",
+        "Springs come from the tokens",
+        "Press is 0.97, or 0.985 for a card or row, and nothing pressed scales on hover",
+        "The exit replays the entrance, and a dismissed surface leaves quicker",
+        "A swap uses a light blur, and changing text never scales",
+        "Nothing stretches while it resizes",
+        "A frame in the middle of the move still reads, and a second trigger retargets"
+      ]
+    }
+  ]
+}

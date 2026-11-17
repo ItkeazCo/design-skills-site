@@ -145,6 +145,8 @@ const types = {
     </details>`).join('') + (relate(details[s.id] || []), ''),
 
   prose: (s) => `<p class="prose">${s.text}</p>`,
+
+  snippet: (s) => `<div class="snippet"><pre class="code"><code>${esc(s.command || '')}</code></pre>${s.text ? `<p class="prose">${s.text}</p>` : ''}<button type="button" class="pill-btn dark" data-page-copy data-copy="${encodeURIComponent(s.command || '')}" data-enc><span class="cp-label">Copy command</span></button></div>`,
 };
 
 const renderOne = (s) => (types[s.type] || types.prose)(s);
