@@ -1151,6 +1151,7 @@ details.group-block > summary { padding: var(--gap-control) var(--inset-control)
 /* Page head: one-line lede + quiet Copy for AI */
 .page-head .lede { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
 .head-acts { margin-top: var(--inset-button); display: flex; align-items: center; gap: var(--gap-control); }
+.ai-line { margin: 0; max-width: 46ch; color: var(--text-secondary); font-size: 13px; line-height: 18px; }
 .article-link { color: var(--text-primary); font-size: 14px; font-weight: 500; line-height: 20px; text-decoration: underline; text-underline-offset: 3px; }
 .head-acts .gt-btn { width: fit-content; }
 .ov-meta { margin: calc(-1 * var(--gap-group)) 0 var(--gap-section); }
