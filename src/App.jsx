@@ -133,6 +133,21 @@ function Tree({ q, slug, sec, open, toggle }) {
         </div>
       );
     }).filter(Boolean);
+    if (c === 'Motion') {
+      const blob = 'headline framer motion כותרת אנימציה';
+      if (!term || blob.includes(term)) {
+        const here = slug === 'framer-motion';
+        items.push(
+          <div className="branch" key="framer-motion">
+            <div className="node-row">
+              <a className={`node skill ${here ? 'current' : ''}`} aria-current={here ? 'page' : undefined} href="#/framer-motion">
+                <span className="dot" style={{ background: '#6D28D9' }} /><span>Headline</span>
+              </a>
+            </div>
+          </div>
+        );
+      }
+    }
     return items.length ? <div className="cat" key={c}><h2 className="cat-h">{c}</h2>{items}</div> : null;
   }).filter(Boolean);
   // One marker that slides between items (instead of a per-item bar).
