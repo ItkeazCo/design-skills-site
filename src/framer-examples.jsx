@@ -20,8 +20,8 @@ const DIRECTIONS = [
   { id: 'left', label: 'משמאל' },
 ];
 
-const hiddenFrom = (direction, distance) => {
-  const d = `${distance}%`;
+const offset = (direction, distance, unit) => {
+  const d = `${distance}${unit}`;
   if (direction === 'down') return { y: `-${d}` };
   if (direction === 'right') return { x: d };
   if (direction === 'left') return { x: `-${d}` };
@@ -40,7 +40,7 @@ function piecesOf(text, split) {
 
 function Headline({ text, split, stagger, duration, distance, direction, ease, rtl }) {
   const pieces = piecesOf(text, split);
-  const from = hiddenFrom(direction, distance);
+  const from = offset(direction, distance, '%');
   return (
     <motion.p
       className="fm-line"
@@ -63,6 +63,20 @@ function Headline({ text, split, stagger, duration, distance, direction, ease, r
         </span>
       ))}
     </motion.p>
+  );
+}
+
+function TileMove({ duration, distance, direction, ease }) {
+  return (
+    <motion.article
+      className="fm-tile"
+      initial={{ ...offset(direction, distance, 'px'), opacity: 0 }}
+      animate={{ x: 0, y: 0, opacity: 1 }}
+      transition={{ duration: duration / 1000, ease }}
+    >
+      <strong>טייל</strong>
+      <span>נכנס לכאן</span>
+    </motion.article>
   );
 }
 
@@ -91,8 +105,10 @@ function Choice({ label, options, value, onChange }) {
 
 export function FramerExamples() {
   const reduced = !!useReducedMotion();
+  const [mode, setMode] = useState('tile');
   const [text, setText] = useState('הכותרת נכנסת מכאן');
   const [split, setSplit] = useState('words');
+  const [tileDistance, setTileDistance] = useState(32);
   const [stagger, setStagger] = useState(50);
   const [duration, setDuration] = useState(600);
   const [distance, setDistance] = useState(110);
@@ -104,32 +120,41 @@ export function FramerExamples() {
   const dirLabel = DIRECTIONS.find((d) => d.id === direction).label;
   const rtl = /[\u0590-\u05FF]/.test(text);
   const sentence = useMemo(() => (
-    `כותרת לפי ${splitLabel}. כל חלק נכנס ${dirLabel}, ${stagger}ms אחרי הקודם, במשך ${duration}ms, מרחק ${distance}%, ${ease.label}.`
-  ), [splitLabel, dirLabel, stagger, duration, distance, ease.label]);
+    mode === 'tile'
+      ? `טייל נכנס ${dirLabel}, ${tileDistance}px, במשך ${duration}ms, ${ease.label}.`
+      : `כותרת לפי ${splitLabel}. כל חלק נכנס ${dirLabel}, ${stagger}ms אחרי הקודם, במשך ${duration}ms, מרחק ${distance}%, ${ease.label}.`
+  ), [mode, splitLabel, dirLabel, stagger, duration, distance, tileDistance, ease.label]);
   const play = () => setRun((n) => n + 1);
 
   return (
     <main id="main" className="fm-page">
       <header className="page-head">
-        <h1>אנימציית כותרת</h1>
+        <h1>{mode === 'tile' ? 'איך טייל נכנס' : 'אנימציית כותרת'}</h1>
         <p className="lede" dir="rtl">משנים ערך, ואז הפעל שוב. המשפט למטה הוא מה שמועתק.</p>
       </header>
       <div className="fm-stage" key={reduced ? 'still' : run}>
         {reduced
-          ? <p className="fm-line" dir={rtl ? 'rtl' : 'ltr'}>{text}</p>
-          : <Headline text={text} split={split} stagger={stagger} duration={duration} distance={distance} direction={direction} ease={ease.value} rtl={rtl} />}
+          ? (mode === 'tile' ? <article className="fm-tile"><strong>טייל</strong><span>נכנס לכאן</span></article> : <p className="fm-line" dir={rtl ? 'rtl' : 'ltr'}>{text}</p>)
+          : mode === 'tile'
+            ? <TileMove duration={duration} distance={tileDistance} direction={direction} ease={ease.value} />
+            : <Headline text={text} split={split} stagger={stagger} duration={duration} distance={distance} direction={direction} ease={ease.value} rtl={rtl} />}
       </div>
-      <label className="fm-text">
-        <span>הכותרת</span>
-        <textarea rows={2} value={text} onChange={(e) => setText(e.target.value)} />
-      </label>
+      {mode === 'headline' ? (
+        <label className="fm-text">
+          <span>הכותרת</span>
+          <textarea rows={2} value={text} onChange={(e) => setText(e.target.value)} />
+        </label>
+      ) : null}
       <div className="fm-controls">
-        <Choice label="פיצול" options={SPLITS} value={split} onChange={(id) => { setSplit(id); play(); }} />
+        <Choice label="מה זז" options={[{ id: 'tile', label: 'טייל' }, { id: 'headline', label: 'כותרת' }]} value={mode} onChange={(id) => { setMode(id); play(); }} />
+        {mode === 'headline' ? <Choice label="פיצול" options={SPLITS} value={split} onChange={(id) => { setSplit(id); play(); }} /> : null}
         <Choice label="כיוון" options={DIRECTIONS} value={direction} onChange={(id) => { setDirection(id); play(); }} />
         <Choice label="עקומה" options={EASES} value={easeId} onChange={(id) => { setEaseId(id); play(); }} />
-        <Field label="השהייה" value={stagger} unit="ms" min={0} max={120} step={5} onChange={setStagger} onDone={play} />
+        {mode === 'headline' ? <Field label="השהייה" value={stagger} unit="ms" min={0} max={120} step={5} onChange={setStagger} onDone={play} /> : null}
         <Field label="משך" value={duration} unit="ms" min={200} max={1000} step={20} onChange={setDuration} onDone={play} />
-        <Field label="מרחק" value={distance} unit="%" min={20} max={140} step={5} onChange={setDistance} onDone={play} />
+        {mode === 'tile'
+          ? <Field label="מרחק" value={tileDistance} unit="px" min={8} max={160} step={4} onChange={setTileDistance} onDone={play} />
+          : <Field label="מרחק" value={distance} unit="%" min={20} max={140} step={5} onChange={setDistance} onDone={play} />}
       </div>
       <div className="fm-acts">
         <p className="fm-copyline" dir="rtl">{sentence}</p>

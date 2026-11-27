@@ -1156,7 +1156,10 @@ details.group-block > summary { padding: var(--gap-control) var(--inset-control)
 .ov-meta { margin: calc(-1 * var(--gap-group)) 0 var(--gap-section); }
 .fm-page { padding: var(--s5) 0 var(--s6); max-width: 880px; }
 .fm-page .lede { color: var(--muted); font-size: 18px; margin-top: var(--s3); max-width: 46ch; }
-.fm-stage { margin-top: var(--s5); min-height: 180px; display: flex; align-items: center; background: var(--card); border-radius: var(--r-lg); padding: var(--s5); overflow: hidden; }
+.fm-stage { margin-top: var(--s5); min-height: 220px; display: flex; align-items: center; justify-content: center; background: var(--card); border-radius: var(--r-lg); padding: var(--s5); overflow: hidden; }
+.fm-tile { width: 220px; display: flex; flex-direction: column; gap: var(--s2); padding: var(--s4); background: var(--bg); border-radius: var(--r-lg); }
+.fm-tile strong { font-size: 20px; line-height: 1.2; }
+.fm-tile span { color: var(--muted); font-size: 14px; }
 .fm-line { display: flex; flex-wrap: wrap; align-items: flex-end; column-gap: 0.28em; row-gap: 0.15em; margin: 0; font-size: clamp(32px, 5vw, 56px); font-weight: 650; line-height: 1.15; letter-spacing: -0.02em; }
 .fm-line[dir="rtl"] { letter-spacing: 0; }
 .fm-mask { display: inline-flex; overflow: hidden; padding-bottom: 0.08em; }

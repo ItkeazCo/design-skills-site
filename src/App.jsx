@@ -141,7 +141,7 @@ function Tree({ q, slug, sec, open, toggle }) {
           <div className="branch" key="framer-motion">
             <div className="node-row">
               <a className={`node skill ${here ? 'current' : ''}`} aria-current={here ? 'page' : undefined} href="#/framer-motion">
-                <span className="dot" style={{ background: '#6D28D9' }} /><span>Headline</span>
+                <span className="dot" style={{ background: '#6D28D9' }} /><span>Tile</span>
               </a>
             </div>
           </div>
