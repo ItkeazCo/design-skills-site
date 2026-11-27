@@ -10,6 +10,7 @@ import { onToast } from './toastbus.js';
 import { markdown } from './markdown.js';
 import { home, overview, section, toMarkdown, short } from './pages.js';
 import { UiPage } from './ui.jsx';
+import { FramerExamples } from './framer-examples.jsx';
 import { copy } from './details.js';
 import story from '../docs/STORY.md?raw';
 
@@ -132,6 +133,21 @@ function Tree({ q, slug, sec, open, toggle }) {
         </div>
       );
     }).filter(Boolean);
+    if (c === 'Motion') {
+      const blob = 'headline framer motion כותרת אנימציה';
+      if (!term || blob.includes(term)) {
+        const here = slug === 'framer-motion';
+        items.push(
+          <div className="branch" key="framer-motion">
+            <div className="node-row">
+              <a className={`node skill ${here ? 'current' : ''}`} aria-current={here ? 'page' : undefined} href="#/framer-motion">
+                <span className="dot" style={{ background: '#6D28D9' }} /><span>Tile</span>
+              </a>
+            </div>
+          </div>
+        );
+      }
+    }
     return items.length ? <div className="cat" key={c}><h2 className="cat-h">{c}</h2>{items}</div> : null;
   }).filter(Boolean);
   // One marker that slides between items (instead of a per-item bar).
@@ -160,9 +176,11 @@ function Tree({ q, slug, sec, open, toggle }) {
 function Main({ hash }) {
   const ref = useRef(null);
   const lastBase = useRef(null);
-  const isUi = hash.split('|')[0].replace(/^#\/?/, '').split('/')[0] === 'ui';
+  const route = hash.split('|')[0].replace(/^#\/?/, '').split('/')[0];
+  const isUi = route === 'ui';
+  const isFm = route === 'framer-motion';
   useLayoutEffect(() => {
-    if (isUi) return;
+    if (isUi || isFm) return;
     if (basePath() === lastBase.current) { openFromHash(); return; }
     lastBase.current = basePath();
     overlay.close(true);
@@ -176,9 +194,9 @@ function Main({ hash }) {
     window.scrollTo(0, 0);
     motion.page(main);
     openFromHash();
-  }, [hash, isUi]);
+  }, [hash, isUi, isFm]);
   useEffect(() => {
-    if (isUi) return;
+    if (isUi || isFm) return;
     const main = ref.current;
     let scrub = null;
     const place = (e) => {
@@ -232,8 +250,9 @@ function Main({ hash }) {
     main.addEventListener('click', click); main.addEventListener('mouseover', peek); main.addEventListener('focusin', peek); main.addEventListener('change', change); main.addEventListener('input', onRange);
     main.addEventListener('pointerdown', down); addEventListener('pointermove', move); addEventListener('pointerup', up); addEventListener('pointercancel', up);
     return () => { main.removeEventListener('click', click); main.removeEventListener('mouseover', peek); main.removeEventListener('focusin', peek); main.removeEventListener('change', change); main.removeEventListener('input', onRange); main.removeEventListener('pointerdown', down); removeEventListener('pointermove', move); removeEventListener('pointerup', up); removeEventListener('pointercancel', up); };
-  }, [isUi]);
+  }, [isUi, isFm]);
   if (isUi) return <UiPage />;
+  if (isFm) return <FramerExamples />;
   return <main id="main" ref={ref} />;
 }
 
