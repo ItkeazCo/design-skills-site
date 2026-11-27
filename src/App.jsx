@@ -8,7 +8,7 @@ import { details, loadFont } from './render.js';
 import * as overlay from './overlay.js';
 import { onToast } from './toastbus.js';
 import { markdown } from './markdown.js';
-import { home, overview, section, toMarkdown, short } from './pages.js';
+import { home, overview, section, shortCopy, short } from './pages.js';
 import { UiPage } from './ui.jsx';
 import { copy } from './details.js';
 import story from '../docs/STORY.md?raw';
@@ -222,7 +222,7 @@ function Main({ hash }) {
         return;
       }
       const ai = e.target.closest('[data-ai]');
-      if (ai) { copy(toMarkdown(ai.dataset.ai), ai); return; }
+      if (ai) { copy(shortCopy(ai.dataset.ai), ai); return; }
       const b = e.target.closest('.opens');
       if (b) openDetail(b.dataset.set, +b.dataset.i, b);
     };
